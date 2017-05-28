@@ -95,10 +95,10 @@
 	    public function fetch_assoc($query)
 	    {
 	    	if (is_object($query)) {
-	    		$query = $query->fetch_assoc();
+	    		$query = mysqli_fetch_assoc($query);
 	    	} else {
 	    		$query = $this->con->query($query);
-	    		$query = $query->fetch_assoc();
+	    		$query = mysqli_fetch_assoc($query);
 	    	}
 
 	    	return $query;
@@ -107,10 +107,10 @@
 	    public function fetch_array($query)
 	    {
 	    	if (is_object($query)) {
-	    		$query = $query->fetch_array();
+	    		$query = mysqli_fetch_array($query);
 	    	} else {
 	    		$query = $this->con->query($query);
-	    		$query = $query->fetch_array();
+	    		$query = mysqli_fetch_array($query);
 	    	}
 	    	return $query;
 	    }
@@ -123,7 +123,7 @@
 
 	    public function getMasterVersion()
 	    {
-	    	return '2.0.0 FREE';
+	    	return '2.0.1 FREE';
 	    }
 
 	    public function close()
