@@ -178,7 +178,7 @@
 				$home_room = $this->config->select['USER_REGISTER']['HOME_ROOM'];
 			}
 			$time = time();
-			$query = $this->con->query("INSERT INTO users (username, password, mail, gender, motto, look, credits, activity_points, vip_points, ip_reg, home_room, account_created, facebook_account, facebook_id, facebook_completed) VALUES ('{$username}', '{$password}', '{$mail}', '{$gender}', '{$motto}', '{$look}', '{$credits}', '{$duckets}', '{$diamonds}', '{$ip_reg}', '{$home_room}', '{$time}', '{$facebook_account}', '{$facebook_id}', '{$facebook_completed}')");
+			$query = $this->con->query("INSERT INTO users (username, password, mail, gender, motto, look, credits, activity_points, vip_points, ip_reg, home_room, pin, client_pin, account_created, facebook_account, facebook_id, facebook_completed) VALUES ('{$username}', '{$password}', '{$mail}', '{$gender}', '{$motto}', '{$look}', '{$credits}', '{$duckets}', '{$diamonds}', '{$ip_reg}', '{$home_room}', '', '', '{$time}', '{$facebook_account}', '{$facebook_id}', '{$facebook_completed}')");
 			if ($query) {
 				return true;
 			} else {
