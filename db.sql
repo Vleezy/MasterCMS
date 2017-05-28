@@ -133,8 +133,8 @@ ALTER TABLE `users`
   ADD `facebook_id` varchar(100) NOT NULL,
   ADD `facebook_completed` enum('0','1') NOT NULL,
   ADD `last_used` int(20) NOT NULL,
-  ADD `pin` varchar(200) NOT NULL,
-  ADD `client_pin` varchar(200) NOT NULL,
+  ADD `pin` varchar(255) NOT NULL,
+  ADD `client_pin` varchar(255) NOT NULL,
   ADD `staff_occult` enum('0','1') NOT NULL,
   ADD `work` varchar(50) NOT NULL,
   ADD `block_view_profile` enum('0','1') NOT NULL;

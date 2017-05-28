@@ -141,7 +141,7 @@
           });
         </script>
         <?php } ?>
-        <?php if ($this->request->getMethod() == 'forgot_password' || $this->request->getMethod() == 'verificate_mail') { ?>
+        <?php if ($this->request->getMethod() == 'verificate_mail') { ?>
         <script type="text/javascript">
             $(document).ready(function() {
                 setTimeout(function () {

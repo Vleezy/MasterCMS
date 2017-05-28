@@ -42782,7 +42782,7 @@ CREATE TABLE `users` (
   `staff_facebook` varchar(50) DEFAULT NULL,
   `forgot_ticket` varchar(50) DEFAULT NULL,
   `facebook_id` varchar(50) DEFAULT NULL,
-  `pin` varchar(256) DEFAULT NULL,
+  `pin` varchar(255) DEFAULT NULL,
   `facebook_change` varchar(50) DEFAULT NULL,
   `facebook` varchar(50) DEFAULT NULL,
   `staff_background_url` text,
@@ -42807,7 +42807,7 @@ CREATE TABLE `users` (
   `namePrefix_color` varchar(150) NOT NULL DEFAULT '',
   `facebook_account` enum('0','1') NOT NULL DEFAULT '0',
   `facebook_completed` enum('0','1') NOT NULL,
-  `client_pin` varchar(256) NOT NULL,
+  `client_pin` varchar(255) NOT NULL,
   `staff_occult` enum('0','1') NOT NULL,
   `work` varchar(50) NOT NULL,
   `block_view_profile` enum('0','1') NOT NULL
