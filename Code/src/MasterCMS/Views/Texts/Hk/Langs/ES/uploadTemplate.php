@@ -33,8 +33,8 @@
 				// General
 				'no_perms' => 'No tienes los suficientes permisos para ejecutar esta accion',
 				// Template			
-				'fail' => 'Template no se ha podido subir, detalles: <br>',
-				'success' => 'Template subido exitosamente, espera un momento',
+				'fail' => 'Se produjo una alerta al subir Theme, detalles: <br>',
+				'success' => 'Theme subido exitosamente, espera un momento',
 				// Styles
 				'fail_styles' => 'Estilos no se han podido subir, detalles: <br>',
 				'success_styles' => 'Estilos subidos exitosamente, espera un momento'
