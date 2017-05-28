@@ -4,13 +4,16 @@
 
 MasterCMS is an advanced management system of content for Retro Servers called "**The Retro Servers Framework**", written in PHP 7 with features like Advanced Theme System *(yes, finally you can make you own theme with easiness)* unique functions like export, or import your template, select or even delete it... etc makes MasterCMS an amazing CMS for Retro Servers!
 
+## Authors
+* Denzel Code "*LxBlack*" (MasterCMS programming)
+* Yonier "*HabboAdictos1*" (Default theme and future apps)
+
 ## Requirements
 * PHP 7.1.1
 * Apache Server
 * Xampp or IIS (*Not tested on hostings*)
 
 ## Features
-
 1. Programming languages:
 * HTML5
 * SASS
