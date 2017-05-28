@@ -41,6 +41,7 @@
 		private $facebook;
 		private $hotel;
 		private $page;
+		private $url;
 
 		public function __construct()
 		{
@@ -62,6 +63,7 @@
 			$this->template->setParam('credits', number_format(9999999));
             $this->template->setParam('duckets', number_format(9999999));
             $this->template->setParam('diamonds', number_format($this->users->get('diamonds')));
+            $this->url = $this->template->vars['url'];
 		}
 
 		public function colaborators()
@@ -78,10 +80,10 @@
 
 		public function team()
 		{
-			if (in_array($this->users->get('rank'), $this->hotel->getMaster('max'))) {
+			if ($this->users->getSession()) {
 				parent::team();
 			} else {
-				parent::error404();
+				header("Location: {$this->url}/");
 			}
 		}
 
