@@ -22,7 +22,8 @@ MasterCMS is an advanced management system of content for Retro Servers called "
 * MySQLi
 * MVC
 * POO
-1. CMS Functions
+
+2. CMS Functions
 * Sockets Connections
 * Templates System (Theme System)
 * Responsive (default theme)
