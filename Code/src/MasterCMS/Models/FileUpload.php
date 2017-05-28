@@ -97,9 +97,7 @@
 						    $files = str_replace('\\', '/', $files);
 						    $files = str_replace(DS, '/', $files);
 						
-						    /*if (file_exists($rute . $contest . DS) && file_exists($ruteStyles . $contest . DS)) {
-						    	throw new \Exception("Theme already exist");
-						    } else*/if (!in_array('Template/' . $contest . '/' . 'Langs/' . $this->config->select['WEB']['LANG'] . '/' . 'Texts' . '/' . 'Main.php', $files)) {
+						    if (!in_array('Template/' . $contest . '/' . 'Langs/' . $this->config->select['WEB']['LANG'] . '/' . 'Texts' . '/' . 'Main.php', $files)) {
 						    	throw new \Exception("Template needs Texts/Main.php");
 						    } elseif (!in_array('Template/' . $contest . '/' . 'Langs/' . $this->config->select['WEB']['LANG'] . '/' . 'Web' . '/' . 'Index.tpl', $files)) {
 						    	throw new \Exception("Template needs Web/Index.tpl");
@@ -141,11 +139,15 @@
 						    		unlink($rute . $contest . DS . '.theme_autoconfigured');
 						    	}
 						    	if ($extract) {
-						    		$this->status = true;
 						    		$this->hk->submitLog($this->users->get('id'), "Uploaded the theme <b>{$contest}</b>", time());
-						    		throw new \Exception("Theme uploaded");
+						    		if (file_exists($rute . $contest . DS) && file_exists($ruteStyles . $contest . DS)) {
+						    			$this->status = true;
+						    			throw new \Exception("Theme uploaded");
+						    		} else {
+						    			throw new \Exception("Theme overwrited");
+						    		}
 						    	} else {
-						    		throw new \Exception("Theme can't be uploaded");
+					    			throw new \Exception("Theme can't be uploaded");
 						    	}
 						    }
 						} else {
