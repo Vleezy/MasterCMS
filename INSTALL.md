@@ -5,6 +5,11 @@
 ### Images manual:
 [Open](http://imgur.com/a/LpUHv)
 
+## Requirements
+* PHP 7.1.1
+* Apache Server
+* [Xampp](https://www.apachefriends.org/xampp-files/7.1.4/xampp-win32-7.1.4-0-VC14-installer.exe) or IIS (*Not tested on hostings*)
+
 ### Writed manual:
 1. Download the MasterCMS ZIP from the Repo.
 1. Extract the contest of the "*master*" directory on you "*wwwroot*" or "*htdocs*".
