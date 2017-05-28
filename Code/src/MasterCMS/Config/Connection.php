@@ -60,7 +60,6 @@
     			$this->con->connect($this->data['HOST'], $this->data['USER'], $this->data['PASS'], $this->data['DB'], $this->data['PORT']);
 		        $rute = ROOT;
 		        $ruteStyles = MAIN_ROOT;
-		        $ruteSWF = $this->config->select['CDN']['SWF']['DIR_RUTE'];
 		        if ($this->con->connect_error) {
 					throw new \Exception("Error conecting to the MySQL Server: " . $this->con->connect_error);
 		        } else if (!$this->con->set_charset("utf8")) {
@@ -69,8 +68,6 @@
 	        		throw new \Exception("<b>{$rute}</b> most be writable");
 	        	} else if (!is_writable($ruteStyles)) {
 	        		throw new \Exception("<b>{$ruteStyles}</b> most be writable");
-	        	} else if (!is_writable($ruteSWF)) {
-	        		throw new \Exception("<b>{$ruteSWF}</b> most be writable");
 	        	}
  			} catch (\Exception $e) {
 	        	die($e->getMessage());

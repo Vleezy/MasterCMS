@@ -47,6 +47,14 @@
 
             $rute = ROOT . 'src' . DS . 'MasterCMS' . DS . 'Views' . DS . 'WebViews' . DS . $template_name . DS;
 
+            $ruteSWF = $this->config->select['CDN']['SWF']['DIR_RUTE'] . DS;
+
+            if (file_exists($ruteSWF)) {
+                if (!is_writable($ruteSWF)) {
+                    die("{$ruteSWF} must be writable");
+                }
+            }
+
             if (!file_exists($rute)) {
                 die("Template {$template_name} doesn't exist");
             }
