@@ -39,7 +39,7 @@
 	
 	// Autoloader Require
 	try {
-		$need = '7.1.1';
+		$need = '7.0.0';
 		if (version_compare(PHP_VERSION, $need) < 0) {
         	throw new Exception('MasterCMS is not available for <strong>PHP ' . PHP_VERSION . '</strong><br>' . 'Please install PHP greater than <strong>PHP ' . $need . '</strong>');
         } else {
