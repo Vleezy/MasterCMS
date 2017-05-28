@@ -60,3 +60,4 @@
 </div>
 <script type="text/javascript" src="{@hk_cdn}/js/forms/createPinClient.js"></script>
 <?php } ?>
+</div></div>

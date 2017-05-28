@@ -47,10 +47,12 @@ MasterCMS is an advanced management system of content for Retro Servers called "
 * Badge Uploader
 * MPU Image's Uploader
 * LOG System
+* Facebook Login
 * Ranks Clasifications (*min, medium, max*)
 
 ## DEMO
 * [View DEMO](http://demo.ubbly.es/)
 
 ## FAQS
-* We don't have any FAQ'S at the moment.
+* How to install? [INSTALL.md](https://github.com/DenzelCode/MasterCMS/blob/master/INSTALL.md)
+* How i know what the use a retro? Go to the hotel and put /web/themeinfo on the url, example: www.example.com/web/themeinfo

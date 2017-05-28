@@ -50,3 +50,4 @@
 </div>
 <script type="text/javascript" src="{@hk_cdn}/js/forms/submitPinClient.js"></script>
 <?php } ?>
+</div></div>
