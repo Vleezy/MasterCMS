@@ -97,9 +97,9 @@
 						    $files = str_replace('\\', '/', $files);
 						    $files = str_replace(DS, '/', $files);
 						
-						    if (file_exists($rute . $contest . DS) && file_exists($ruteStyles . $contest . DS)) {
+						    /*if (file_exists($rute . $contest . DS) && file_exists($ruteStyles . $contest . DS)) {
 						    	throw new \Exception("Theme already exist");
-						    } elseif (!in_array('Template/' . $contest . '/' . 'Langs/' . $this->config->select['WEB']['LANG'] . '/' . 'Texts' . '/' . 'Main.php', $files)) {
+						    } else*/if (!in_array('Template/' . $contest . '/' . 'Langs/' . $this->config->select['WEB']['LANG'] . '/' . 'Texts' . '/' . 'Main.php', $files)) {
 						    	throw new \Exception("Template needs Texts/Main.php");
 						    } elseif (!in_array('Template/' . $contest . '/' . 'Langs/' . $this->config->select['WEB']['LANG'] . '/' . 'Web' . '/' . 'Index.tpl', $files)) {
 						    	throw new \Exception("Template needs Web/Index.tpl");
