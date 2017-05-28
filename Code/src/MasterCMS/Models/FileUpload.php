@@ -160,6 +160,9 @@
 					$badgeTitle = $this->protection->filter($_POST['title']);
 					$badgeDesc = $this->protection->filter($_POST['description']);
 					$imageSize = getimagesize($file['tmp_name']);
+					if (!file_exists($rute)) {
+						@mkdir($rute);
+					}
 					if ($fileName == '.gif') {
 					 	throw new \Exception("Invalid file name, please put a name to the file");
 					} else if (empty($fileName) || empty($name)) {
@@ -207,6 +210,9 @@
 				} else if ($type == 'badgeZIP') {
 					$this->supportedFormats = ['application/zip', 'application/octet-stream', 'application/x-zip-compressed'];
 					$rute = $this->config->select['CDN']['SWF']['DIR_RUTE'] . DS . $this->config->select['CDN']['SWF']['DIR_BADGES'] . DS;
+					if (!file_exists($rute)) {
+						@mkdir($rute);
+					}
 					if ($fileName == '.zip') {
 					 	throw new \Exception("Invalid file name, please put a name to the file");
 					} elseif (!file_exists($rute)) {
@@ -252,6 +258,9 @@
 					$rute = $this->config->select['CDN']['SWF']['DIR_RUTE'] . DS . $this->config->select['CDN']['SWF']['DIR_MPUS'] . DS;
 					$flashTexts = $this->config->select['CDN']['SWF']['DIR_RUTE'] . DS . $this->config->select['CDN']['SWF']['FLASH_TEXTS'];
 					$name = $this->protection->filter($_POST['name']);
+					if (!file_exists($rute)) {
+						@mkdir($rute);
+					}
 					if ($fileName == '.gif' || $fileName == '.jpg' || $fileName == '.png' || $fileName == '.jpeg') {
 					 	throw new \Exception("Invalid file name, please put a name to the file");
 					} else if (empty($fileName) || empty($name)) {
@@ -277,6 +286,9 @@
 				} else if ($type == 'MPUZIP') {
 					$this->supportedFormats = ['application/zip', 'application/octet-stream', 'application/x-zip-compressed'];
 					$rute = $this->config->select['CDN']['SWF']['DIR_RUTE'] . DS . $this->config->select['CDN']['SWF']['DIR_MPUS'] . DS;
+					if (!file_exists($rute)) {
+						@mkdir($rute);
+					}
 					if ($fileName == '.zip') {
 					 	throw new \Exception("Invalid file name, please put a name to the file");
 					} elseif (!file_exists($rute)) {
