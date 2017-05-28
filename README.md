@@ -51,7 +51,7 @@ MasterCMS is an advanced management system of content for Retro Servers called "
 * Ranks Clasifications (*min, medium, max*)
 
 ## DEMO
-* [View DEMO](http://demo.ubbly.es/)
+* [View DEMO](http://pixelhotel.es/)
 
 ## FAQS
 * How to install? [INSTALL.md](https://github.com/DenzelCode/MasterCMS/blob/master/INSTALL.md)
