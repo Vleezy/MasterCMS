@@ -81,7 +81,7 @@
                         <?php echo $news_select['longstory']; ?>
                     </div>
                     <div class="boxFooter">
-                        <a href="{@url}/profile/<?php echo $selectUser['id']; ?>">
+                        <a href="{@url}/web/profile/<?php echo $selectUser['id']; ?>">
                             <div id="avatarHead" style="background: url('http://www.habbo.es/habbo-imaging/avatarimage?figure=sh-305-110.he-987462840-62.lg-275-63.hd-205-22.hr-3163-42.ch-3050-110-110&headonly=1') no-repeat;"> </div>
                             <span>
                                 <p>Publicado por</p>
@@ -185,7 +185,7 @@
                         <?php echo $news_select['longstory']; ?>
                     </div>
                     <div class="boxFooter">
-                        <a href="{@url}/profile/<?php echo $selectUser['id']; ?>">
+                        <a href="{@url}/web/profile/<?php echo $selectUser['id']; ?>">
                             <div id="avatarHead" style="background: url('http://www.habbo.es/habbo-imaging/avatarimage?figure=sh-305-110.he-987462840-62.lg-275-63.hd-205-22.hr-3163-42.ch-3050-110-110&headonly=1') no-repeat;"> </div>
                             <span>
                                 <p>Publicado por</p>

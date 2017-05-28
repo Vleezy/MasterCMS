@@ -89,7 +89,11 @@
 
 		public function client($room = false)
 		{
-			define('ADS', true);
+			if ($this->hotel->getMasterType() == 'max') {
+				define('ADS', false);
+			} else {
+				define('ADS', true);
+			}
 			parent::client($room);
 		}
 		

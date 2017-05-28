@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h3>Top Piruletas</h3>
+                <h3>Top Creditos</h3>
                 <div class="Box">
                     <div class="boxContent">
 
@@ -10,7 +10,7 @@
 
 
 
-                            $users_Query = $this->con->query('SELECT * FROM users HAVING coins_purchased > 0 ORDER BY coins_purchased DESC LIMIT 4');
+                            $users_Query = $this->con->query('SELECT * FROM users HAVING credits > 0 ORDER BY credits DESC LIMIT 4');
 
                             if ($this->con->num_rows($users_Query) == 0) {
 
@@ -20,7 +20,7 @@
                                     <div class="comboUser">
                                         <a href="{@url}/web/profile/1"><div class="comboAvatar <?php if ($select['online'] == 1) { echo 'comboOnline'; } ?>"><div class="comboBadge" style="background: url('{@badges_cdn}/<?php echo $selectRank['badge']; ?>.gif');"> </div><div class="comboImage float-left" style="background: url('{@habbo_img}<?php echo $select['look']; ?>&gesture=sml&size=b');"> </div></div></a>
                                         <span>
-                                            <h4>Aún nadie tiene Piruletas</h4>
+                                            <h4>Aún nadie tiene Creditos</h4>
                                         </span>                                
                                     </div>
                                 </div>
@@ -49,7 +49,7 @@
                                         <a href="{@url}/web/profile/<?php echo $user['id']; ?>"><div class="comboAvatar <?php if ($select['online'] == 1) { echo 'comboOnline'; } ?>"><div class="comboBadge" style="background: url('{@badges_cdn}/<?php echo $badge['badge_id']; ?>.gif');"> </div><div class="comboImage float-left" style="background: url('{@habbo_img}<?php echo $user['look']; ?>&gesture=sml&size=b');"> </div></div></a>
                                         <span>
                                             <h6><?php if($user['username'] == NULL){ echo 'Puesto vacío'; } else { echo $user['username']; } ?></h6>
-                                            <p><?php if($user['username'] == NULL){ echo '¿¡Qué esperas para lograr el puesto '. $i .'!?'; } else { echo '¡Cuenta ya con ' . $user['coins_purchased'] . ' respetos!'; } ?></p>
+                                            <p><?php if($user['username'] == NULL){ echo '¿¡Qué esperas para lograr el puesto '. $i .'!?'; } else { echo '¡Cuenta ya con ' . $user['credits'] . ' creditos!'; } ?></p>
                                             <p>Puesto #<?php echo $i; ?></p>
                                         </span>                                
                                     </div>
@@ -70,7 +70,7 @@
 
                         <?php
 
-                            $users_Query = $this->con->query('SELECT * FROM users HAVING diamonds > 0 ORDER BY diamonds DESC LIMIT 4');
+                            $users_Query = $this->con->query('SELECT * FROM users HAVING vip_points > 0 ORDER BY vip_points DESC LIMIT 4');
 
                             if ($this->con->num_rows($users_Query) == 0) {
 
@@ -109,7 +109,7 @@
                                         <a href="{@url}/web/profile/<?php echo $user['id']; ?>"><div class="comboAvatar <?php if ($select['online'] == 1) { echo 'comboOnline'; } ?>"><div class="comboBadge" style="background: url('{@badges_cdn}/<?php echo $badge['badge_id']; ?>.gif');"> </div><div class="comboImage float-left" style="background: url('{@habbo_img}<?php echo $user['look']; ?>&gesture=sml&size=b');"> </div></div></a>
                                         <span>
                                             <h6><?php if($user['username'] == NULL){ echo 'Puesto vacío'; } else { echo $user['username']; } ?></h6>
-                                            <p><?php if($user['username'] == NULL){ echo '¿¡Qué esperas para lograr el puesto '. $i .'!?'; } else { echo '¡Cuenta ya con ' . $user['diamonds'] . ' diamantes!'; } ?></p>
+                                            <p><?php if($user['username'] == NULL){ echo '¿¡Qué esperas para lograr el puesto '. $i .'!?'; } else { echo '¡Cuenta ya con ' . $user['vip_points'] . ' diamantes!'; } ?></p>
                                             <p>Puesto #<?php echo $i; ?></p>
                                         </span>                                
                                     </div>
