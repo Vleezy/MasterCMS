@@ -5,6 +5,9 @@
 ### Images manual:
 [Open](http://imgur.com/a/LpUHv)
 
+### Video manual:
+[Open](https://www.youtube.com/watch?v=N-KCqX5e844)
+
 ## Requirements
 * PHP 7.1.1
 * Apache Server
