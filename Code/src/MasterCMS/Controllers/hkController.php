@@ -1278,6 +1278,7 @@
 						if (empty($description)) {
 							echo $this->cmsSettings->texts['texts']['empty'];
 						} else {
+							$this->hk->submitLog($this->users->get('id'), "Put the CMS on <b>Maintenance</b>", time());
 							$this->hotel->setConfig('maintenance', $status);
 							$this->hotel->setConfig('maintenance_description', $description);
 							echo $this->cmsSettings->texts['texts']['success_mainte'];
@@ -1316,6 +1317,7 @@
 								$save .= $this->hotel->setConfig('super_users', $super_users);
 							}
 							if ($save) {
+								$this->hk->submitLog($this->users->get('id'), "Changed the <b>CMS Settings</b>", time());
 								echo $this->cmsSettings->texts['texts']['success_save'];
 							} else {
 								echo $this->cmsSettings->texts['texts']['fail_save'];
@@ -1333,6 +1335,7 @@
 					} else {
 						$restart = $this->hotel->restartConfig();
 						if ($restart) {
+							$this->hk->submitLog($this->users->get('id'), "Restarted the <b>CMS Settings</b>", time());
 							echo $this->cmsSettings->texts['texts']['success_res'];
 						} else {
 							echo $this->cmsSettings->texts['texts']['database'];
