@@ -122,33 +122,58 @@
 						    } elseif (!in_array('Template/' . $contest . '/' . 'Langs/' . $this->config->select['WEB']['LANG'] . '/' . 'Mails' . '/' . 'AccountCreated.html', $files)) {
 						    	throw new \Exception("Template needs Mails/AccountCreated.html");
 						    } else {
-						    	// Templates
-						    	$dir = $rute . $contest;
-						    	$extract = $zip->extractTo($rute . $contest . 'Extract' . DS);
-						    	$this->hotel->moveData($rute . $contest . 'Extract' . DS . 'Template' . DS . $contest, $dir);
-						    	$this->hotel->deletePath($rute . $contest . 'Extract');
-						    	// Styles
-						    	$dir = $ruteStyles . $contest;
-						    	$extract .= $zip->extractTo($ruteStyles . $contest . 'Extract' . DS);	
-						    	$this->hotel->moveData($ruteStyles . $contest . 'Extract' . DS . 'Styles' . DS . $contest, $dir);
-						    	$this->hotel->deletePath($ruteStyles . $contest . 'Extract');	
-						    	if (in_array('Template/' . $contest . '/' . '.theme_name', $files)) {
-						    		unlink($rute . $contest . DS . '.theme_name');
-						    	}
-						    	if (in_array('Template/' . $contest . '/' . '.theme_', $files)) {
-						    		unlink($rute . $contest . DS . '.theme_autoconfigured');
-						    	}
-						    	if ($extract) {
-						    		$this->hk->submitLog($this->users->get('id'), "Uploaded the theme <b>{$contest}</b>", time());
-						    		if (file_exists($rute . $contest . DS) && file_exists($ruteStyles . $contest . DS)) {
-						    			$this->status = true;
+						    	if (file_exists($rute . $contest . DS) && file_exists($ruteStyles . $contest . DS)) {
+				    				if ($this->hotel->getConfig('template_name') == $contest) {
+				    					throw new \Exception("You can't overwrite the current theme");
+				    				} else {
+				    					// Templates
+								    	$dir = $rute . $contest;
+								    	$this->hotel->deletePath($dir);
+								    	$extract = $zip->extractTo($rute . $contest . 'Extract' . DS);
+								    	$this->hotel->moveData($rute . $contest . 'Extract' . DS . 'Template' . DS . $contest, $dir);
+								    	// Styles
+								    	$dir = $ruteStyles . $contest;
+								    	$this->hotel->deletePath($dir);
+								    	$this->hotel->moveData($rute . $contest . 'Extract' . DS . 'Styles' . DS . $contest, $dir);
+								    	$this->hotel->deletePath($rute . $contest . 'Extract');	
+								    	if (in_array('Template/' . $contest . '/' . '.theme_name', $files)) {
+								    		unlink($rute . $contest . DS . '.theme_name');
+								    	}
+								    	if (in_array('Template/' . $contest . '/' . '.theme_', $files)) {
+								    		unlink($rute . $contest . DS . '.theme_autoconfigured');
+								    	}
+								    	if ($extract) {
+								    		$this->hk->submitLog($this->users->get('id'), "Uploaded the theme <b>{$contest}</b>", time());
+								    		$this->status = true;
+							    			throw new \Exception("Theme uploaded");
+								    	} else {
+							    			throw new \Exception("Theme can't be uploaded");
+								    	}
+				    				}
+					    		} else {
+					    			// Templates
+							    	$dir = $rute . $contest;
+							    	$extract = $zip->extractTo($rute . $contest . 'Extract' . DS);
+							    	$this->hotel->moveData($rute . $contest . 'Extract' . DS . 'Template' . DS . $contest, $dir);
+							    	// Styles
+							    	$dir = $ruteStyles . $contest;
+							    	$this->hotel->moveData($rute . $contest . 'Extract' . DS . 'Styles' . DS . $contest, $dir);
+							    	$this->hotel->deletePath($rute . $contest . 'Extract');	
+							    	if (in_array('Template/' . $contest . '/' . '.theme_name', $files)) {
+							    		unlink($rute . $contest . DS . '.theme_name');
+							    	}
+							    	if (in_array('Template/' . $contest . '/' . '.theme_', $files)) {
+							    		unlink($rute . $contest . DS . '.theme_autoconfigured');
+							    	}
+
+							    	if ($extract) {
+							    		$this->hk->submitLog($this->users->get('id'), "Uploaded the theme <b>{$contest}</b>", time());
+							    		$this->status = true;
 						    			throw new \Exception("Theme uploaded");
-						    		} else {
-						    			throw new \Exception("Theme overwrited");
-						    		}
-						    	} else {
-					    			throw new \Exception("Theme can't be uploaded");
-						    	}
+							    	} else {
+						    			throw new \Exception("Theme can't be uploaded");
+							    	}
+					    		}
 						    }
 						} else {
 							throw new \Exception("Can't read the file");
