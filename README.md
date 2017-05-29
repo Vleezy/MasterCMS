@@ -7,6 +7,7 @@ MasterCMS is an advanced management system of content for Retro Servers called "
 ## Authors
 * Denzel Code "*LxBlack*" (MasterCMS programming)
 * Yonier "*HabboAdictos1*" (Default theme and future apps)
+* Sonay (Inspiration of the default theme)
 
 ## Requirements
 * PHP 7.1.1
@@ -55,4 +56,4 @@ MasterCMS is an advanced management system of content for Retro Servers called "
 
 ## FAQS
 * How to install? [INSTALL.md](https://github.com/DenzelCode/MasterCMS/blob/master/INSTALL.md)
-* How i know what the use a retro? Go to the hotel and put /web/themeinfo on the url, example: www.example.com/web/themeinfo
+* How i know what theme use a retro? Go to the hotel and put /web/themeinfo on the url, example: www.example.com/web/themeinfo
