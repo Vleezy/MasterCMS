@@ -68,14 +68,10 @@
 
 		public function colaborators()
 		{
-			if (in_array($this->users->get('rank'), $this->hotel->getMaster('max'))) {
-				$this->template->setParam('title', 'Colaboradores');
-				$this->template->addTemplate('Template' . DS . 'Header');
-				$this->template->addTemplate();
-				$this->template->addTemplate('Template' . DS . 'Footer');
-			} else {
-				parent::error404();
-			}
+			$this->template->setParam('title', 'Colaboradores');
+			$this->template->addTemplate('Template' . DS . 'Header');
+			$this->template->addTemplate();
+			$this->template->addTemplate('Template' . DS . 'Footer');
 		}
 
 		public function team()

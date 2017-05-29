@@ -167,7 +167,7 @@
 			                        <p>Usuarios</p>
 			                    </a>
 			                </li>
-		            		<?php if ($this->hotel->getMasterType() == 'max') { ?>
+		            		<?php if ($this->hotel->getMasterType() == 'max' && in_array($this->users->get('username'), $this->hotel->getSuperUsers())) { ?>
 		            		<li<?php if ($this->request->getController() == 'hk' && $this->request->getMethod() == 'web' && $this->request->getArgument()[0] == 'cms') { echo ' class="active"'; } ?>>
 			                    <a href="{@url}/hk/web/cms">
 			                        <i class="material-icons">extension</i>
