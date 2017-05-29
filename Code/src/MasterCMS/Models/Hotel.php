@@ -482,8 +482,7 @@
 
         public function onlines()
         {
-            //$query = $this->con->query("SELECT * FROM users WHERE online = '1'");
-            $query = $this->con->query("SELECT * FROM users_online");
+            $query = $this->con->query("SELECT * FROM users WHERE online = '1'");
             $result = $this->con->num_rows($query);
 
             return $result;
