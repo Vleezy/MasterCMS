@@ -136,11 +136,6 @@ INSERT INTO `ranks` (`id`, `name`, `color`, `fuse_hide_staff`, `badge`) VALUES
 (9, 'CEO', '#000066', '0', 'CEO'),
 (10, 'Programmer', '#910303', '1', 'ADM');
 
-ALTER TABLE `ranks`
-  ADD `fuse_hide_staff` enum('0','1') NOT NULL DEFAULT '0',
-  ADD `color` varchar(7) NOT NULL,
-  ADD `badge` varchar(32) NOT NULL;
-
 ALTER TABLE `users`
   ADD `facebook_account` enum('0','1') NOT NULL DEFAULT '0',
   ADD `facebook_id` varchar(100) NOT NULL,
