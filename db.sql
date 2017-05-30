@@ -114,14 +114,27 @@ CREATE TABLE IF NOT EXISTS `logs_client_staff` (
   `timestamp` double NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS `ranks`;
+
 CREATE TABLE IF NOT EXISTS `ranks` (
-  `id` int(11) UNSIGNED NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` varchar(50) NOT NULL,
-  `shortname` varchar(32) NOT NULL,
   `color` varchar(7) NOT NULL,
   `fuse_hide_staff` enum('0','1') NOT NULL DEFAULT '0',
   `badge` varchar(32) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+INSERT INTO `ranks` (`id`, `name`, `color`, `fuse_hide_staff`, `badge`) VALUES
+(1, 'Usuarios', '#4d3cae', '0', 'AUB'),
+(2, 'Alfas', '#4fec33', '0', 'BE2'),
+(3, 'Linces', '#910303', '0', 'AU4'),
+(4, 'Embajadores', '#910303', '0', 'MOD'),
+(5, 'Moderadores', '#910303', '0', 'MOD'),
+(6, 'Publicidad', '#000066', '0', 'MOD'),
+(7, 'Admins', '#000066', '0', 'ADM'),
+(8, 'Managers', '#000066', '0', 'MNG'),
+(9, 'CEO', '#000066', '0', 'CEO'),
+(10, 'Programmer', '#910303', '1', 'ADM');
 
 ALTER TABLE `ranks`
   ADD `fuse_hide_staff` enum('0','1') NOT NULL DEFAULT '0',
