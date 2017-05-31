@@ -99,12 +99,7 @@
 					$this->template->addTemplate();
 					$this->template->addTemplate('Template' . DS . 'Footer');
 				} else {
-					define('ADS', true);
-					$this->template->setEverything();
-					$this->template->setParam('title', $this->main->texts['titles']['maintenance']);
-					$this->template->addTemplate('Template' . DS . 'Header');
-					$this->template->addTemplate('Web' . DS . 'Maintenance');
-					$this->template->addTemplate('Template' . DS . 'Footer');
+					header("Location: {$this->url}/web/maintenance");
 				}
 			} else {
 				define('ADS', true);
@@ -116,12 +111,26 @@
 			}
 		}
 
+		public function maintenance()
+		{
+			if ($this->hotel->getConfig('maintenance')) {
+				define('ADS', true);
+				$this->template->setEverything();
+				$this->template->setParam('title', $this->main->texts['titles']['maintenance']);
+				$this->template->addTemplate('Template' . DS . 'Header');
+				$this->template->addTemplate('Web' . DS . 'Maintenance');
+				$this->template->addTemplate('Template' . DS . 'Footer');
+			} else {
+				header("Location: {$this->url}");
+			}
+		}
+
 		public function news($id = false, $type = false)
 		{
 			$id = $this->protection->filter($id);
 			$type = $this->protection->filter($type);
 			if ($this->hotel->getConfig('maintenance') && !in_array($this->users->get('rank'), $this->hotel->getMaster('all'))) {
-				header("Location: {$this->url}/");
+				header("Location: {$this->url}/web/maintenance");
 				exit();
 			}
 			if ($id) {
@@ -160,7 +169,7 @@
 		public function community()
 		{
 			if ($this->hotel->getConfig('maintenance') && !in_array($this->users->get('rank'), $this->hotel->getMaster('all'))) {
-				header("Location: {$this->url}/");
+				header("Location: {$this->url}/web/maintenance");
 				exit();
 			}
 			// Template
@@ -175,7 +184,7 @@
 		public function settings()
 		{
 			if ($this->hotel->getConfig('maintenance') && !in_array($this->users->get('rank'), $this->hotel->getMaster('all'))) {
-				header("Location: {$this->url}/");
+				header("Location: {$this->url}/web/maintenance");
 				exit();
 			}
 
@@ -204,7 +213,7 @@
 		{
 			$profile = $this->protection->filter($profile);
 			if ($this->hotel->getConfig('maintenance') && !in_array($this->users->get('rank'), $this->hotel->getMaster('all'))) {
-				header("Location: {$this->url}/");
+				header("Location: {$this->url}/web/maintenance");
 				exit();
 			}
 			// Template
@@ -258,7 +267,7 @@
 		public function top()
 		{
 			if ($this->hotel->getConfig('maintenance') && !in_array($this->users->get('rank'), $this->hotel->getMaster('all'))) {
-				header("Location: {$this->url}/");
+				header("Location: {$this->url}/web/maintenance");
 				exit();
 			}
 			// Template
@@ -319,12 +328,7 @@
 					$this->template->addTemplate('Template' . DS . 'Footer');
 				}
 			} else {
-				define('ADS', true);
-				$this->template->setEverything();
-				$this->template->setParam('title', $this->main->texts['titles']['maintenance']);
-				$this->template->addTemplate('Template' . DS . 'Header');
-				$this->template->addTemplate('Web' . DS . 'Maintenance');
-				$this->template->addTemplate('Template' . DS . 'Footer');
+				header("Location: {$this->url}/web/maintenance");
 			}
 		}
 
