@@ -46,6 +46,7 @@
 				// Delete Theme
 				'cant_current_del' => 'No puedes eliminar el Theme actual, intentelo desde el servidor',
 				'success_delete' => 'Tema eliminado exitosamente',
+				'cant_default' => 'No puedes realizar esta accion con el theme por defecto',
 				// Styles
 				'fail_styles' => 'Estilos no se han podido subir, detalles: <br>',
 				'success_styles' => 'Estilos subidos exitosamente, espera un momento',

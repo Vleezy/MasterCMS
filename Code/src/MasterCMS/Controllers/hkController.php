@@ -1815,6 +1815,8 @@
 							echo $this->generalThemes->texts['texts']['not_exist'];
 						} else if (strtolower($theme) == strtolower($current_theme)) {
 							echo $this->generalThemes->texts['texts']['cant_current_del'];
+						} else if (strtolower($theme) == strtolower($this->config->select['DEFAULT_DB_CONFIG']['TEMPLATE_NAME'])) {
+							echo $this->generalThemes->texts['texts']['cant_default'];
 						} else {
 							// Delete Template
 							$this->hotel->deletePath($rute . $theme);
