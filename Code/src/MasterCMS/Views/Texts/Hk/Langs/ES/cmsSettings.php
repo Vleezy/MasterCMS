@@ -38,7 +38,7 @@
 				'fail_save' => 'No se pudieron guardar los cambios',
 				// Restart
 				'accept_conditions' => 'Debes aceptar las condiciones antes de continuar',
-				'success_res' => 'Se ha restablecido la configuracion exitosamente, puede que se le cierre la sesion a la Housekeeping debido a que se puessden desconfigurar los min, medium y max ranks',
+				'success_res' => 'Se ha restablecido la configuracion exitosamente, puede que se le cierre la sesion a la Housekeeping debido a que se pueden desconfigurar los min, medium y max ranks',
 				'database' => 'Se ha producido un error en la base de datos',
 				// Maintenance
 				'success_mainte' => 'Configuraci&oacute;n de mantenimiento guardada exitosamente'

@@ -56,7 +56,7 @@
 				'team' => 'Equipo administrativo',
 				'client' => 'Diversión dentro del hotel',
 				'client_pin' => 'C&oacute;digo de seguridad del client',
-				'client_pin_create' => 'Crear c&oacute	;digo de seguridad del client',
+				'client_pin_create' => 'Crear c&oacute;digo de seguridad del client',
 				'theme_info' => 'Informaci&oacute;n de el tema {@theme_name}',
 				'flash' => 'Debes activar Flash'
 			],
