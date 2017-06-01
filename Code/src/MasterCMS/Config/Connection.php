@@ -68,6 +68,11 @@
 	        		throw new \Exception("<b>{$rute}</b> most be writable");
 	        	} else if (!is_writable($ruteStyles)) {
 	        		throw new \Exception("<b>{$ruteStyles}</b> most be writable");
+	        	} else {
+	        		$query = $this->con->query("SELECT * FROM master_config");
+	        		if (!$query) {
+	        			throw new \Exception("MasterCMS needs <b>master_config</b> table");
+	        		}
 	        	}
  			} catch (\Exception $e) {
 	        	die($e->getMessage());
