@@ -2264,7 +2264,7 @@
 						echo $this->generalPIN->texts['texts']['need_numbers_and_letters'];
 					} else {
 						$set = $this->users->set('client_pin', $encpin);
-						$set .= $this->hk->submitLog($this->users->get('id'), "Changed his housekeeping <b>PIN</b>", time());
+						$set .= $this->hk->submitLog($this->users->get('id'), "Changed his client <b>PIN</b>", time());
 						if ($set) {
 							echo $this->generalPIN->texts['texts']['success'] . $this->redirections->js($this->url . '/hk', 3000);
 						} else {
