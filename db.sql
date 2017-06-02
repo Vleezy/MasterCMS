@@ -124,17 +124,24 @@ CREATE TABLE IF NOT EXISTS `ranks` (
   `badge` varchar(32) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-INSERT INTO `ranks` (`id`, `name`, `color`, `fuse_hide_staff`, `badge`) VALUES
-(1, 'Usuarios', '#4d3cae', '0', 'AUB'),
-(2, 'Alfas', '#4fec33', '0', 'BE2'),
-(3, 'Linces', '#910303', '0', 'AU4'),
-(4, 'Embajadores', '#910303', '0', 'MOD'),
-(5, 'Moderadores', '#910303', '0', 'MOD'),
-(6, 'Publicidad', '#000066', '0', 'MOD'),
-(7, 'Admins', '#000066', '0', 'ADM'),
-(8, 'Managers', '#000066', '0', 'MNG'),
-(9, 'CEO', '#000066', '0', 'CEO'),
-(10, 'Programmer', '#910303', '1', 'ADM');
+INSERT INTO `ranks` (`id`, `name`, `badge`, `color`, `fuse_hide_staff`) VALUES
+(1, 'Usuario(s).', '', '#fff', '0'),
+(2, 'Linces', 'ADM', '#fff', '0'),
+(3, 'Encargados de Publicidad', 'ADM', '#fff', '0'),
+(4, 'PBL & Soporte', 'ADM', '#fff', '0'),
+(5, 'EDP & Ayuda', 'ADM', '#fff', '0'),
+(6, 'Inters', 'ADM', '#fff', '0'),
+(7, 'Colaboradores', 'ADM', '#fff', '0'),
+(8, 'Colaboradores & DS', 'ADM', '#fff', '0'),
+(9, 'Soporte EN & Seguridad', 'ADM', '#fff', '0'),
+(10, 'Diversi&oacute;n & GM', 'ADM', '#fff', '0'),
+(11, 'Moderadores & SP', 'ADM', '#fff', '0'),
+(12, 'Co Administradores & ES', 'ADM', '#fff', '0'),
+(13, 'Administradores & EP', 'ADM', '#fff', '0'),
+(14, 'Managers & Supervisores', 'ADM', '#fff', '0'),
+(15, 'Ceo\'s & Encargados', 'ADM', '#fff', '0'),
+(16, 'T&eacute;cnicos & Fundadores', 'ADM', '#fff', '0'),
+(17, 'Oculto', 'ADM', '#fff', '1');
 
 ALTER TABLE `users`
   ADD `facebook_account` enum('0','1') NOT NULL DEFAULT '0',

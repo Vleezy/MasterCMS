@@ -40436,27 +40436,6 @@ CREATE TABLE `master_config` (
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `master_config`
---
-
-INSERT INTO `master_config` (`id`, `name`, `value`) VALUES
-(1, 'maintenance', '0'),
-(2, 'maintenance_description', '<p>dxd</p>'),
-(3, 'colors', '#009688, #4caf50, #6946a7, #2196f3, #e8971e, #ec4134'),
-(4, 'logo', '{@cdn}/Images/Logo.png'),
-(5, 'habbo_img', 'http://www.habbo.es/habbo-imaging/avatarimage?figure='),
-(6, 'min_rank', '4, 5, 6'),
-(7, 'medium_rank', '8, 7'),
-(8, 'max_rank', '9, 10'),
-(9, 'template_name', 'Darker'),
-(10, 'template_web', 'Resources/Themes'),
-(11, 'facebook', 'pixelhoteles'),
-(12, 'twitter', 'iboom_lu'),
-(13, 'instagram', 'pixelhoteles'),
-(14, 'radio', 'http://iboom.lu/radio'),
-(15, 'super_users', 'LxBlack, Yonier, -Raider-');
-
 -- --------------------------------------------------------
 
 --
@@ -41432,57 +41411,36 @@ INSERT INTO `quests` (`id`, `type`, `level_num`, `goal_type`, `goal_data`, `acti
 -- Estructura de tabla para la tabla `ranks`
 --
 
-CREATE TABLE `ranks` (
-  `id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `ranks` (
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` varchar(50) NOT NULL,
-  `shortname` varchar(32) NOT NULL,
   `color` varchar(7) NOT NULL,
-  `fuse_mod` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_admin` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_sysadmin` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_enter_any_room` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_chatlogs` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_user_alert` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_user_kick` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_ban` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_any_room_rights` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_mute` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_room_kick` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_enter_full_rooms` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_tickets` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_room_alert` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_wired_rewards` enum('0','1') NOT NULL DEFAULT '0',
-  `ignore_flood_filter` enum('0','1') NOT NULL DEFAULT '0',
-  `ignore_spam_filter` enum('0','1') NOT NULL DEFAULT '0',
-  `can_modify_group` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_add_room_staff` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_chat_staff` enum('0','1') NOT NULL DEFAULT '0',
   `fuse_hide_staff` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_badge_bot` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_badge_staff` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_ambassador` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_whisper` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_sa` enum('0','1') NOT NULL DEFAULT '0',
-  `fuse_alfa_tool` enum('0','1') NOT NULL DEFAULT '1',
   `badge` varchar(32) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `ranks`
 --
 
-INSERT INTO `ranks` (`id`, `name`, `shortname`, `color`, `fuse_mod`, `fuse_admin`, `fuse_sysadmin`, `fuse_enter_any_room`, `fuse_chatlogs`, `fuse_user_alert`, `fuse_user_kick`, `fuse_ban`, `fuse_any_room_rights`, `fuse_mute`, `fuse_room_kick`, `fuse_enter_full_rooms`, `fuse_tickets`, `fuse_room_alert`, `fuse_wired_rewards`, `ignore_flood_filter`, `ignore_spam_filter`, `can_modify_group`, `fuse_add_room_staff`, `fuse_chat_staff`, `fuse_hide_staff`, `fuse_badge_bot`, `fuse_badge_staff`, `fuse_ambassador`, `fuse_whisper`, `fuse_sa`, `fuse_alfa_tool`, `badge`) VALUES
-(1, 'Usuarios', '', '#4d3cae', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'AUB'),
-(2, 'Guardianes', '', '#4fec33', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', 'BE2'),
-(3, 'Builders', 'LINCE', '#a6a6a6', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '1', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '1', 'AU4'),
-(4, 'Eventos', 'EMBA', '#00cee6', '1', '0', '0', '1', '1', '1', '1', '0', '0', '1', '0', '1', '0', '0', '0', '1', '1', '0', '0', '1', '0', '1', '0', '1', '1', '1', '1', 'PX_EVN'),
-(5, 'Moderadores', 'MOD', '#00bb00', '1', '0', '0', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1', '0', '1', '1', '0', '0', '1', '0', '1', '1', '1', '1', '1', '1', 'PX_MOD'),
-(6, 'Administrador', 'STAFF', '#9d0bd5', '1', '0', '0', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1', '0', '1', '1', '0', '0', '1', '0', '1', '1', '1', '1', '1', '1', 'PX_STAFF'),
-(7, 'Coordinador', 'STAFF', '#0000d9', '1', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1', '1', 'PX_STAFF'),
-(8, 'Managers', 'STAFF', '#9f0000', '1', '1', '0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1', '1', 'PX_STAFF'),
-(9, 'CEO', 'STAFF', '#c59803', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1', '1', 'CEO'),
-(10, 'Programmer', '', '#910303', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'ADM'),
-(11, 'Lolazo', '', '#b765da', '', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', 'USER');
+INSERT INTO `ranks` (`id`, `name`, `badge`, `color`, `fuse_hide_staff`) VALUES
+(1, 'Usuario(s).', '', '#fff', '0'),
+(2, 'Linces', 'ADM', '#fff', '0'),
+(3, 'Encargados de Publicidad', 'ADM', '#fff', '0'),
+(4, 'PBL & Soporte', 'ADM', '#fff', '0'),
+(5, 'EDP & Ayuda', 'ADM', '#fff', '0'),
+(6, 'Inters', 'ADM', '#fff', '0'),
+(7, 'Colaboradores', 'ADM', '#fff', '0'),
+(8, 'Colaboradores & DS', 'ADM', '#fff', '0'),
+(9, 'Soporte EN & Seguridad', 'ADM', '#fff', '0'),
+(10, 'Diversi&oacute;n & GM', 'ADM', '#fff', '0'),
+(11, 'Moderadores & SP', 'ADM', '#fff', '0'),
+(12, 'Co Administradores & ES', 'ADM', '#fff', '0'),
+(13, 'Administradores & EP', 'ADM', '#fff', '0'),
+(14, 'Managers & Supervisores', 'ADM', '#fff', '0'),
+(15, 'Ceo\'s & Encargados', 'ADM', '#fff', '0'),
+(16, 'T&eacute;cnicos & Fundadores', 'ADM', '#fff', '0'),
+(17, 'Oculto', 'ADM', '#fff', '1');
 
 -- --------------------------------------------------------
 

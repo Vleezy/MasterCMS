@@ -82,9 +82,9 @@
                 'HABBO_IMG'                 =>          'http://www.habbo.es/habbo-imaging/avatarimage?figure=',
                 // Housekeeping
                 'SUPER_USERS'               =>          'LxBlack, Yonier', // Comma separated
-                'MIN_RANK'                  =>          '4, 5, 6',
-                'MEDIUM_RANK'               =>          '7, 8',
-                'MAX_RANK'                  =>          '9, 10',
+                'MIN_RANK'                  =>          '3, 4, 5, 6, 7, 8, 9',
+                'MEDIUM_RANK'               =>          '10, 11, 12, 13, 14, 15',
+                'MAX_RANK'                  =>          '14, 15, 16, 17',
                 // Social Networks
                 'FACEBOOK'                  =>          'Denzel-Code-249037048887248',
                 'TWITTER'                   =>          'UbblyServer',
