@@ -344,8 +344,8 @@
 						exit();
 					}
 				} elseif ($page == 'pin') {
-					if ($this->hotel->getMasterType() == 'max' && in_array($this->users->get('username'), $this->hotel->getSuperUsers())) {
-						$this->template->setParam('title', $this->text->texts['titles']['cms_settings']);
+					if (in_array($this->users->get('rank'), $this->hotel->getMaster('all'))) {
+						$this->template->setParam('title', $this->text->texts['titles']['change_pin']);
 						$this->template->addTemplate('Template' . DS . 'Header', 'Hk');
 						$this->template->addTemplate('Web' . DS . 'ChangePIN', 'Hk');
 						$this->template->addTemplate('Template' . DS . 'Footer', 'Hk');

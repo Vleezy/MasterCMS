@@ -21,7 +21,8 @@
 				'mastercms' => 'MasterCMS Settings',
 				'cms_settings' => 'Ajustes del CMS',
 				'cms_logs' => 'Logs del CMS',
-				'badges' => 'Placas'
+				'badges' => 'Placas',
+				'change_pin' => 'Codigo de seguridad'
 			]
 		);
 	}
