@@ -83,7 +83,9 @@
 				<ul id="menu-right">					
 					<li class="active"><a href="/"><i class="fa fa-home" aria-hidden="true"></i>Inicio</a></li>
 					<li><a href="{@url}/web/community"><i class="fa fa-users icon" aria-hidden="true"></i>Comunidad</a></li>
+					<?php if ($this->users->getSession()) { ?>
 					<li><a href="{@url}/web/team"><i class="fa fa-star" aria-hidden="true"></i>Equipo</a></li>
+					<?php } ?>
 					<li><a href="{@url}/web/news"><i class="fa fa-newspaper-o icon" aria-hidden="true"></i>Noticias</a></li>
 					<?php if (!$this->users->getSession()) { ?><li><a href="{@url}/web/register"><i class="fa fa-user-plus" aria-hidden="true"></i>Regístrarme</a></li><?php } ?>					
 					<?php if ($this->users->getSession() && in_array($this->users->get('rank'), $this->hotel->getMaster('all'))) { ?><li><a href="{@url}/hk" class="hidden-lg-up"><i class="fa fa-lock" aria-hidden="true"></i>HouseKeeping</a></li><?php } ?>

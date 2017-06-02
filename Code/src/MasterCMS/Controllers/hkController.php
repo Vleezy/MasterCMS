@@ -98,7 +98,7 @@
 				}
 			}
 
-			$textsNames = array('createPin', 'submitPin', 'addMessage', 'deleteMessage', 'addUserRank', 'deleteUserRank', 'addRank', 'deleteRank', 'editRank', 'submitNew', 'deleteNew', 'editNew', 'uploadTemplate', 'generalThemes', 'submitBan', 'deleteBan', 'uploadBadge', 'cmsSettings', 'generalUsers', 'generalLogs', 'uploadMPU');
+			$textsNames = array('createPin', 'submitPin', 'addMessage', 'deleteMessage', 'addUserRank', 'deleteUserRank', 'addRank', 'deleteRank', 'editRank', 'submitNew', 'deleteNew', 'editNew', 'uploadTemplate', 'generalThemes', 'submitBan', 'deleteBan', 'uploadBadge', 'cmsSettings', 'generalUsers', 'generalLogs', 'uploadMPU', 'generalPIN');
 
 			foreach ($textsNames as $key) {
 				$class = "MasterCMS\\Views\\Texts\\Hk\\Langs\\{$this->config->select['WEB']['HK_LANG']}\\" . $key;
@@ -338,6 +338,16 @@
 						$this->template->setParam('title', $this->text->texts['titles']['mastercms']);
 						$this->template->addTemplate('Template' . DS . 'Header', 'Hk');
 						$this->template->addTemplate('Web' . DS . 'Main', 'Hk');
+						$this->template->addTemplate('Template' . DS . 'Footer', 'Hk');
+					} else {
+						header("Location: {$this->url}/hk");
+						exit();
+					}
+				} elseif ($page == 'pin') {
+					if ($this->hotel->getMasterType() == 'max' && in_array($this->users->get('username'), $this->hotel->getSuperUsers())) {
+						$this->template->setParam('title', $this->text->texts['titles']['cms_settings']);
+						$this->template->addTemplate('Template' . DS . 'Header', 'Hk');
+						$this->template->addTemplate('Web' . DS . 'ChangePIN', 'Hk');
 						$this->template->addTemplate('Template' . DS . 'Footer', 'Hk');
 					} else {
 						header("Location: {$this->url}/hk");
@@ -1552,7 +1562,7 @@
 						} else {
 							$open = fopen($flashTexts, 'a');
 							if ($open) {
-								$write = fwrite($open, "badge_name_{$name}={$title}\n");
+								$write = fwrite($open, "\nbadge_name_{$name}={$title}\n");
 								$write .= fwrite($open, "badge_desc_{$name}={$desc}\n");
 								if ($write) {
 									echo $this->uploadBadge->texts['texts']['success_mod'];
@@ -2204,6 +2214,62 @@
 						}
 					} else {
 						echo $this->generalUsers->texts['texts']['no_perms'];
+					}
+				}
+
+				if ($type == 'editPIN') {
+					$oldpin = $this->protection->filter($_POST['oldpin']);
+					$pin = $this->protection->filter($_POST['pin']);
+					$rpin = $this->protection->filter($_POST['rpin']);
+					$encoldpin = $this->protection->encriptPassword($oldpin);
+					$encpin = $this->protection->encriptPassword($pin);
+					$nowpin = $this->users->get('pin');
+					if (empty($oldpin) || empty($pin) || empty($rpin)) {
+						echo $this->generalPIN->texts['texts']['empty'];
+					} else if ($encoldpin != $nowpin) {
+						echo $this->generalPIN->texts['texts']['not_same'];
+					} elseif ($pin != $rpin) {
+						echo $this->generalPIN->texts['texts']['not_same_new_pins'];
+					} else if (strlen($pin) < 4 || strlen($pin) > 30) {
+						echo $this->generalPIN->texts['texts']['shorter_or_larger_pin'];
+					} else if (!preg_match("`[0-9]`", $pin) || !preg_match("`[a-z]`", $pin)) {
+						echo $this->generalPIN->texts['texts']['need_numbers_and_letters'];
+					} else {
+						$set = $this->users->set('pin', $encpin);
+						$set .= $this->hk->submitLog($this->users->get('id'), "Changed his housekeeping <b>PIN</b>", time());
+						if ($set) {
+							echo $this->generalPIN->texts['texts']['success'] . $this->redirections->js($this->url . '/hk', 3000);
+						} else {
+							echo $this->generalPIN->texts['texts']['database'];
+						}
+					}
+				}
+
+				if ($type == 'editClientPIN') {
+					$oldpin = $this->protection->filter($_POST['oldpin']);
+					$pin = $this->protection->filter($_POST['pin']);
+					$rpin = $this->protection->filter($_POST['rpin']);
+					$encoldpin = $this->protection->encriptPassword($oldpin);
+					$encpin = $this->protection->encriptPassword($pin);
+					$nowpin = $this->users->get('client_pin');
+					if (empty($oldpin) || empty($pin) || empty($rpin)) {
+						echo $this->generalPIN->texts['texts']['empty'];
+					} else if ($encoldpin != $nowpin) {
+						echo $this->generalPIN->texts['texts']['not_same'];
+					} elseif ($pin != $rpin) {
+						echo $this->generalPIN->texts['texts']['not_same_new_pins'];
+					} else if (strlen($pin) < 4 || strlen($pin) > 30) {
+						echo $this->generalPIN->texts['texts']['shorter_or_larger_pin'];
+					} else if (!preg_match("`[0-9]`", $pin) || !preg_match("`[a-z]`", $pin)) {
+						echo $this->generalPIN->texts['texts']['need_numbers_and_letters'];
+					} else {
+						$set = $this->users->set('client_pin', $encpin);
+						$set .= $this->hk->submitLog($this->users->get('id'), "Changed his housekeeping <b>PIN</b>", time());
+						if ($set) {
+							echo $this->generalPIN->texts['texts']['success'] . $this->redirections->js($this->url . '/hk', 3000);
+						} else {
+							echo $this->generalPIN->texts['texts']['database'];
+						}
 					}
 				}
 

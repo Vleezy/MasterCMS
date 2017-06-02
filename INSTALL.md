@@ -9,7 +9,7 @@
 [Open](https://www.youtube.com/watch?v=N-KCqX5e844)
 
 ## Requirements
-* PHP 7.1.1
+* PHP 7.0.0
 * Apache Server
 * Xampp [Windows](https://www.apachefriends.org/xampp-files/7.1.4/xampp-win32-7.1.4-0-VC14-installer.exe) | [Linux](https://www.apachefriends.org/xampp-files/7.1.4/xampp-linux-x64-7.1.4-0-installer.run) or IIS (*Not tested on hostings*)
 

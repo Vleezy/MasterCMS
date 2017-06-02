@@ -647,7 +647,7 @@
 						$this->template->setParam('client', true);
 						$this->template->setParam('hk', false);
 						$this->template->addTemplate('Template' . DS . 'Header', 'Hk');
-						$this->template->addTemplate('Web' . DS . 'Pin', 'Hk');
+						$this->template->addTemplate('Web' . DS . 'PinClient', 'Hk');
 						$this->template->addTemplate('Template' . DS . 'Footer', 'Hk');
 					} else {
 						define('ADS', false);
@@ -656,7 +656,7 @@
 						$this->template->setParam('client', true);
 						$this->template->setParam('hk', false);
 						$this->template->addTemplate('Template' . DS . 'Header', 'Hk');
-						$this->template->addTemplate('Web' . DS . 'CreatePin', 'Hk');
+						$this->template->addTemplate('Web' . DS . 'CreatePinClient', 'Hk');
 						$this->template->addTemplate('Template' . DS . 'Footer', 'Hk');
 					}
 				}

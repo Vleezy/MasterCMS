@@ -7,10 +7,11 @@ MasterCMS is an advanced management system of content for Retro Servers called "
 ## Authors
 * Denzel Code "*LxBlack*" (MasterCMS programming)
 * Yonier "*HabboAdictos1*" (Default theme and future apps)
+* Juan Ruiz "*Localhost*" (Languages)
 * Sonay (Inspiration of the default theme)
 
 ## Requirements
-* PHP 7.1.1
+* PHP 7.0.0
 * Apache Server
 * Xampp [Windows](https://www.apachefriends.org/xampp-files/7.1.4/xampp-win32-7.1.4-0-VC14-installer.exe) | [Linux](https://www.apachefriends.org/xampp-files/7.1.4/xampp-linux-x64-7.1.4-0-installer.run) or IIS (*Not tested on hostings*)
 
@@ -52,7 +53,7 @@ MasterCMS is an advanced management system of content for Retro Servers called "
 * Ranks Clasifications (*min, medium, max*)
 
 ## DEMO
-* [View DEMO](http://pixelhotel.es/)
+* [View DEMO](http://www.habbiz.us/)
 
 ## FAQS
 * How to install? [INSTALL.md](https://github.com/DenzelCode/MasterCMS/blob/master/INSTALL.md)

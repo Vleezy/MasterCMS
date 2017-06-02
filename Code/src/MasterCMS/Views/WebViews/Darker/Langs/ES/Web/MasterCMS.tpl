@@ -10,6 +10,9 @@
 			<ul>
 				<li><strong>Yonier <i>(HabboAdictos1)</i></strong> - Desarrollo Front-End y Desktop Apps</li>
 			</ul>
+			<ul>
+				<li><strong>Z3RO <i>(Colaborador)</i></strong> - Desarrollo Front-End y Ideas</li>
+			</ul>
 	    </div>
     </div>
 </main>

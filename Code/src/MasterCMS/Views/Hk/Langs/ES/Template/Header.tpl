@@ -183,6 +183,12 @@
 			                    </a>
 			                </li>
 		            		<?php } ?>
+		            		<li<?php if ($this->request->getController() == 'hk' && $this->request->getMethod() == 'web' && $this->request->getArgument()[0] == 'pin') { echo ' class="active"'; } ?>>
+			                    <a href="{@url}/hk/web/pin">
+			                        <i class="material-icons">security</i>
+			                        <p>Codigo de seguridad</p>
+			                    </a>
+			                </li>
 		            		<?php if ($this->hotel->getMasterType() == 'max') { ?>
 		            		<li<?php if ($this->request->getController() == 'hk' && $this->request->getMethod() == 'web' && $this->request->getArgument()[0] == 'logs') { echo ' class="active"'; } ?>>
 			                    <a href="{@url}/hk/web/logs">

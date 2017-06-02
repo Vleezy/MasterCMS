@@ -218,13 +218,13 @@
 								if ($badgeTitle) {
 									$flash = fopen($flashTexts, 'a');
 									if ($flash) {
-										fwrite($flash, "badge_name_{$name}={$badgeTitle}\n");								
+										fwrite($flash, "\nbadge_name_{$name}={$badgeTitle}\n");	
 									}
 								}
 								if ($badgeDesc) {
 									$flash = fopen($flashTexts, 'a');
 									if ($flash) {
-										fwrite($flash, "badge_desc_{$name}={$badgeDesc}\n");								
+										fwrite($flash, "badge_desc_{$name}={$badgeDesc}\n");
 									}
 								}
 							}
