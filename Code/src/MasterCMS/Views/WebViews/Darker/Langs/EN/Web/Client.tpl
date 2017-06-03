@@ -103,7 +103,7 @@
 			</div>
 		</div>
 		<script>
-			var Client = new SWFObject("{@flash_client_url}{@habbo_swf}", "client", "100%", "100%", "10.0.0");
+			var Client = new SWFObject("{@flash_client_url}{@habbo_swf}?<?php echo rand(0, 9999); ?>", "client", "100%", "100%", "10.0.0");
 			Client.addVariable("client.allow.cross.domain", "1");
 			Client.addVariable("client.notify.cross.domain", "0");
 			Client.addVariable("connection.info.host", "{@host}");
@@ -115,18 +115,17 @@
 			Client.addVariable("client.connection.failed.url", "{@url}/");
 			Client.addVariable("logout.url", "{@url}/web");
 			Client.addVariable("logout.disconnect.url", "{@url}/web");
-			Client.addVariable("external.variables.txt", "{@external_variables}");
-			Client.addVariable("external.texts.txt", "{@external_flash_texts}");
-			Client.addVariable("productdata.load.url", "{@productdata}");
-			Client.addVariable("furnidata.load.url", "{@furnidata}");
-			Client.addVariable("external.figurepartlist.txt", "{@figuredata}");
-			Client.addVariable("flash.dynamic.avatar.download.configuration", "{@figuremap}");
+			Client.addVariable("external.variables.txt", "{@external_variables}?<?php echo rand(0, 9999); ?>");
+			Client.addVariable("external.texts.txt", "{@external_flash_texts}?<?php echo rand(0, 9999); ?>");
+			Client.addVariable("productdata.load.url", "{@productdata}?<?php echo rand(0, 9999); ?>");
+			Client.addVariable("furnidata.load.url", "{@furnidata}?<?php echo rand(0, 9999); ?>");
+			Client.addVariable("external.figurepartlist.txt", "{@figuredata}?<?php echo rand(0, 9999); ?>");
+			Client.addVariable("flash.dynamic.avatar.download.configuration", "{@figuremap}?<?php echo rand(0, 9999); ?>");
 			Client.addVariable("use.sso.ticket", "1");
 			Client.addVariable("sso.ticket", "{@ticket}");
 			Client.addVariable("account_id", "<?php echo $this->users->get('id'); ?>");
 			Client.addVariable("processlog.enabled", "1");
-			Client.addVariable("client.starting", "{@name} Hotel está cargando ...");
-			Client.addVariable("client.starting.revolving", "Para ciencia, \u00A1T\u00FA, monstruito!\/Cargando mensajes divertidos... Por favor, espera.\/\u00BFTe apetecen salchipapas con qu\u00E9?\/Sigue al pato amarillo.\/El tiempo es s\u00F3lo una ilusi\u00F3n.\/\u00A1\u00BFTodav\u00EDa estamos aqu\u00ED?!\/Me gusta tu camiseta.\/Mira a la izquierda. Mira a la derecha. Parpadea dos veces. \u00A1Ta-ch\u00E1n!\/No eres t\u00FA, soy yo.\/Shhh! Estoy intentando pensar.\/Cargando el universo de p\u00EDxeles.");
+			Client.addVariable("client.starting", "{@name} is loading ...");
 			<?php if($room) { ?>Client.addVariable("forward.id", "<?php echo $room; ?>");<?php } ?>
 			Client.addVariable("flash.client.url", "{@flash_client_url}");
 			Client.addVariable("flash.client.origin", "popup");

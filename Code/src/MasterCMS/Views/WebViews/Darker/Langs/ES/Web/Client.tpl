@@ -103,7 +103,7 @@
 			</div>
 		</div>
 		<script>
-			var Client = new SWFObject("{@flash_client_url}{@habbo_swf}", "client", "100%", "100%", "10.0.0");
+			var Client = new SWFObject("{@flash_client_url}{@habbo_swf}?<?php echo rand(0, 9999); ?>", "client", "100%", "100%", "10.0.0");
 			Client.addVariable("client.allow.cross.domain", "1");
 			Client.addVariable("client.notify.cross.domain", "0");
 			Client.addVariable("connection.info.host", "{@host}");
@@ -115,12 +115,12 @@
 			Client.addVariable("client.connection.failed.url", "{@url}/");
 			Client.addVariable("logout.url", "{@url}/web");
 			Client.addVariable("logout.disconnect.url", "{@url}/web");
-			Client.addVariable("external.variables.txt", "{@external_variables}");
-			Client.addVariable("external.texts.txt", "{@external_flash_texts}");
-			Client.addVariable("productdata.load.url", "{@productdata}");
-			Client.addVariable("furnidata.load.url", "{@furnidata}");
-			Client.addVariable("external.figurepartlist.txt", "{@figuredata}");
-			Client.addVariable("flash.dynamic.avatar.download.configuration", "{@figuremap}");
+			Client.addVariable("external.variables.txt", "{@external_variables}?<?php echo rand(0, 9999); ?>");
+			Client.addVariable("external.texts.txt", "{@external_flash_texts}?<?php echo rand(0, 9999); ?>");
+			Client.addVariable("productdata.load.url", "{@productdata}?<?php echo rand(0, 9999); ?>");
+			Client.addVariable("furnidata.load.url", "{@furnidata}?<?php echo rand(0, 9999); ?>");
+			Client.addVariable("external.figurepartlist.txt", "{@figuredata}?<?php echo rand(0, 9999); ?>");
+			Client.addVariable("flash.dynamic.avatar.download.configuration", "{@figuremap}?<?php echo rand(0, 9999); ?>");
 			Client.addVariable("use.sso.ticket", "1");
 			Client.addVariable("sso.ticket", "{@ticket}");
 			Client.addVariable("account_id", "<?php echo $this->users->get('id'); ?>");
