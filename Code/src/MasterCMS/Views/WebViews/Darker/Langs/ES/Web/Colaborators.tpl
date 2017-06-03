@@ -2,11 +2,14 @@
     <div class="container-fluid">
         <div class="row gutter-10">
             <div class="col-lg-8">
-                <?php
+               <?php
 
                     foreach ($this->hotel->getMaster('min', true) as $key => $value) {
 
                         $queryRank = $this->con->query("SELECT * FROM ranks WHERE id = '{$value}'");
+
+                        if ($this->con->num_rows($queryRank)) {
+
                         $queryUser = $this->con->query("SELECT * FROM users WHERE rank = '{$value}'");
 
                         if ($this->con->num_rows($queryUser) == 0) {
@@ -69,7 +72,7 @@
 
                                     }
                                 }
-
+                            }
                 ?>
 
                         </div>
@@ -81,7 +84,6 @@
                             }
                         }
                     }
-
                 ?>
 
             </div>

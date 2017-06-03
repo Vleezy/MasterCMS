@@ -7,6 +7,9 @@
                     foreach ($this->hotel->getMaster('max', true) as $key => $value) {
 
                         $queryRank = $this->con->query("SELECT * FROM ranks WHERE id = '{$value}'");
+
+                        if ($this->con->num_rows($queryRank)) {
+
                         $queryUser = $this->con->query("SELECT * FROM users WHERE rank = '{$value}'");
 
                         if ($this->con->num_rows($queryUser) == 0) {
@@ -69,7 +72,7 @@
 
                                     }
                                 }
-
+                            }
                 ?>
 
                         </div>
@@ -81,10 +84,16 @@
                             }
                         }
                     }
+                ?>
+
+                <?php
 
                     foreach ($this->hotel->getMaster('medium', true) as $key => $value) {
 
                         $queryRank = $this->con->query("SELECT * FROM ranks WHERE id = '{$value}'");
+
+                        if ($this->con->num_rows($queryRank)) {
+
                         $queryUser = $this->con->query("SELECT * FROM users WHERE rank = '{$value}'");
 
                         if ($this->con->num_rows($queryUser) == 0) {
@@ -147,7 +156,7 @@
 
                                     }
                                 }
-
+                            }
                 ?>
 
                         </div>
@@ -159,7 +168,6 @@
                             }
                         }
                     }
-
                 ?>
 
             </div>
