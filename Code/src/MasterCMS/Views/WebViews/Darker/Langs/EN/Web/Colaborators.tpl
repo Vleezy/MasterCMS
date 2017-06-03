@@ -7,6 +7,9 @@
                     foreach ($this->hotel->getMaster('min', true) as $key => $value) {
 
                         $queryRank = $this->con->query("SELECT * FROM ranks WHERE id = '{$value}'");
+
+                        if ($this->con->num_rows($queryRank)) {
+
                         $queryUser = $this->con->query("SELECT * FROM users WHERE rank = '{$value}'");
 
                         if ($this->con->num_rows($queryUser) == 0) {
@@ -16,7 +19,7 @@
                             if (!$selectRank['fuse_hide_staff']) {
 
                 ?>
-                                <h3><?php echo $selectRank['name']; ?> <div class="colorRank float-right" style="background-color: <?php echo $selectRank['color']; ?>;"> </div></h3>
+                                 <h3><?php echo $selectRank['name']; ?> <div class="colorRank float-right" style="background-color: <?php echo $selectRank['color']; ?>;"> </div></h3>
                                 <div class="Box">
                                     <div class="boxContent">
                                         <div class="comboPlate">
@@ -61,7 +64,7 @@
                                 <span>
                                     <h6><?php echo $select['username']; ?></h6>
                                     <p><?php echo $select['motto']; ?></p>
-                                    <p><?php if(!$select['work']) { echo 'No tengo tarea'; } else { echo $select['work']; } ?></p>
+                                    <p><?php if(!$select['work']) { echo 'Don\'t have work'; } else { echo $select['work']; } ?></p>
                                 </span>                                
                             </div>
                             
@@ -69,7 +72,7 @@
 
                                     }
                                 }
-
+                            }
                 ?>
 
                         </div>
@@ -81,7 +84,6 @@
                             }
                         }
                     }
-
                 ?>
 
             </div>
