@@ -4,13 +4,17 @@ AddDefaultCharset UTF-8
     RewriteEngine On
 
     # Move to HTTPS
-	# RewriteCond %{HTTPS} off
-	# RewriteCond www.%{HTTP_HOST} ^(?:www\.)?(www\..+)$ [NC]
-	# RewriteRule ^ https://%1%{REQUEST_URI} [NE,L,R]
+	RewriteCond %{HTTP_HOST} ^example\.com [NC]
+	RewriteCond %{SERVER_PORT} 80 
+	RewriteRule ^(.*)$ https://www.example.com/$1 [R,L]
 
+	# CMS Rules
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_FILENAME} !-l
 	RewriteRule ^(.*[^/])$ index.php?url=$1 [QSA,L]
+
+	# Error 404
 	ErrorDocument 404 /web/error404
+
 </IfModule>
