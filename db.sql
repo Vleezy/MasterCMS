@@ -142,17 +142,3 @@ INSERT INTO `ranks` (`id`, `name`, `badge`, `color`, `fuse_hide_staff`) VALUES
 (15, 'Ceo\'s & Encargados', 'ADM', '#fff', '0'),
 (16, 'T&eacute;cnicos & Fundadores', 'ADM', '#fff', '0'),
 (17, 'Oculto', 'ADM', '#fff', '1');
-
-ALTER TABLE `users`
-  ADD `facebook_account` enum('0','1') NOT NULL DEFAULT '0',
-  ADD `facebook_id` varchar(100) NOT NULL,
-  ADD `facebook_completed` enum('0','1') NOT NULL,
-  ADD `last_used` int(20) NOT NULL,
-  ADD `pin` varchar(255) NOT NULL,
-  ADD `client_pin` varchar(255) NOT NULL,
-  ADD `staff_occult` enum('0','1') NOT NULL,
-  ADD `work` varchar(50) NOT NULL,
-  ADD `block_view_profile` enum('0','1') NOT NULL;
-
-ALTER TABLE `users` CHANGE `auth_ticket` `auth_ticket` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
-ALTER TABLE `users` CHANGE `password` `password` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
