@@ -4,9 +4,9 @@ AddDefaultCharset UTF-8
     RewriteEngine On
 
     # Move to HTTPS
-	RewriteCond %{HTTP_HOST} ^example\.com [NC]
-	RewriteCond %{SERVER_PORT} 80 
-	RewriteRule ^(.*)$ https://www.example.com/$1 [R,L]
+	# RewriteCond %{HTTP_HOST} ^example\.com [NC]
+	# RewriteCond %{SERVER_PORT} 80 
+	# RewriteRule ^(.*)$ https://www.example.com/$1 [R,L]
 
 	# CMS Rules
 	RewriteCond %{REQUEST_FILENAME} !-f
