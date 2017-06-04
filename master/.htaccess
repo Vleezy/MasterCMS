@@ -2,6 +2,12 @@ AddDefaultCharset UTF-8
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    # Move to HTTPS
+	# RewriteCond %{HTTPS} off
+	# RewriteCond www.%{HTTP_HOST} ^(?:www\.)?(www\..+)$ [NC]
+	# RewriteRule ^ https://%1%{REQUEST_URI} [NE,L,R]
+
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_FILENAME} !-l
