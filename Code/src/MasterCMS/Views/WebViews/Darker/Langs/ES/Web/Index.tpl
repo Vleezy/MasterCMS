@@ -46,13 +46,6 @@
 			<p>Puedes ganar grandes premios en ¡Nuestros divertidos eventos staff!</p>
 		</div>
 	</section>
-	<!-- Alerta -->
-	<div class="hotelAlert">
-		<div class="container">
-			¡REGÍSTRATE DE NUEVO Y CONÉCTATE! ¡{@name} 2.0 ya ha llegado por tu seguridad y bienestar hemos reiniciado la base de datos. ¡Diviértete y disfruta de las nuevas mejoras y novedades! 23/05/2017
-		</div>
-	</div>
-	<!-- Alerta End -->
 </main>
 
 <div class="modal fade" id="forgotModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
