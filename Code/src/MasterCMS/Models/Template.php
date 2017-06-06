@@ -237,6 +237,7 @@
             $this->setParam('theme_langs_list', rtrim(implode(', ', $this->hotel->getThemeInfo('langs')), ','));
             $this->setParam('theme_description', $this->hotel->getThemeInfo('description'));
             $this->setParam('theme_author', $this->hotel->getThemeInfo('author'));
+            $this->setParam('theme_license', $this->hotel->getThemeInfo('license'));
             $this->setParam('theme_version', $this->hotel->getThemeInfo('version'));
             $this->setParam('theme_creation', $this->hotel->getThemeInfo('creation'));
             $this->setParam('theme_installed', $this->hotel->getThemeInfo('installed'));

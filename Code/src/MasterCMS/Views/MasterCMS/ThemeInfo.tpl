@@ -77,6 +77,7 @@
             <li><strong>Description:</strong> {@theme_description}</li>
             <li><strong>Version:</strong> {@theme_version}</li>
             <li><strong>Author(s):</strong> {@theme_author}</li>
+            <li><strong>License:</strong> {@theme_license}</li>
             <li><strong>Theme Lang:</strong> {@theme_lang}</li>
             <li><strong>Avaliable Langs:</strong> {@theme_langs_list}</li>
             <li><strong>Created Date:</strong> {@theme_creation}</li>

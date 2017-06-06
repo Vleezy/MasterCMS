@@ -123,7 +123,7 @@
 
                                 if ($key == 5) {
                                     if (!empty($value)) {
-                                        $theme_licence = $value . "\n";
+                                        $theme_license = $value . "\n";
                                     }
                                 }                                
                             }
@@ -134,7 +134,7 @@
                             $update .= fwrite($file, $theme_description);
                             $update .= fwrite($file, $theme_author);
                             $update .= fwrite($file, $theme_creation);
-                            $update .= fwrite($file, $theme_licence);
+                            $update .= fwrite($file, $theme_license);
                             $theme_installed = date('d/m/Y - h:i:s', time());
                             $update .= fwrite($file, $theme_installed);
                             if (file_exists($rute . '.theme_autoconfigured')) {
@@ -153,14 +153,14 @@
                             $theme_description = 'Default theme configuration' . "\n";
                             $theme_author = 'MasterCMS developers' . "\n";
                             $theme_creation = date('d/m/Y', time()) . "\n";
-                            $theme_licence = "Free trial licence for {$this->config->select['WEB']['NAME']}" . "\n";
+                            $theme_license = "Free trial license for {$this->config->select['WEB']['NAME']}" . "\n";
                             $theme_installed = date('d/m/Y - h:i:s', time());
                             $update = fwrite($file, $theme_name);
                             $update = fwrite($file, $theme_version);
                             $update .= fwrite($file, $theme_description);
                             $update .= fwrite($file, $theme_author);
                             $update .= fwrite($file, $theme_creation);
-                            $update .= fwrite($file, $theme_licence);
+                            $update .= fwrite($file, $theme_license);
                             $update .= fwrite($file, $theme_installed);
                             if (file_exists($rute . '.theme_autoconfigured')) {
                                 exec("attrib +h {$rute}.theme_autoconfigured");
@@ -211,7 +211,7 @@
 
                             if ($key == 5) {
                                 if (!empty($value)) {
-                                    $theme_licence = $value . "\n";
+                                    $theme_license = $value . "\n";
                                 }
                             }
                         }
@@ -222,7 +222,7 @@
                         $update .= fwrite($file, $theme_description);
                         $update .= fwrite($file, $theme_author);
                         $update .= fwrite($file, $theme_creation);
-                        $update .= fwrite($file, $theme_licence);
+                        $update .= fwrite($file, $theme_license);
                         $theme_installed = date('d/m/Y', time());
                         $update .= fwrite($file, $theme_installed);
                         if (file_exists($rute . '.theme_autoconfigured')) {
@@ -241,14 +241,14 @@
                         $theme_description = 'Default theme configuration' . "\n";
                         $theme_author = 'MasterCMS developers' . "\n";
                         $theme_creation = date('d/m/Y', time()) . "\n";
-                        $theme_licence = "Free trial licence for {$this->config->select['WEB']['NAME']}" . "\n";
+                        $theme_license = "Free trial license for {$this->config->select['WEB']['NAME']}" . "\n";
                         $theme_installed = date('d/m/Y - h:i:s', time());
                         $update = fwrite($file, $theme_name);
                         $update = fwrite($file, $theme_version);
                         $update .= fwrite($file, $theme_description);
                         $update .= fwrite($file, $theme_author);
                         $update .= fwrite($file, $theme_creation);
-                        $update .= fwrite($file, $theme_licence);
+                        $update .= fwrite($file, $theme_license);
                         $update .= fwrite($file, $theme_installed);
                         if (file_exists($rute . '.theme_autoconfigured')) {
                             exec("attrib +h {$rute}.theme_autoconfigured");
@@ -323,7 +323,7 @@
                             if ($key == 5) {
                                 $return = $value;
                             }
-                        } else if ($info == 'licence') {
+                        } else if ($info == 'license') {
                             if ($key == 6) {
                                 $return = $value;
                             }
@@ -377,7 +377,7 @@
                             if ($key == 4) {
                                 $return = $value;
                             }
-                        } else if ($info == 'licence') {
+                        } else if ($info == 'license') {
                             if ($key == 5) {
                                 $return = $value;
                             }
