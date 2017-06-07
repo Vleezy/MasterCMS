@@ -11,7 +11,7 @@
 							<label for="password">Password</label>
 							<input type="password" id="password" name="password">
 							<label class="float-left"><input type="checkbox" name="remember" value="remember"><span class="toggle"></span> Save Changes</label>
-							<a href="#" id="forgotText" class="float-right"  data-toggle="modal" data-target="#forgotModal">¿Did you forget your password?</a>							
+														
 							<button type="submit" class="btn btn-success btn-lg" id="login">Log in</button>
 							<button class="btn btn-primary btn-lg"><a href="{@fbLoginUrl}">Login with Facebook</a></button>
 						</form>
