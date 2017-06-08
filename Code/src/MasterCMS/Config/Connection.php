@@ -127,7 +127,7 @@
 
 	    public function getMasterVersion()
 	    {
-	    	return '3.0.0 FREE';
+	    	return '3.0.0';
 	    }
 
 	    public function close()
