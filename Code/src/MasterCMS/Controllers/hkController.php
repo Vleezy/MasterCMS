@@ -705,7 +705,7 @@
 											$update = $this->users->set('client_pin', $this->protection->encriptPassword($pin));
 											$update .= $this->hk->submitLog($this->users->get('id'), "Configured his game security code", time());
 											if ($update) {
-												echo $this->createPin->texts['texts']['success_client'] . $this->redirections->js($this->url . '/web/client', 3000);
+												echo $this->createPin->texts['texts']['success_client'] . $this->redirections->js($this->url . '/web/client', 1000);
 											} else {
 												echo $this->createPin->texts['texts']['database'];
 											}
@@ -734,7 +734,7 @@
 										$query = $this->sessions->set('session', 'client_pin', $pinEncripted);
 										$query .= $this->hk->submitLog($this->users->get('id'), "Enter to the <b>game</b>", time());
 										if ($query) {
-											echo $this->submitPin->texts['texts']['success_client'] . $this->redirections->js($this->url . '/web/client', 3000);
+											echo $this->submitPin->texts['texts']['success_client'] . $this->redirections->js($this->url . '/web/client', 1000);
 										} else {
 											echo $this->submitPin->texts['texts']['database'];
 										}
@@ -770,7 +770,7 @@
 											$update = $this->users->set('pin', $this->protection->encriptPassword($pin));
 											$update .= $this->hk->submitLog($this->users->get('id'), "Configured his security code", time());
 											if ($update) {
-												echo $this->createPin->texts['texts']['success'] . $this->redirections->js($this->url . '/hk', 3000);
+												echo $this->createPin->texts['texts']['success'] . $this->redirections->js($this->url . '/hk', 1000);
 											} else {
 												echo $this->createPin->texts['texts']['database'];
 											}
@@ -800,7 +800,7 @@
 										$query = $this->sessions->set('session', 'pin', $pinEncripted);
 										$query .= $this->hk->submitLog($this->users->get('id'), "Enter to <b>panel</b>", time());
 										if ($query) {
-											echo $this->submitPin->texts['texts']['success'] . $this->redirections->js($this->url . '/hk', 3000);
+											echo $this->submitPin->texts['texts']['success'] . $this->redirections->js($this->url . '/hk', 1000);
 										} else {
 											echo $this->submitPin->texts['texts']['database'];
 										}
@@ -1677,7 +1677,7 @@
 						$file = $_FILES['template'];
 						$this->upload->uploadFile($file, 'template');
 						if ($this->upload->status) {
-							echo $this->uploadTemplate->texts['texts']['success'] . $this->redirections->js($this->url . '/hk/web/main', 3000);
+							echo $this->uploadTemplate->texts['texts']['success'] . $this->redirections->js($this->url . '/hk/web/main', 1000);
 						} else {
 							echo $this->uploadTemplate->texts['texts']['fail'];
 							echo "<b>{$this->upload->reason}</b>";
@@ -1692,7 +1692,7 @@
 						$file = $_FILES['styles'];
 						$this->upload->uploadFile($file, 'styles');
 						if ($this->upload->status) {
-							echo $this->uploadTemplate->texts['texts']['success_styles'] . $this->redirections->js($this->url . '/hk/web/main', 3000);
+							echo $this->uploadTemplate->texts['texts']['success_styles'] . $this->redirections->js($this->url . '/hk/web/main', 1000);
 							$this->hk->submitLog($this->users->get('id'), "Uploaded styles {$file['name']}", time());
 						} else {
 							echo $this->uploadTemplate->texts['texts']['fail_styles'];
@@ -1719,7 +1719,7 @@
 							$this->hk->submitLog($this->users->get('id'), "Changed the theme from <b>{$this->hotel->getThemeInfo()}</b> to <b>{$this->hotel->getThemeInfo('name', $theme)}</b>", time());
 							$set = $this->hotel->setConfig('template_name', $theme);
 							if ($set) {
-								echo $this->generalThemes->texts['texts']['success_changes'] . $this->redirections->js($this->url . '/hk/web/main', 3000);
+								echo $this->generalThemes->texts['texts']['success_changes'] . $this->redirections->js($this->url . '/hk/web/main', 1000);
 							} else {
 								echo $this->generalThemes->texts['texts']['database'];
 							}
@@ -1740,7 +1740,7 @@
 						} else if (!file_exists($rute . $theme . DS)) {
 							echo $this->generalThemes->texts['texts']['not_exist'];
 						} else {
-							echo $this->generalThemes->texts['texts']['success_export'] . $this->redirections->js($this->url . "/hk/forms/exportTheme/{$theme}", 3000);
+							echo $this->generalThemes->texts['texts']['success_export'] . $this->redirections->js($this->url . "/hk/forms/exportTheme/{$theme}", 1000);
 						}
 					} else {
 						echo $this->generalThemes->texts['texts']['no_perms'];
@@ -1836,7 +1836,7 @@
 							}
 
 							$this->hk->submitLog($this->users->get('id'), "Deleted the theme <b>{$theme}</b>", time());
-							echo $this->generalThemes->texts['texts']['success_delete'] . $this->redirections->js($this->url . '/hk/web/main', 3000);
+							echo $this->generalThemes->texts['texts']['success_delete'] . $this->redirections->js($this->url . '/hk/web/main', 1000);
 						}
 					} else {
 						echo $this->generalThemes->texts['texts']['no_perms'];
@@ -2200,7 +2200,7 @@
 												$this->sessions->set('session', 'username', $selectUser['username']);
 												$this->sessions->set('session', 'password', $selectUser['password']);
 											}
-											echo $this->generalUsers->texts['texts']['success'] . $this->redirections->js($this->url, 3000);
+											echo $this->generalUsers->texts['texts']['success'] . $this->redirections->js($this->url, 1000);
 										} else {
 											echo $this->generalUsers->texts['texts']['no_perms'];
 										}
@@ -2238,7 +2238,7 @@
 						$set = $this->users->set('pin', $encpin);
 						$set .= $this->hk->submitLog($this->users->get('id'), "Changed his housekeeping <b>PIN</b>", time());
 						if ($set) {
-							echo $this->generalPIN->texts['texts']['success'] . $this->redirections->js($this->url . '/hk', 3000);
+							echo $this->generalPIN->texts['texts']['success'] . $this->redirections->js($this->url . '/hk', 1000);
 						} else {
 							echo $this->generalPIN->texts['texts']['database'];
 						}
@@ -2266,7 +2266,7 @@
 						$set = $this->users->set('client_pin', $encpin);
 						$set .= $this->hk->submitLog($this->users->get('id'), "Changed his client <b>PIN</b>", time());
 						if ($set) {
-							echo $this->generalPIN->texts['texts']['success'] . $this->redirections->js($this->url . '/hk', 3000);
+							echo $this->generalPIN->texts['texts']['success'] . $this->redirections->js($this->url . '/hk', 1000);
 						} else {
 							echo $this->generalPIN->texts['texts']['database'];
 						}
@@ -2303,7 +2303,7 @@
 					}
 				}
 			} else {
-				$this->redirections->js($this->url, 3000);
+				$this->redirections->js($this->url, 1000);
 				echo $this->submitPin->texts['texts']['no_perms'];
 			}
 		}
