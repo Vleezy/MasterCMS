@@ -72,7 +72,7 @@
 				'login' => [
 					'name' => 'login',
 					'values' => [
-						'empty' => 'Tu puta madre',
+						'empty' => 'Dont\'t leave blanks',
 					],
 				]
 			]
