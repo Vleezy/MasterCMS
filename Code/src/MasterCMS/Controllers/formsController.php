@@ -180,7 +180,7 @@
 									$set = $this->con->query("UPDATE users SET last_used = '{$time}', ip_last = '{$this->users->getIP()}' WHERE username = '{$username}'");
 								}
 
-								echo $this->success_start . $this->login['success'] . $this->success_end . $this->redirections->js($this->url, 3000);
+								echo $this->success_start . $this->login['success'] . $this->success_end . $this->redirections->js($this->url, 1000);
 								if (!$set) {
 									echo $this->error_start . $this->login['database'] . $this->error_end;
 								}
@@ -224,7 +224,7 @@
 							if (!$set) {
 								echo $this->error_start . $this->login['database'] . $this->error_end;
 							} else {
-								echo $this->success_start . $this->login['success'] . $this->success_end . $this->redirections->js($this->url, 3000);
+								echo $this->success_start . $this->login['success'] . $this->success_end . $this->redirections->js($this->url, 1000);
 							}
 
 							$this->sessions->delete('session', 'refer');
@@ -308,7 +308,7 @@
 				    		$password = $this->protection->encriptPassword($password);
 							$add = $this->users->add($username, $password, $mail, $gender, $motto, $look, $credits, $duckets, $diamonds, $ip_reg);
 					    	if ($add) {
-					    		echo $this->success_start . $this->register['success'] . $this->success_end . $this->redirections->js($this->url, 3000);
+					    		echo $this->success_start . $this->register['success'] . $this->success_end . $this->redirections->js($this->url, 1000);
 
 								if ($this->sessions->get('session', 'refer')) {
 									$this->users->addRefer($username, $this->sessions->get('session', 'referer_id'), $this->sessions->get('session', 'refer_ip'));
@@ -342,7 +342,7 @@
 				    		$password = $this->protection->encriptPassword($password);
 							$add = $this->users->add($username, $password, $mail, $gender, $motto, $look, $credits, $duckets, $diamonds, $ip_reg, $home_room);
 					    	if ($add) {
-					    		echo $this->success_start . $this->register['success'] . $this->success_end . $this->redirections->js($this->url, 3000);
+					    		echo $this->success_start . $this->register['success'] . $this->success_end . $this->redirections->js($this->url, 1000);
 					    		if ($this->sessions->get('session', 'refer')) {
 									$this->users->addRefer($username, $this->sessions->get('session', 'referer_id'), $this->sessions->get('session', 'refer_ip'));
 								}
@@ -466,7 +466,7 @@
 					$update = $this->users->set('password', $this->protection->encriptPassword($password), $user_select['username']);
 					$update .= $this->con->query("UPDATE user_forgot_code SET expire = '0' WHERE user_id = '{$user_select['id']}'");
 					if ($update) {
-						echo $this->success_start . $this->forgot['success_val'] . $this->success_end . $this->redirections->js($this->url, 3000);
+						echo $this->success_start . $this->forgot['success_val'] . $this->success_end . $this->redirections->js($this->url, 1000);
 						$this->sessions->delete('session', 'forgot_code');
 					} else {
 						echo $this->error_start . $this->forgot['database'] . $this->error_end;
@@ -497,9 +497,9 @@
 							$update = $this->users->set('username', $username);
 							$update .= $this->users->set('facebook_completed', 1);
 							if ($update) {
-								echo $this->success_start . $this->fbusername['success'] . $this->success_end . $this->redirections->js($this->url, 3000);
+								echo $this->success_start . $this->fbusername['success'] . $this->success_end . $this->redirections->js($this->url, 1000);
 							} else {
-								echo $this->error_start . $this->fbusername['database'] . $this->error_end . $this->redirections->js($this->url, 3000);
+								echo $this->error_start . $this->fbusername['database'] . $this->error_end . $this->redirections->js($this->url, 1000);
 							}
 						}
 					} else {
@@ -589,7 +589,7 @@
 							if ($set) {
 								$error_start = $this->success_start;
 								$error = $this->settings['success_pass'];
-								$error .= $this->redirections->js($this->url . '/hk', 3000);
+								$error .= $this->redirections->js($this->url . '/hk', 1000);
 								$error_end = $this->success_end;
 								$this->sessions->delete('session', '*');
 								$this->sessions->delete('cookie', 'username');
