@@ -59,9 +59,12 @@
 			$this->url = $this->template->vars['url'];
 			$template_name = $this->hotel->getConfig('template_name');
 			// Obtain the langs
-			$textsNames = ['login', 'register', 'refers', 'forgot', 'fbusername', 'settings'];
+			$textsNames = [];
 			$mainClass = "MasterCMS\\Views\\Texts\\Web\\Langs\\{$this->config->select['WEB']['LANG']}\\Main";
 			$this->main = new $mainClass;
+			foreach ($this->main->texts['forms'] as $key => $value) {
+				array_push($textsNames, $key);
+			}
 			foreach ($textsNames as $key) {
 				$this->$key = $this->main->texts['forms'][$key];
 			}
@@ -95,6 +98,15 @@
 						}
 					}
 
+					foreach ($class->texts['forms'] as $key => $value) {
+						if (!in_array($value['name'], $textsNames)) {
+							array_push($textsNames, $value['name']);
+							foreach ($value['values'] as $key2 => $value2) {
+								$this->$key[$key2] = $class->texts['forms'][$key]['values'][$key2];
+							}
+						}
+					}
+
 					foreach ($textsNames as $key) {
 						$lang = $class->texts['forms'];
 						if ($key == $lang[$key]['name']) {
@@ -102,7 +114,11 @@
 								foreach ($class->texts['forms'][$key]['values'] as $key3 => $value) {
 									if ($key3 == $key2) {
 										$this->$key[$key2] = $class->texts['forms'][$key]['values'][$key3];
-									} 
+									}
+
+									if (empty($key2)) {
+										$this->$key[$key3] = $class->texts['forms'][$key]['values'][$key3];
+									}
 								}
 							}
 						} else {
@@ -114,6 +130,11 @@
 
 			$class = "MasterCMS\\Views\\WebViews\\{$template_name}\\Langs\\{$this->config->select['WEB']['LANG']}\\Texts\\Main";
 			$this->main = new $class;
+		}
+
+		public function index()
+		{
+			echo "You are not allowed to access here";
 		}
 
 		// Login validation

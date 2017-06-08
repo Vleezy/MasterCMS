@@ -74,7 +74,14 @@
 					'values' => [
 						'empty' => 'No dejes espacios en blanco',
 					],
-				]
+				],
+
+				'login2' => [
+					'name' => 'login2',
+					'values' => [
+						'empty' => 'No dejes espacios en blanco',
+					],
+				],
 			]
 		);
 	}
