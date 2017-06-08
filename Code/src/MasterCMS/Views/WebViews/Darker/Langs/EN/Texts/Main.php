@@ -74,7 +74,18 @@
 					'values' => [
 						'empty' => 'Dont\'t leave blanks',
 					],
-				]
+				],
+
+				'comment' => [
+					'name' => 'comment',
+					'values' => [
+						'empty' => 'Dont\'t leave blanks',
+						'empty_new' => 'You must choose a new',
+						'wait' => 'You need to wait that other comments',
+						'success' => 'Comment published',
+						'database' => 'An error has occurred in the database',
+					],
+				],
 			]
 		);
 	}

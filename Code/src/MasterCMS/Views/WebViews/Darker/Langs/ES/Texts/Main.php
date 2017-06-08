@@ -76,10 +76,14 @@
 					],
 				],
 
-				'login2' => [
-					'name' => 'login2',
+				'comment' => [
+					'name' => 'comment',
 					'values' => [
 						'empty' => 'No dejes espacios en blanco',
+						'empty_new' => 'Debes elejir una noticia',
+						'wait' => 'Debes esperar a que otra persona comente para comentar de nuevo',
+						'success' => 'Comentario publicado correctamente',
+						'database' => 'Se produjo un error en la base de datos',
 					],
 				],
 			]

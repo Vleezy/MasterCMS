@@ -81,20 +81,20 @@
 				$queryLast = $this->con->query("SELECT * FROM news_comments WHERE new_id = '{$new_id}' ORDER BY id DESC");
 				$selectLast = mysqli_fetch_assoc($queryLast);
 				if (empty($comment)) {
-					$error = "No dejes espacios en blanco";
+					$error = $this->comment['empty'];
 				} elseif (empty($new_id)) {
-					$error = "Debes elejir una noticia";
+					$error = $this->comment['empty_new'];
 				} else if ($selectLast['user_id'] == $this->users->get('id')) {
-					$error = "Debes esperar a que alguien comente para comentar de nuevo";
+					$error = $this->comment['wait'];
 				} else {
 					$comment = $this->protection->urlFilter($comment);
 					$query = $this->con->query("INSERT INTO news_comments (user_id, new_id, comment, timestamp) VALUES ('{$this->users->get('id')}', '{$new_id}', '{$comment}', '{$time}')");
 					if ($query) {
 						$error_start = $this->text->texts['cont']['success_start'];
-						$error = "Comentado realizado con exito";
+						$error = $this->comment['success'];
 						$error_start = $this->text->texts['cont']['success_start'];
 					} else {
-						$error = "Hubo un error en la base de datos";
+						$error = $this->comment['database'];
 					}
 				}
 				echo $error_start . $error . $error_end;
