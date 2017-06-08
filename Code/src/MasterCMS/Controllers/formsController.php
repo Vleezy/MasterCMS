@@ -109,7 +109,7 @@
 							$this->$key = $this->main->texts['forms'][$key];
 						}
 					}
-				}
+				} 
 			}
 
 			$class = "MasterCMS\\Views\\WebViews\\{$template_name}\\Langs\\{$this->config->select['WEB']['LANG']}\\Texts\\Main";
