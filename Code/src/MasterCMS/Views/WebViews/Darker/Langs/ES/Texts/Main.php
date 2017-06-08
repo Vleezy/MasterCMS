@@ -67,6 +67,15 @@
 				'mail_changed' => 'Correo electronico cambiado',
 				'account_deleted' => 'Cuenta eliminada'
 			],
+
+			'forms' => [
+				'login' => [
+					'name' => 'login',
+					'values' => [
+						'empty' => 'No dejes espacios en blanco',
+					],
+				]
+			]
 		);
 	}
 
