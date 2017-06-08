@@ -38,7 +38,7 @@ function refersForm() {
             active = 1;
             data = form.serialize();
             $.ajax({
-                url: '/forms/php/refers',
+                url: '/forms/refers',
                 type: 'POST',
                 data: data,
                 beforeSend: function(){
@@ -84,7 +84,7 @@ function refersdecForm() {
             active = 1;
             data = form.serialize();
             $.ajax({
-                url: '/forms/php/refers/dec',
+                url: '/forms/refers/dec',
                 type: 'POST',
                 data: data,
                 beforeSend: function(){

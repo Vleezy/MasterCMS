@@ -14,7 +14,7 @@ function loginForm() {
             active = 1;
             data = form.serialize();
             $.ajax({
-                url: '/forms/php/login',
+                url: '/forms/login',
                 type: 'POST',
                 data: data,
                 beforeSend: function(){

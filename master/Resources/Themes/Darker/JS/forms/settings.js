@@ -10,7 +10,7 @@ function generalForm() {
             active = 1;
             data = form.serialize();
             $.ajax({
-                url: '/forms/php/settings/general',
+                url: '/forms/settings/general',
                 type: 'POST',
                 data: data,
                 beforeSend: function(){
@@ -55,7 +55,7 @@ function passwordForm() {
             active = 1;
             data = form.serialize();
             $.ajax({
-                url: '/forms/php/settings/password',
+                url: '/forms/settings/password',
                 type: 'POST',
                 data: data,
                 beforeSend: function(){
@@ -101,7 +101,7 @@ function mailForm() {
             active = 1;
             data = form.serialize();
             $.ajax({
-                url: '/forms/php/settings/mail',
+                url: '/forms/settings/mail',
                 type: 'POST',
                 data: data,
                 beforeSend: function(){
@@ -147,7 +147,7 @@ function deleteForm() {
             active = 1;
             data = form.serialize();
             $.ajax({
-                url: '/forms/php/settings/delete',
+                url: '/forms/settings/delete',
                 type: 'POST',
                 data: data,
                 beforeSend: function(){

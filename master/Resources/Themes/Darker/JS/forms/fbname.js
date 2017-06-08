@@ -14,7 +14,7 @@ function fbnameForm() {
             active = 1;
             data = form.serialize();
             $.ajax({
-                url: '/forms/php/fbusername',
+                url: '/forms/fbusername',
                 type: 'POST',
                 data: data,
                 beforeSend: function(){

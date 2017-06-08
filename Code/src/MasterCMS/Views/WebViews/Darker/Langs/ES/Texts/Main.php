@@ -28,14 +28,14 @@
 
 	class Main {
 
-		public $texts = array(
-			'cont' => [
-				'error_start' => '<script>$(document).ready(function() {alertify.error("',
-				'error_end' => '"); });</script>',
-				'success_start' => '<script>$(document).ready(function() {alertify.success("',
-				'success_end' => '"); });</script>'
-			],
+		public $format = [
+			'error_start' => '<script>$(document).ready(function() {alertify.error("',
+			'error_end' => '"); });</script>',
+			'success_start' => '<script>$(document).ready(function() {alertify.success("',
+			'success_end' => '"); });</script>'
+		];
 
+		public $texts = array(
 			'titles' => [
 				'index' => 'Diversión sin límites, Habbo Creditos, HC y más gratis',
 				'me' => '{@user_username}',

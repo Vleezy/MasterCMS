@@ -14,7 +14,7 @@ function forgotForm() {
             active = 1;
             data = form.serialize();
             $.ajax({
-                url: '/forms/php/forgot',
+                url: '/forms/forgot',
                 type: 'POST',
                 data: data,
                 beforeSend: function(){

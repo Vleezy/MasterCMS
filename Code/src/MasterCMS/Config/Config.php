@@ -33,7 +33,7 @@
                 'TYPE_HTTP'     =>          TYPE_HTTP,
                 'URL'           =>          URL,
                 'CLIENT_URL'    =>          TYPE_HTTP . URL . '/web/client',
-                'LANG'          =>          'ES', // Don't move if you dont't know what you do.
+                'LANG'          =>          'EN', // Don't move if you dont't know what you do.
                 'HK_LANG'       =>          'ES' // Don't move if you dont't know what you do.
             ],
 

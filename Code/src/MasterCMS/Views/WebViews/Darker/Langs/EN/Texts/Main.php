@@ -28,14 +28,14 @@
 
 	class Main {
 
-		public $texts = array(
-			'cont' => [
-				'error_start' => '<script>$(document).ready(function() {alertify.error("',
-				'error_end' => '"); });</script>',
-				'success_start' => '<script>$(document).ready(function() {alertify.success("',
-				'success_end' => '"); });</script>'
-			],
+		public $format = [
+			'error_start' => '<script>$(document).ready(function() {alertify.error("',
+			'error_end' => '"); });</script>',
+			'success_start' => '<script>$(document).ready(function() {alertify.success("',
+			'success_end' => '"); });</script>'
+		];
 
+		public $texts = array(
 			'titles' => [
 				'index' => 'The Best Hotel in the world',
 				'me' => '{@user_username}',
@@ -67,6 +67,15 @@
 				'mail_changed' => 'Changed email',
 				'account_deleted' => 'Account Deleted'
 			],
+
+			'forms' => [
+				'login' => [
+					'name' => 'login',
+					'values' => [
+						'empty' => 'Tu puta madre',
+					],
+				]
+			]
 		);
 	}
 

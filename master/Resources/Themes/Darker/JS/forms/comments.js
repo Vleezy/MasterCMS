@@ -18,7 +18,7 @@ function commentForm() {
             active = 1;
             data = form.serialize();
             $.ajax({
-                url: '/forms/php/comment',
+                url: '/forms/comment',
                 type: 'POST',
                 data: data,
                 beforeSend: function(){

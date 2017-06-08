@@ -23,7 +23,7 @@ function registerForm() {
             // var data = 'username='+user+'&password='+pass+'&mail='+mail+'&rmail='+rmail+'&rpassword='+rpass+'&terms='+terms+'&look=hr-893-1036.hd-209-1.ch-3030-82.lg-275-92.sh-295-110.ha-1012&gender='+gender;
             data = form.serialize();
             $.ajax({
-                url: '/forms/php/register',
+                url: '/forms/register',
                 type: 'POST',
                 data: data,
                 beforeSend: function(){
