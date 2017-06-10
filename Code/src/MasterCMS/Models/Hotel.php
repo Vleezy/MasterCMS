@@ -86,7 +86,7 @@
             if (!$autoconfigured) {
                 unlink($theme_autoconfigured);
                 if (file_exists($db)) {
-                    $query = $this->con->query(file_get_contents($db));
+                    $query = $this->con->sqlImport($db);
                     if ($query) {
                         if (file_exists($theme_config)) {
                             foreach (new \SplFileObject($theme_config) as $key => $value) {
