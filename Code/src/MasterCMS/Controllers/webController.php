@@ -25,7 +25,7 @@
 	namespace MasterCMS\Controllers;
 
 	use MasterCMS\Config\{Config, Connection};
-	use MasterCMS\Models\{Template, Protection, Users, Sessions, Redirections, Facebook, Hotel, Mails};
+	use MasterCMS\Models\{Template, Protection, Users, Sessions, Redirections, Hotel, Mails};
 
 	class webController {
 
@@ -36,7 +36,6 @@
 		private $sessions;
 		private $con;
 		private $redirections;
-		private $facebook;
 		private $hotel;
 		private $page;
 		private $url;
@@ -51,7 +50,6 @@
 			$this->users = new Users;
 			$this->sessions = new Sessions;
 			$this->redirections = new Redirections;
-			$this->facebook = new Facebook;
 			$this->hotel = new Hotel;
 			$this->mails = new Mails;
 			$this->template->setEverything();

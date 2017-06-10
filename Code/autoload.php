@@ -6,19 +6,7 @@
 		{
 			// Constants
 			session_start();
-			define('ROOT', __DIR__ . DS);			
-
-			// Geolocalize IP
-			try {
-				$rute = ROOT . 'src' . DS . 'MasterCMS' . DS . 'Models' . DS . 'GeoIP.php';
-				if (!is_readable($rute)) {
-					throw new Exception("MasterCMS: Cannot get file <strong>{$rute}</strong>");
-				} else {
-					require_once $rute;
-				}
-			} catch (Exception $e) {
-				die($e->getMessage());
-			}
+			define('ROOT', __DIR__ . DS);
 
 			// Autoload
 			spl_autoload_register(function($class){

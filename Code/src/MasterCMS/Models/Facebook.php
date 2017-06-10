@@ -31,6 +31,7 @@
 		private $config;
 		public $loginUrl;
 		public $fb;
+		public $status;
 		private $helper;
 		private $session;
 		private $sessions;
@@ -41,59 +42,65 @@
 			$this->con = new Connection;
 			$this->sessions = new Sessions;
 
-			$this->fb = new Facebook\Facebook([
-			  'app_id' => $this->config->select['SOCIAL_NETWORKS_LOGIN']['FACEBOOK']['APP_ID'],
-			  'app_secret' => $this->config->select['SOCIAL_NETWORKS_LOGIN']['FACEBOOK']['APP_SECRET'],
-			  'default_graph_version' => 'v2.8',
-			]);
+			if (!$this->status) {
+				$app_id = $this->config->select['SOCIAL_NETWORKS_LOGIN']['FACEBOOK']['APP_ID'];
+				$app_secret = $this->config->select['SOCIAL_NETWORKS_LOGIN']['FACEBOOK']['APP_SECRET'];
+				$this->fb = new Facebook\Facebook([
+				  'app_id' => $app_id,
+				  'app_secret' => $app_secret,
+				  'default_graph_version' => 'v2.8',
+				]);
 
-			$this->helper = $this->fb->getRedirectLoginHelper();
+				$this->helper = $this->fb->getRedirectLoginHelper();
 
-			try {
-				if (isset($_SESSION['facebook_access_token'])) {
-					$accessToken = $_SESSION['facebook_access_token'];
-				} else {
-			  		$accessToken = $this->helper->getAccessToken();
-				}
-			} catch(Facebook\Exceptions\FacebookResponseException $e) {
-			 	die('Graph returned an error: ' . $e->getMessage());
-			  	exit;
-			} catch(Facebook\Exceptions\FacebookSDKException $e) {
-				die('Facebook SDK returned an error: ' . $e->getMessage());
-			  	exit;
-			}
-
-			if (isset($accessToken)) {
-
-				if (isset($_SESSION['facebook_access_token'])) {
-					$this->fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
-					$this->session = true;
-				} else {
-
-					$_SESSION['facebook_access_token'] = (string) $accessToken;
-
-					$oAuth2Client = $this->fb->getOAuth2Client();
-
-					$longLivedAccessToken = $oAuth2Client->getLongLivedAccessToken($_SESSION['facebook_access_token']);
-					$_SESSION['facebook_access_token'] = (string) $longLivedAccessToken;
-
-					$this->fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
-					$this->session = true;
-				}
-				
 				try {
-					$response = $this->fb->get('/me');
+					if (isset($_SESSION['facebook_access_token'])) {
+						$accessToken = $_SESSION['facebook_access_token'];
+					} else {
+				  		$accessToken = $this->helper->getAccessToken();
+					}
 				} catch(Facebook\Exceptions\FacebookResponseException $e) {
-					session_destroy();
-					header("Location: /");
-					exit;
+				 	die('Graph returned an error: ' . $e->getMessage());
+				  	exit;
 				} catch(Facebook\Exceptions\FacebookSDKException $e) {
 					die('Facebook SDK returned an error: ' . $e->getMessage());
-					exit;
+				  	exit;
 				}
 
-			} else {
-				$this->session = false;
+				if (isset($accessToken)) {
+
+					if (isset($_SESSION['facebook_access_token'])) {
+						$this->fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
+						$this->session = true;
+					} else {
+
+						$_SESSION['facebook_access_token'] = (string) $accessToken;
+
+						$oAuth2Client = $this->fb->getOAuth2Client();
+
+						$longLivedAccessToken = $oAuth2Client->getLongLivedAccessToken($_SESSION['facebook_access_token']);
+						$_SESSION['facebook_access_token'] = (string) $longLivedAccessToken;
+
+						$this->fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
+						$this->session = true;
+					}
+					
+					try {
+						$response = $this->fb->get('/me');
+					} catch(Facebook\Exceptions\FacebookResponseException $e) {
+						session_destroy();
+						header("Location: /");
+						exit;
+					} catch(Facebook\Exceptions\FacebookSDKException $e) {
+						die('Facebook SDK returned an error: ' . $e->getMessage());
+						exit;
+					}
+
+				} else {
+					$this->session = false;
+				}
+
+				$this->status = true;
 			}
 		}
 

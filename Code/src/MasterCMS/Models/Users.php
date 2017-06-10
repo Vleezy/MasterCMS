@@ -617,30 +617,22 @@
 	        return $userIP;
 	    }
 
-	    public function getCountry($ip = false, $type = 'code', $declare = false)
+	    public function getCountry($ip = false, $type = 'code')
 	    {
-	    	$rute = __DIR__ . DS . 'GeoIP.php';
-	    	if (is_readable($rute)) {
-	    		if (!$ip) {
-		    		if ($type == 'code') {
-		    			$data = getCountryFromIP($this->getIP(), $type);
-		    		} else {
-		    			if ($type == 'name') {
-		    				$data = getCountryFromIP($this->getIP(), $type);
-		    			}
-		    		}
-		    	} else {
-		    		if ($type == 'code') {
-		    			$data = getCountryFromIP($ip, $type);
-		    		} else {
-		    			if ($type == 'name') {
-		    				$data = getCountryFromIP($ip, $type);
-		    			}
-		    		}
-		    	}
-	    	} else {
-	    		$data = 'Can\'t to load the GeoIP Function';
-	    	}
+    		if ($ip) {
+    			$ip = file_get_contents("http://freegeoip.net/json/{$ip}");
+			    $ip = json_decode($ip);
+
+			    if ($type == 'code') {
+					$data = $ip->country_code;
+			    } else if ($type == 'name') {
+					$data = $ip->country_name;
+			    } else {
+					$data = false;
+			    }
+    		} else {
+    			$data = false;
+    		}
 
 	    	if (empty($data)) {
 	    		$data = false;
