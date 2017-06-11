@@ -230,7 +230,7 @@
                 $this->setParam('user_motto', $this->protection->filter($selectUser['motto']));
             }
 
-            $this->setParam('master_version', $this->con->getMasterVersion());
+            $this->setParam('master_version', $this->hotel->getMasterVersion());
             $this->setParam('theme_name', $this->hotel->getThemeInfo());
             $this->setParam('theme_lang', $this->config->select['WEB']['LANG']);
             $this->setParam('theme_langs', $this->hotel->getThemeInfo('langs'));

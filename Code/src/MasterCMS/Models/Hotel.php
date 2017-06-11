@@ -741,6 +741,11 @@
                 copy ( $src, $dst );
         }
 
+        public function getMasterVersion()
+        {
+            return '3.1.0';
+        }
+
         public function __destruct()
         {
             $this->con->close();

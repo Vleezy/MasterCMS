@@ -59,8 +59,8 @@
             // Social Networks Login
             'SOCIAL_NETWORKS_LOGIN' => [
                 'FACEBOOK'      =>           [
-                    'APP_ID'      =>           'app_id',
-                    'APP_SECRET'  =>           'app_key'
+                    'APP_ID'      =>           '1483906851650372',
+                    'APP_SECRET'  =>           '8637d29ae301ade2452c2399f97ca2b0'
                 ]
             ],
 

@@ -125,11 +125,6 @@
 	    	return $str;
 	    }
 
-	    public function getMasterVersion()
-	    {
-	    	return '3.1.0';
-	    }
-
 	    public function close()
 	    {
 	    	$this->con->close();
