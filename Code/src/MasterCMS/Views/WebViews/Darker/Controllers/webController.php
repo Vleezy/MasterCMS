@@ -68,13 +68,13 @@
 
 		public function colaborators()
 		{
-			if (in_array($this->users->get('rank'), $this->hotel->getMaster('max'))) {
+			if ($this->users->getSession()) {
 				$this->template->setParam('title', 'Helpers');
 				$this->template->addTemplate('Template' . DS . 'Header');
 				$this->template->addTemplate();
 				$this->template->addTemplate('Template' . DS . 'Footer');
 			} else {
-				parent::error404();
+				header("Location: {$this->url}/");
 			}
 		}
 

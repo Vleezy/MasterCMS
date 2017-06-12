@@ -38,7 +38,7 @@
 		public function encriptPassword($data) 
         { 
             $data = $data . "019347835845934934934MASTERCMS234934934";
-            return rtrim(strtr(base64_encode($data), '+/', '-_'), '='); 
+            return rtrim(strtr(base64_encode($data), '+/', '-_'), '='); http://prntscr.com/fikvkj
         } 
 
 		public function filter($str)
