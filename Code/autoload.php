@@ -12,13 +12,11 @@
 			spl_autoload_register(function($class){
 				try {
 					$rute = ROOT . 'src' . DS . $class . '.php';
-					$last = strstr($rute, -14, 14);
-					if ($last != 'Texts' . DS . 'Main.php') {
-						if (!is_readable($rute)) {
-							throw new Exception("MasterCMS: Cannot get file <strong>{$rute}</strong>");
-						} else {
-							require_once $rute;
-						}
+					$rute = str_replace('\\', '/', $rute);
+					if (!is_readable($rute)) {
+						throw new Exception("MasterCMS: Cannot get file <strong>{$rute}</strong>");
+					} else {
+						require_once $rute;
 					}
 				} catch (Exception $e) {
 					die($e->getMessage());
