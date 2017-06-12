@@ -298,7 +298,9 @@
                 $themeDir = $rute . $theme . DS;
                 if (file_exists($themeDir . '.theme_autoconfigured')) {
                     $theme_config = $themeDir . '.theme_autoconfigured';
-                    foreach (new \SplFileObject($theme_config) as $key => $value) {
+                    $data = file_get_contents($theme_config);
+                    $data = explode("\n", $data);
+                    foreach ($data as $key => $value) {
                         if ($info == 'status') {
                             if ($key == 0) {
                                 $return = $value;
@@ -336,6 +338,10 @@
                         }
                     }
 
+                    if ($return) {
+                        $return = $return;
+                    }
+
                     if ($info == 'langs') {
                         $template_name = $this->getConfig('template_name');
                         $rute = ROOT . 'src' . DS . 'MasterCMS' . DS . 'Views' . DS . 'WebViews' . DS . $template_name . DS . 'Langs' . DS;
@@ -354,7 +360,9 @@
                     }
                 } else if (file_exists($themeDir . '.theme_config')) {
                     $theme_config = $themeDir . '.theme_config';
-                    foreach (new \SplFileObject($theme_config) as $key => $value) {
+                    $data = file_get_contents($theme_config);
+                    $data = explode("\n", $data);
+                    foreach ($data as $key => $value) {
                         if ($info == 'status') {
                             $return = false;
                         } else if ($info == 'name') {
@@ -386,6 +394,10 @@
                         } else {
                             $return = false;
                         }
+                    }
+
+                    if ($return) {
+                        $return = $return;
                     }
 
                     if ($info == 'langs') {
