@@ -54,13 +54,7 @@
 				}
 
 				if (!method_exists($view, $method)) {
-					define('ADS', false);
-					$template = new Template;
-					$template->setEverything();
-					$template->setParam('title', 'Error 404');
-					$template->addTemplate('Template' . DS . 'Header');
-					$template->addTemplate('404');
-					$template->addTemplate('Template' . DS . 'Footer');
+					$controller->error404();
 				}
 			} else {
 				$rute_f = ROOT . 'src' . DS . 'MasterCMS' . DS . 'Views' . DS . 'WebViews' . DS . $hotel->getConfig('template_name') . DS . 'Controllers' . DS . $controller . '.php';
@@ -74,22 +68,17 @@
 					}
 
 					if (!method_exists($view, $method)) {
-						define('ADS', false);
-						$template = new Template;
-						$template->setEverything();
-						$template->setParam('title', 'Error 404');
-						$template->addTemplate('Template' . DS . 'Header');
-						$template->addTemplate('404');
-						$template->addTemplate('Template' . DS . 'Footer');
+						$controller->error404();
 					}
 				} else {
-					define('ADS', false);
-					$template = new Template;
-					$template->setEverything();
-					$template->setParam('title', 'Error 404');
-					$template->addTemplate('Template' . DS . 'Header');
-					$template->addTemplate('404');
-					$template->addTemplate('Template' . DS . 'Footer');
+					$rute_f = ROOT . 'src' . DS . 'MasterCMS' . DS . 'Views' . DS . 'WebViews' . DS . $hotel->getConfig('template_name') . DS . 'Controllers' . DS . 'webController' . '.php';
+					if (is_readable($rute_f)) {
+						$view = 'MasterCMS\\Views\\WebViews\\' . $hotel->getConfig('template_name') . '\\Controllers\\webController';
+					} else {
+						$view = 'MasterCMS\\Controllers\\webController';
+					}
+					$controller = new $view;
+					$controller->error404();
 				}
 			}
 		}
