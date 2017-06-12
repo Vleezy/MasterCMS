@@ -12,31 +12,10 @@
     <link href="{@hk_cdn}/css/material-dashboard.css" rel="stylesheet"/>
     <link href="{@hk_cdn}/css/demo.css" rel="stylesheet" />
     <link rel="stylesheet" href="{@hk_cdn}/css/font-awesome.css">
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="{@hk_cdn}/js/library/jquery.js"></script>
     <script type="text/javascript" src="{@hk_cdn}/js/library/jquery-ui.js"></script>
-    <script type="text/javascript" src="{@hk_cdn}/tinymce/js/tinymce/tinymce.min.js"></script>
-    <script src="{@hk_cdn}/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="{@hk_cdn}/js/material.min.js" type="text/javascript"></script>
-	<script src="{@hk_cdn}/js/chartist.min.js"></script>
-	<script src="{@hk_cdn}/js/bootstrap-notify.js"></script>
-	<script src="{@hk_cdn}/js/material-dashboard.js"></script>
-	<script src="{@hk_cdn}/js/demo.js"></script>
-    <script>
-    	$(document).ready(function() {
-    		tinymce.init({
-			  selector: '.tinytext',
-			  menubar: false,
-			  plugins: [
-			    'advlist autolink lists link image charmap print preview anchor',
-			    'searchreplace visualblocks code fullscreen',
-			    'insertdatetime media table contextmenu paste code'
-			  ],
-			  toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
-			});
-    	});
-    </script>
 </head>
 
 <body>
