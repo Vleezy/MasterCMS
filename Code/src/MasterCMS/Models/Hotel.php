@@ -755,7 +755,7 @@
 
         public function getMasterVersion()
         {
-            return '3.1.0';
+            return '3.1.1';
         }
 
         public function __destruct()

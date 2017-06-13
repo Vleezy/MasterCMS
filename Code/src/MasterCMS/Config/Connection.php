@@ -174,7 +174,7 @@
 		                $offset = $delimiterOffset + strlen($delimiter);
 		            } else {
 		                $sql = trim($sql . ' ' . trim(substr($row, 0, $delimiterOffset)));
-		                $data .= $this->query($sql);
+		                $data .= $this->con->query($sql);
 
 		                $row = substr($row, $delimiterOffset + strlen($delimiter));
 		                $offset = 0;
@@ -183,13 +183,18 @@
 		        }
 		        $sql = trim($sql . ' ' . $row);
 		    }
+
 		    if (strlen($sql) > 0) {
-		        $data .= $this->query($row);
+		        $data .= $this->con->query($row);
 		    }
 
 		    fclose($file);
 
-		    return $data;
+		    if (!$data) {
+		    	return false;
+		    } else {
+		    	return true;
+		    }
 		}
 
 		public function clearSQL($sql, $isMultiComment)

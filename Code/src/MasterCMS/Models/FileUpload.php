@@ -122,24 +122,41 @@
 						    } elseif (!in_array('Template/' . $contest . '/' . 'Langs/' . $this->config->select['WEB']['LANG'] . '/' . 'Mails' . '/' . 'AccountCreated.html', $files)) {
 						    	throw new \Exception("Template needs Mails/AccountCreated.html");
 						    } else {
-						    	if (file_exists($rute . $contest . DS) && file_exists($ruteStyles . $contest . DS)) {
+						    	if (file_exists($rute . $contest . DS) || file_exists($ruteStyles . $contest . DS)) {
 				    				if ($this->hotel->getConfig('template_name') == $contest) {
 				    					throw new \Exception("You can't overwrite the current theme");
 				    				} else {
-				    					// Templates
+				    					if (file_exists($rute . $contest . DS)) {
+				    						// Templates
+				    						$dir = $rute . $contest;
+									    	$this->hotel->deletePath($dir);
+								    		$this->hotel->rrmdir($dir);
+				    					}
+								    	if (file_exists($ruteStyles . $contest . DS)) {
+								    		// Styles
+									    	$dir = $ruteStyles . $contest;
+								    		$this->hotel->deletePath($dir);
+								    		$this->hotel->rrmdir($dir);
+								    	}
+								    	// Templates
 								    	$dir = $rute . $contest;
-								    	$this->hotel->deletePath($dir);
 								    	$extract = $zip->extractTo($rute . $contest . 'Extract' . DS);
+								    	$zip->close();
 								    	$this->hotel->moveData($rute . $contest . 'Extract' . DS . 'Template' . DS . $contest, $dir);
 								    	// Styles
 								    	$dir = $ruteStyles . $contest;
-								    	$this->hotel->deletePath($dir);
 								    	$this->hotel->moveData($rute . $contest . 'Extract' . DS . 'Styles' . DS . $contest, $dir);
-								    	$this->hotel->deletePath($rute . $contest . 'Extract');	
+								    	// Delete [Theme]Extract Dir
+								    	$this->hotel->deletePath($rute . $contest . 'Extract');
+								    	$this->hotel->deletePath($rute . $contest . 'Extract' . DS . 'Template');
+								    	$this->hotel->deletePath($rute . $contest . 'Extract' . DS . 'Styles');
+								    	$this->hotel->rrmdir($rute . $contest . 'Extract');
+								    	$this->hotel->rrmdir($rute . $contest . 'Extract' . DS . 'Template');
+								    	$this->hotel->rrmdir($rute . $contest . 'Extract' . DS . 'Styles');
 								    	if (in_array('Template/' . $contest . '/' . '.theme_name', $files)) {
 								    		unlink($rute . $contest . DS . '.theme_name');
 								    	}
-								    	if (in_array('Template/' . $contest . '/' . '.theme_', $files)) {
+								    	if (in_array('Template/' . $contest . '/' . '.theme_autoconfigured', $files)) {
 								    		unlink($rute . $contest . DS . '.theme_autoconfigured');
 								    	}
 								    	if ($extract) {
@@ -154,15 +171,22 @@
 					    			// Templates
 							    	$dir = $rute . $contest;
 							    	$extract = $zip->extractTo($rute . $contest . 'Extract' . DS);
+							    	$zip->close();
 							    	$this->hotel->moveData($rute . $contest . 'Extract' . DS . 'Template' . DS . $contest, $dir);
-							    	// Styles
+						    		// Styles
 							    	$dir = $ruteStyles . $contest;
 							    	$this->hotel->moveData($rute . $contest . 'Extract' . DS . 'Styles' . DS . $contest, $dir);
-							    	$this->hotel->deletePath($rute . $contest . 'Extract');	
+							    	// Delete [Theme]Extract Dir
+							    	$this->hotel->deletePath($rute . $contest . 'Extract');
+							    	$this->hotel->deletePath($rute . $contest . 'Extract' . DS . 'Template');
+							    	$this->hotel->deletePath($rute . $contest . 'Extract' . DS . 'Styles');
+							    	$this->hotel->rrmdir($rute . $contest . 'Extract');
+							    	$this->hotel->rrmdir($rute . $contest . 'Extract' . DS . 'Template');
+							    	$this->hotel->rrmdir($rute . $contest . 'Extract' . DS . 'Styles');
 							    	if (in_array('Template/' . $contest . '/' . '.theme_name', $files)) {
 							    		unlink($rute . $contest . DS . '.theme_name');
 							    	}
-							    	if (in_array('Template/' . $contest . '/' . '.theme_', $files)) {
+							    	if (in_array('Template/' . $contest . '/' . '.theme_autoconfigured', $files)) {
 							    		unlink($rute . $contest . DS . '.theme_autoconfigured');
 							    	}
 
@@ -266,6 +290,7 @@
 						    $access = true;
 						    if ($access) {
 						    	$extract = $zip->extractTo($rute);
+						    	$zip->close();
 						    	if ($extract) {
 									$this->status = true;
 									throw new \Exception("Badges uploaded");
@@ -342,6 +367,7 @@
 						    $access = true;
 						    if ($access) {
 						    	$extract = $zip->extractTo($rute);
+						    	$zip->close();
 						    	if ($extract) {
 									$this->status = true;
 									throw new \Exception("MPUS uploaded");
