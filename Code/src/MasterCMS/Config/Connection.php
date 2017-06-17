@@ -70,7 +70,7 @@
 	        		throw new \Exception("<b>{$ruteStyles}</b> most be writable");
 	        	} else {
 	        		$query = $this->con->query("SELECT * FROM master_config");
-	        		if (!$query) {
+ 		        		if (!$query) {
 	        			throw new \Exception("MasterCMS needs <b>master_config</b> table");
 	        		}
 	        	}
