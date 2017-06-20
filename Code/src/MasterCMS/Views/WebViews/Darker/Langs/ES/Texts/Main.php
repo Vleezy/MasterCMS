@@ -46,6 +46,8 @@
 				'account_settings' => 'Ajustes de cuenta',
 				'adblock' => 'Desactive el AdBlock',
 				'profiles' => 'Perfil de {@user_username}',
+				'profile_not_found' => 'Perfil no encontrado',
+				'private_profile' => 'Perfil Privado',
 				'tops' => 'Tops del hotel',
 				'logout' => 'Cerrando sesi&oacute;n',
 				'404' => 'Error 404',

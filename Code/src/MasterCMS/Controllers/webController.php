@@ -237,18 +237,18 @@
 						}
 						$this->template->setParam('user_motto', $this->protection->filter($select['motto']));
 						if ($this->con->num_rows($query) > 0) {
-							$this->template->setParam('title', 'Perfil de {@user_username}');
+							$this->template->setParam('title', $this->main->texts['titles']['profiles']);
 							$this->template->addTemplate('Template' . DS . 'Header');
 							$this->template->addTemplate();
 							$this->template->addTemplate('Template' . DS . 'Footer');
 						} else {
-							$this->template->setParam('title', 'Perfil no encontrado');
+							$this->template->setParam('title', $this->main->texts['titles']['profile_not_found']);
 							$this->template->addTemplate('Template' . DS . 'Header');
 							$this->template->addTemplate('404');
 							$this->template->addTemplate('Template' . DS . 'Footer');
 						}
 					} else {
-						$this->template->setParam('title', 'Perfil privado');
+						$this->template->setParam('title', $this->main->texts['titles']['private_profile']);
 						$this->template->addTemplate('Template' . DS . 'Header');
 						$this->template->addTemplate('Web' . DS . 'BlockProfile');
 						$this->template->addTemplate('Template' . DS . 'Footer');
