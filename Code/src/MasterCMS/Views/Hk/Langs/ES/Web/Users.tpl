@@ -14,6 +14,12 @@
 	                                        Editar usuario
 	                                    <div class="ripple-container"></div></a>
 	                                </li>
+	                                <li>
+	                                    <a href="#veriftClone" data-toggle="tab">
+	                                        <i class="material-icons">accessibility</i>
+	                                        Verificar Clones
+	                                    <div class="ripple-container"></div></a>
+	                                </li>
 	                                <?php if (in_array($this->users->get('rank'), $this->hotel->getMaster('max'))) { ?>
 	                                <li>
 	                                    <a href="#syncAcco" data-toggle="tab">
@@ -48,6 +54,19 @@
 					            </form>
 								<h5>Resultados</h5>
 				                <div id="listUsers">Aun no has realizado una busqueda</div>
+	                        </div>
+	                        <div class="tab-pane" id="veriftClone">
+	                            <h4>Verificar Clones</h4>
+	                            <form action="" method="POST" id="verificateClonesFormulary">
+		                            <div class="form-group label-floating">
+					                    <label for="usernameVerify" class="control-label">Nombre de usuario o IP</label>
+					                    <input type="search" class="form-control" id="usernameVerify" name="username" autocomplete="off">
+					                    <span class="help-block">Escribe un nombre de usuario o IP, ejemplo: <strong>Juan</strong> o <strong>0.0.0.0</strong></span>
+					                </div>
+					                <button class="btn btn-raised btn-primary btn-block" type="submit" id="verificateClones"><i class="fa fa-paper-plane"></i> Verificar</button>
+					            </form>
+								<h5>Resultados</h5>
+				                <div id="listClones">Aun no has realizado una busqueda</div>
 	                        </div>
 	                        <?php if (in_array($this->users->get('rank'), $this->hotel->getMaster('medium+'))) { ?>
 	                        <div class="tab-pane" id="deleteUser">
@@ -97,5 +116,6 @@
 		editUserSearchForm();
 		syncAccountForm();
 		deleteUserForm();
+		verificateClonesForm();
 	});
 </script>

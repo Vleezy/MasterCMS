@@ -30,6 +30,38 @@ function editUserSearchForm() {
     });
 }
 
+function verificateClonesForm() {
+    var form = $('#verificateClonesFormulary'),
+        active = 0,
+        boton = $('#verificateClones');
+
+    form.submit(function(event) {
+        event.preventDefault();
+        if (active == 0) {
+            active = 1;
+            data = form.serialize();
+            $.ajax({
+                url: '/hk/forms/verificateClones',
+                type: 'POST',
+                data: data,
+                beforeSend: function(){
+                    $('#listClones').html('<div class="loader_error"></div>');
+                    boton.attr('disabled', true);
+                },
+                success: function(error) {
+                    $('#listClones').html(' ');
+                    $('#listClones').html(error);
+
+                    setTimeout(function () {
+                        boton.attr('disabled', false);
+                        active = 0;
+                    }, 500);
+                }
+            });
+        }
+    });
+}
+
 function editUserForm() {
     var form = $('#editUserFormulary'),
         active = 0,

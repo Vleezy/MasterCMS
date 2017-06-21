@@ -45,7 +45,9 @@
                     'invalid_mail' => 'Correo electronico invalido',
                     'not_user' => 'No has seleccionado un usuario',
                     'cant_you' => 'No puedes realizar esta accion contigo',
-                    'accept_consequence' => 'Debes aceptar las consecuencias'
+                    'accept_consequence' => 'Debes aceptar las consecuencias',
+                    'no_clones' => 'Este usuario no tiene clones',
+                    'no_results' => 'No hubo resultados'
 			]
 		);
 	}

@@ -4,20 +4,10 @@
 	} else {
 		$access = true;
 	}
-
-	$post_username = strtoupper($post_username);
-	$users_username = strtoupper($users_username);
-
-	if ($users_username == $user_username) {
-		$users_username = str_replace($post_username, "<b>{$post_username}</b>", $users_username);
-		$users_username .= ' (T&uacute;)';
-	} else {
-		$users_username = str_replace($post_username, "<b>{$post_username}</b>", $users_username);
-	}
 ?>
 <tr>
 	<td>{@users_id}</td>
-	<td><?php echo $users_username; ?></td>
+	<td>{@users_username}</td>
 	<td>{@users_rank_name}</td>
 	<td><img src="{@hk_cdn}/img/flags/{@users_country}.png"></td>
 	<td><img src="{@hk_cdn}/img/{@users_status}.gif" style="width: auto;"></td>

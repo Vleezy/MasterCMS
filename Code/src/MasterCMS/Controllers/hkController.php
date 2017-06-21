@@ -1885,6 +1885,55 @@
 					}
 				}
 
+				if ($type == 'verificateClones') {
+					$username = $this->protection->filter($_POST['username']);
+					$query = $this->con->query("SELECT * FROM users WHERE username = '{$username}'");
+					if ($this->con->num_rows($query)) {
+						$selectUser = $this->con->fetch_assoc($query);
+						$queryResult = $this->con->query("SELECT * FROM users WHERE ip_last = '{$selectUser['ip_last']}' OR ip_last = '{$selectUser['ip_reg']}' OR ip_reg = '{$selectUser['ip_last']}' OR ip_reg = '{$selectUser['ip_reg']}'");
+					} else {
+						$query = $this->con->query("SELECT * FROM users WHERE ip_last = '{$username}' OR ip_reg = '{$username}'");
+						$queryResult = $query;
+					}
+
+					if (empty($username)) {
+						echo $this->generalUsers->texts['texts']['empty'];
+					} elseif (!$this->con->num_rows($query)) {
+						echo $this->generalUsers->texts['texts']['no_results'];
+					} elseif ($this->con->num_rows($queryResult) == 1) {
+						echo $this->generalUsers->texts['texts']['no_clones'];
+					} else {
+						$this->template->setParam('listusersclones', true);
+						$this->template->setParam('post_username', $username);
+						$this->template->addTemplate('Ajax' . DS . 'Template' . DS . 'Header', 'Hk');
+						while ($select = $this->con->fetch_assoc($queryResult)) {
+							foreach ($select as $key => $value) {
+								$this->template->setParam('users_' . $key, $value);
+							}
+							if ($select['online']) {
+								$this->template->setParam('users_status', 'online');
+							} else {
+								$this->template->setParam('users_status', 'offline');
+							}
+							$queryRank = $this->con->query("SELECT * FROM ranks WHERE id = '{$select['rank']}'");
+							$selectRank = $this->con->fetch_assoc($queryRank);
+							if (!$selectRank['name']) {
+								$selectRank['name'] = 'Not found';
+							}
+							$this->template->setParam('users_rank_name', $selectRank['name']);
+							$country = $this->users->getCountry($select['ip_last']);
+							if (empty($country)) {
+								$country = 'IDK';
+							} else {
+								$country = $country;
+							}
+							$this->template->setParam('users_country', $country);
+
+							$this->template->addTemplate('Ajax' . DS . 'listCloneUsers', 'Hk');
+						}
+					}
+				}
+
 				if ($type == 'editUser') {
 					$user_id = $this->sessions->get('session', 'id_edit');
 					$username = $this->protection->filter($_POST['username']);
