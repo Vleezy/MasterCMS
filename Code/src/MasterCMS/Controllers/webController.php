@@ -255,7 +255,7 @@
 					}
 				}
 			} else {
-				$this->template->setParam('title', 'Perfil no encontrado');
+				$this->template->setParam('title', $this->main->texts['titles']['profile_not_found']);
 				$this->template->addTemplate('Template' . DS . 'Header');
 				$this->template->addTemplate('404');
 				$this->template->addTemplate('Template' . DS . 'Footer');
