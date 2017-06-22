@@ -103,7 +103,7 @@
 			</div>
 		</div>
 		<script>
-			var Client = new SWFObject("{@flash_client_url}{@habbo_swf}?<?php echo rand(0, 9999); ?>", "client", "100%", "100%", "10.0.0");
+			var Client = new SWFObject("{@flash_client_url}{@habbo_swf}", "client", "100%", "100%", "10.0.0");
 			Client.addVariable("client.allow.cross.domain", "1");
 			Client.addVariable("client.notify.cross.domain", "0");
 			Client.addVariable("connection.info.host", "{@host}");
