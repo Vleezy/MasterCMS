@@ -491,7 +491,7 @@
 					        echo $this->fbusername['short_or_large_name'];
 					    } elseif ($username !== $filter || strrpos($username, "MOD-") !== false || strrpos($username, "-MOD") !== false) {
 							echo $this->error_start . $this->fbusername['invalid_name'] . $this->error_end;
-						} else if ($this->con->num_rows($query) > 0) {
+						} else if ($this->con->num_rows($query) > 0 && $username != $this->users->get('username')) {
 							echo $this->error_start . $this->fbusername['incorrect_data'] . $this->error_end;
 						} else {
 							$update = $this->users->set('username', $username);
