@@ -81,7 +81,7 @@
                 'LOGO'                      =>          'https://habbox.com/text/114/{@name}',
                 'HABBO_IMG'                 =>          'http://www.habbo.es/habbo-imaging/avatarimage?figure=',
                 // Housekeeping
-                'SUPER_USERS'               =>          'LxBlack, Yonier', // Comma separated
+                'SUPER_USERS'               =>          'LxBlack', // Comma separated
                 'MIN_RANK'                  =>          '3, 4, 5, 6, 7, 8, 9',
                 'MEDIUM_RANK'               =>          '10, 11, 12, 13, 14, 15',
                 'MAX_RANK'                  =>          '14, 15, 16, 17',
