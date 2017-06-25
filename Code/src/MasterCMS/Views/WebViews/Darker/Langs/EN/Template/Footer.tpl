@@ -16,7 +16,7 @@
         <script type="text/javascript" src="{@cdn}/JS/forms/login.js"></script>
         <script type="text/javascript" src="{@cdn}/JS/forms/forgot.js"></script>
         <?php } ?>
-        <?php if ($this->facebook->getSession() && $this->users->get('facebook_completed') == 0) { ?>
+        <?php if ($this->sessions->get('session', 'facebook_access_token') && $this->users->get('facebook_completed') == 0) { ?>
         <script type="text/javascript" src="{@cdn}/JS/forms/fbname.js"></script>
         <?php } ?>
         <?php if ($this->request->getMethod() == 'register' && !$this->users->getSession()) { ?>
@@ -151,7 +151,7 @@
             });
         </script>
         <?php } ?>
-        <?php if ($this->facebook->getSession() && $this->users->get('facebook_completed') == 0) { ?>
+        <?php if ($this->sessions->get('session', 'facebook_access_token') && $this->users->get('facebook_completed') == 0) { ?>
         <script>
           $(document).ready(function(){
 

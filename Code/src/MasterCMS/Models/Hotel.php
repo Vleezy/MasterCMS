@@ -72,6 +72,12 @@
                 }
             }
 
+            if ($this->config->select['MUS']['STATUS']) {
+                if (!extension_loaded('sockets')) {
+                    die("You need sockets extension if you wan't to use MUS on MasterCMS");
+                }
+            }
+
             $theme_config = $rute . '.theme_config';
             $theme_autoconfigured = $rute . '.theme_autoconfigured';
             $db = $rute . 'db.sql';
@@ -645,23 +651,17 @@
             }
         }
 
-        public function sendMUS($value) {
-            /*$mus_ip = $this->config->select['CLIENT']['HOST'];
-            $mus_port = $this->config->select['CLIENT']['PORT'];
-            if(!is_numeric($mus_port)){ 
-                return false; 
+        public function MUS($command, $data = '')
+        {
+            if ($this->config->select['CLIENT']['MUS']) {
+                $mus_ip = $this->config->select['CLIENT']['HOST'];
+                $mus_port = $this->config->select['CLIENT']['MUS_PORT'];
+                $musData = $command . chr(1) . $data;
+                $socket = @socket_create(AF_INET, SOCK_STREAM, getprotobyname('tcp'));
+                @socket_connect($socket, $mus_ip, $mus_port);
+                @socket_send($socket, $musData, strlen($musData), MSG_DONTROUTE);
+                @socket_close($socket);
             }
-            $sock = socket_create(AF_INET, SOCK_STREAM, getprotobyname('tcp'));
-            socket_connect($sock, $mus_ip, $mus_port);
-
-            if(!is_resource($sock)) {
-                return false;
-            } else {
-                socket_send($sock, $data, strlen($data), MSG_DONTROUTE);
-                socket_recv($sock, $buf, 2048, MSG_WAITALL);
-                return $buf;
-            }
-            socket_close($sock);*/
         }
 
         public function getDate($a)

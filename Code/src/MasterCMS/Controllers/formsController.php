@@ -25,7 +25,7 @@
 	namespace MasterCMS\Controllers;
 
 	use MasterCMS\Config\{Config, Connection, Request};
-	use MasterCMS\Models\{Template, Protection, Sessions, Users, Mails, Redirections, Hotel};
+	use MasterCMS\Models\{Template, Protection, Sessions, Users, Mails, Redirections, Hotel, MUS};
 
 	class formsController {
 
@@ -43,6 +43,7 @@
 		private $error_end;
 		private $success_start;
 		private $success_end;
+		private $mus;
 
 		public function __construct()
 		{
@@ -55,6 +56,7 @@
 			$this->mails = new Mails;
 			$this->redirections = new Redirections;
 			$this->hotel = new Hotel;
+			$this->mus = new MUS;
 			$this->template->setEverything();
 			$this->url = $this->template->vars['url'];
 			$template_name = $this->hotel->getConfig('template_name');

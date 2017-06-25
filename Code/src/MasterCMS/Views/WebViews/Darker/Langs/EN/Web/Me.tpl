@@ -199,7 +199,7 @@
     </div>
 </main>
 
-<?php if ($this->facebook->getSession() && $this->users->get('facebook_completed') == 0) { ?>
+<?php if ($this->sessions->get('session', 'facebook_access_token') && $this->users->get('facebook_completed') == 0) { ?>
 
 	<div class="modal fade" id="fbModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">

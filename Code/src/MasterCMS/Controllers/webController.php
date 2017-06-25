@@ -25,7 +25,7 @@
 	namespace MasterCMS\Controllers;
 
 	use MasterCMS\Config\{Config, Connection};
-	use MasterCMS\Models\{Template, Protection, Users, Sessions, Redirections, Hotel, Mails};
+	use MasterCMS\Models\{Template, Protection, Users, Sessions, Redirections, Hotel, Mails, MUS};
 
 	class webController {
 
@@ -40,6 +40,7 @@
 		private $page;
 		private $url;
 		private $main;
+		private $mus;
 
 		public function __construct()
 		{
@@ -52,6 +53,7 @@
 			$this->redirections = new Redirections;
 			$this->hotel = new Hotel;
 			$this->mails = new Mails;
+			$this->mus = new MUS;
 			$this->template->setEverything();
 			$this->url = $this->template->vars['url'];
 			$template_name = $this->hotel->getConfig('template_name');
@@ -82,11 +84,6 @@
 		
 		public function index()
 		{
-			if (!$this->sessions->get('session', 'verify_client')) {
-				header("Location: {$this->url}/web/verify_client");
-				exit();
-			}
-
 			// Template
 			if (!$this->users->getSession()) {
 				if (!$this->hotel->getConfig('maintenance')) {
@@ -335,15 +332,15 @@
 			if ($this->users->getSession()) {
 				// Template
 				define('ADS', false);
-				$this->sessions->delete('session', '*');
-				$this->sessions->delete('cookie', 'username');
-				$this->sessions->delete('cookie', 'password');
 				$this->template->setEverything();
 				$this->template->setParam('title', $this->main->texts['titles']['logout']);
 				$this->template->addTemplate('Template' . DS . 'Header');
 				$this->template->addTemplate();
 				$this->template->addTemplate('Template' . DS . 'Footer');
 				$this->redirections->js($this->url, 3000);
+				$this->sessions->delete('session', '*');
+				$this->sessions->delete('cookie', 'username');
+				$this->sessions->delete('cookie', 'password');
 			} else {
 				$this->sessions->delete('session', '*');
 				$this->sessions->delete('cookie', 'username');
@@ -572,8 +569,6 @@
 		public function verify_client()
 		{
 			$this->sessions->set('session', 'verify_client', true);
-			header("Location: {$this->url}/");
-			exit();
 		}
 
 		public function team()

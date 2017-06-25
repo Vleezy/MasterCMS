@@ -25,7 +25,7 @@
 	namespace MasterCMS\Controllers;
 
 	use MasterCMS\Config\{Config, Connection};
-	use MasterCMS\Models\{Template, Protection, Users, Sessions, Redirections, Facebook, Hotel, FileUpload, Housekeeping};
+	use MasterCMS\Models\{Template, Protection, Users, Sessions, Redirections, Hotel, FileUpload, Housekeeping, MUS};
 
 	class hkController {
 
@@ -36,13 +36,13 @@
 		private $sessions;
 		private $con;
 		private $redirections;
-		private $facebook;
 		private $hk;
 		private $upload;
 		private $hotel;
 		private $min_rank;
 		private $url;
 		private $text;
+		private $mus;
 
 		public function __construct()
 		{
@@ -54,9 +54,9 @@
 			$this->hotel = new Hotel;
 			$this->con = new Connection;
 			$this->redirections = new Redirections;
-			$this->facebook = new Facebook;	
 			$this->hk = new Housekeeping;	 	
 			$this->upload = new FileUpload;	 	
+			$this->mus = new MUS;	 	
 			$this->min_rank = $this->hotel->getMaster();
 			$this->medium_rank = $this->hotel->getMaster('medium');
 			$this->max_rank = $this->hotel->getMaster('max');
@@ -98,7 +98,7 @@
 				}
 			}
 
-			$textsNames = array('createPin', 'submitPin', 'addMessage', 'deleteMessage', 'addUserRank', 'deleteUserRank', 'addRank', 'deleteRank', 'editRank', 'submitNew', 'deleteNew', 'editNew', 'uploadTemplate', 'generalThemes', 'submitBan', 'deleteBan', 'uploadBadge', 'cmsSettings', 'generalUsers', 'generalLogs', 'uploadMPU', 'generalPIN');
+			$textsNames = array('createPin', 'submitPin', 'addMessage', 'deleteMessage', 'addUserRank', 'deleteUserRank', 'addRank', 'deleteRank', 'editRank', 'submitNew', 'deleteNew', 'editNew', 'uploadTemplate', 'generalThemes', 'submitBan', 'deleteBan', 'uploadBadge', 'cmsSettings', 'generalUsers', 'generalLogs', 'uploadMPU', 'generalPIN', 'generalEmu');
 
 			foreach ($textsNames as $key) {
 				$class = "MasterCMS\\Views\\Texts\\Hk\\Langs\\{$this->config->select['WEB']['HK_LANG']}\\" . $key;
@@ -415,6 +415,20 @@
 						$this->template->setParam('title', $this->text->texts['titles']['cms_logs']);
 						$this->template->addTemplate('Template' . DS . 'Header', 'Hk');
 						$this->template->addTemplate('Game' . DS . 'MPU', 'Hk');
+						$this->template->addTemplate('Template' . DS . 'Footer', 'Hk');
+					} else {
+						header("Location: {$this->url}/hk");
+						exit();
+					}
+				} elseif ($page == 'emu') {
+					if ($this->config->select['MUS']['STATUS']) {
+						$this->template->setParam('title', $this->text->texts['titles']['emulator']);
+						$this->template->addTemplate('Template' . DS . 'Header', 'Hk');
+						if ($this->mus->check()) {
+							$this->template->addTemplate('Game' . DS . 'EMU' . DS . 'On', 'Hk');
+						} else {
+							$this->template->addTemplate('Game' . DS . 'EMU' . DS . 'Off', 'Hk');
+						}
 						$this->template->addTemplate('Template' . DS . 'Footer', 'Hk');
 					} else {
 						header("Location: {$this->url}/hk");
@@ -2349,6 +2363,25 @@
 						}
 					} else {
 						echo $this->generalLogs->texts['texts']['no_perms'];
+					}
+				}
+
+				if ($type == 'emulator') {
+					if (in_array($this->users->get('rank'), $this->hotel->getMaster('max')) && in_array($this->users->get('username'), $this->hotel->getSuperUsers())) {
+						$dir = $this->config->select['MUS']['DIR'];
+						$exe = $this->config->select['MUS']['EXE'];
+						if ($extra == 'turnOn') {
+							if (!$this->config->select['MUS']['INTERNAL']) {
+								echo $this->generalEmu->texts['texts']['emu_must_be_internal'];
+							} elseif (!file_exists($dir . DS . $exe)) {
+								echo $this->generalEmu->texts['texts']['not_exist_emu'];
+							} else {
+								$cmd = $dir . DS . $exe;
+								echo $this->generalEmu->texts['texts']['success_on'];
+							}
+						}
+					} else {
+						echo $this->generalEmu->texts['texts']['no_perms'];
 					}
 				}
 			} else {

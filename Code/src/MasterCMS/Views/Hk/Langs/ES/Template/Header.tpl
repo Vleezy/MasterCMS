@@ -184,6 +184,14 @@
 			                        <p>Administraci&oacute;n del Juego</p>
 								</a>
 							</li>
+							<?php if ($this->hotel->getMasterType() == 'max' && in_array($this->users->get('username'), $this->hotel->getSuperUsers())) { ?>
+							<li<?php if ($this->request->getController() == 'hk' && $this->request->getMethod() == 'game' && $this->request->getArgument()[0] == 'emu') { echo ' class="active"'; } ?>>
+			                    <a href="{@url}/hk/game/emu">
+			                        <i class="material-icons">settings_ethernet</i>
+			                        <p>Emulador</p>
+			                    </a>
+			                </li>
+							<?php } ?>
 							<?php if (in_array($this->users->get('rank'), $this->hotel->getMaster('medium+'))) { ?>
 							<li<?php if ($this->request->getController() == 'hk' && $this->request->getMethod() == 'game' && $this->request->getArgument()[0] == 'badges') { echo ' class="active"'; } ?>>
 			                    <a href="{@url}/hk/game/badges">

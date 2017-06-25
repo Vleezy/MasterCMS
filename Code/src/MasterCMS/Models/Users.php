@@ -46,11 +46,11 @@
 			$this->config = new Config;
 			$this->protection = new Protection;
 			$this->request = new Request;
-			$this->facebook = new Facebook;
 			$this->hotel = new Hotel;
 			$this->url = $this->template->vars['url'];
 
 			if ($this->request->getMethod() == 'verify_client' && $this->request->getController() == 'web') {
+				$this->facebook = new Facebook;
 				$getUser = $this->con->query("SELECT * FROM users WHERE facebook_id = '{$this->facebook->getUser('id')}' AND facebook_account = '1'");
 				$selectUser = $this->con->fetch_assoc($getUser);
 				if (!$this->hotel->getConfig('maintenance')) {
@@ -83,6 +83,9 @@
 								$this->sessions->delete('cookie', 'username');
 								$this->sessions->delete('cookie', 'password');
 								$this->sessions->delete('session', 'facebook_id');
+								foreach ($this->facebook->getData() as $key => $value) {
+									$this->sessions->set('session', 'facebook_user_' . $key, $value);
+								}
 								$this->sessions->set('session', 'facebook_id', $this->facebook->getUser('id'));
 							}
 						} else {
@@ -92,6 +95,9 @@
 							$this->sessions->delete('cookie', 'username');
 							$this->sessions->delete('cookie', 'password');
 							$this->sessions->delete('session', 'facebook_id');
+							foreach ($this->facebook->getData() as $key => $value) {
+								$this->sessions->set('session', 'facebook_user_' . $key, $value);
+							}
 							$this->sessions->set('session', 'facebook_id', $this->facebook->getUser('id'));
 							$this->set('ip_last', $ip_last);
 							$this->set('last_used', time());
@@ -102,6 +108,9 @@
 						if ($this->facebook->getSession()) {
 							if ($this->con->num_rows($getUser) > 0) {
 								$ip_last = $this->getIP();
+								foreach ($this->facebook->getData() as $key => $value) {
+									$this->sessions->set('session', 'facebook_user_' . $key, $value);
+								}
 								$this->sessions->set('session', 'facebook_id', $this->facebook->getUser('id'));
 								$this->set('ip_last', $ip_last);
 								$this->set('last_used', time());
@@ -110,7 +119,7 @@
 					}
 				}
 
-				header("Location: {$this->url}");
+				header("Location: {$this->url}/");
 			}
 
 			if ($this->getSession() && $this->getBan()) {
@@ -282,8 +291,8 @@
 		}
 
 		public function get($value, $username = false)
-		{
-			if (!$this->facebook->getSession()) {
+		{ 
+			if (!$this->sessions->get('session', 'facebook_access_token')) {
 				if ($this->sessions->get('session', 'username') && $this->sessions->get('session', 'password')) {
 					$username_select = $this->sessions->get('session', 'username');
 					$password_select = $this->sessions->get('session', 'password');
@@ -409,7 +418,7 @@
 
 		public function getSession()
 		{
-			if (!$this->facebook->getSession()) {
+			if (!$this->sessions->get('session', 'facebook_access_token')) {
 				if ($this->sessions->get('session', 'username') && $this->sessions->get('session', 'password')) {
 					$username = $this->sessions->get('session', 'username');
 					$password = $this->sessions->get('session', 'password');

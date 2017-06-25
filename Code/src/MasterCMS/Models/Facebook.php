@@ -128,6 +128,21 @@
 			}
 		}
 
+		public function getData()
+		{
+			if ($this->getSession()) {
+				$response = $this->fb->get('/me?fields=id, name, first_name, last_name, email, gender');
+				$profile = $response->getGraphNode()->asArray();
+				if (isset($profile)) {
+					return $profile;
+				} else {
+					return false;
+				}
+			} else {
+				return false;
+			}
+		}
+
 		public function getLoginUrl()
 		{
 			$redirect = $this->config->select['WEB']['TYPE_HTTP'] . $this->config->select['WEB']['URL'] . '/web/verify_client';

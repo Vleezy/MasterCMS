@@ -31,7 +31,7 @@
 	        'PORT'          =>         '3306',
 	        'USER'          =>         'root',
 	        'PASS'          =>         '',
-	        'DB'            =>         'mastercms'
+	        'DB'            =>         'database'
 		);
 		
 		public $con;

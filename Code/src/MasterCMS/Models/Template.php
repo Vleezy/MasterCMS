@@ -39,6 +39,7 @@
         private $facebook;
         private $sessions;
         private $protection;
+        private $mus;
 
         public function __construct()
         {
@@ -47,9 +48,12 @@
             $this->users = new Users;
             $this->hotel = new Hotel;
             $this->con = new Connection;
-            $this->facebook = new Facebook;
             $this->sessions = new Sessions;
             $this->protection = new Protection;
+            $this->mus = new MUS;
+            if (!$this->users->getSession()) {
+                $this->facebook = new Facebook;
+            }
         }
 
         public function displayError($a, $b)
@@ -241,12 +245,11 @@
             $this->setParam('theme_version', $this->hotel->getThemeInfo('version'));
             $this->setParam('theme_creation', $this->hotel->getThemeInfo('creation'));
             $this->setParam('theme_installed', $this->hotel->getThemeInfo('installed'));
-
-            $this->setParam('fbname', $this->facebook->getUser('name'));
-
-            $this->setParam('fbLoginUrl', htmlspecialchars($this->facebook->getLoginUrl()));
-            $this->setParam('fb_app_id', $this->config->select['SOCIAL_NETWORKS_LOGIN']['FACEBOOK']['APP_ID']);
-
+            $this->setParam('fbname', $this->sessions->get('session', 'facebook_user_name'));
+            if (!$this->users->getSession()) {
+                $this->setParam('fbLoginUrl', htmlspecialchars($this->facebook->getLoginUrl()));
+                $this->setParam('fb_app_id', $this->config->select['SOCIAL_NETWORKS_LOGIN']['FACEBOOK']['APP_ID']);
+            }
             $this->setParam('username', $this->users->get('username'));
             $this->setParam('rank_id', $this->users->get('rank'));
             $select = $this->con->query("SELECT * FROM ranks WHERE id = '{$this->users->get('rank')}'");
