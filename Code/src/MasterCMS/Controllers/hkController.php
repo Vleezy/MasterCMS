@@ -402,7 +402,7 @@
 					}
 				} elseif ($page == 'logs') {
 					if ($this->hotel->getMasterType() == 'max') {
-						$this->template->setParam('title', $this->text->texts['titles']['cms_logs']);
+						$this->template->setParam('title', $this->text->texts['titles']['game_logs']);
 						$this->template->addTemplate('Template' . DS . 'Header', 'Hk');
 						$this->template->addTemplate('Game' . DS . 'Logs', 'Hk');
 						$this->template->addTemplate('Template' . DS . 'Footer', 'Hk');
@@ -412,7 +412,7 @@
 					}
 				} elseif ($page == 'mpu') {
 					if (in_array($this->users->get('rank'), $this->hotel->getMaster('medium+'))) {
-						$this->template->setParam('title', $this->text->texts['titles']['cms_logs']);
+						$this->template->setParam('title', $this->text->texts['titles']['mpu']);
 						$this->template->addTemplate('Template' . DS . 'Header', 'Hk');
 						$this->template->addTemplate('Game' . DS . 'MPU', 'Hk');
 						$this->template->addTemplate('Template' . DS . 'Footer', 'Hk');

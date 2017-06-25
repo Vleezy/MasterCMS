@@ -23,7 +23,9 @@
 				'cms_logs' => 'Logs del CMS',
 				'badges' => 'Placas',
 				'change_pin' => 'Codigo de seguridad',
-				'emulator' => 'Emulador'
+				'emulator' => 'Emulador',
+				'game_logs' => 'Logs del EMU',
+				'mpu' => 'Administrar MPU',
 			]
 		);
 	}
