@@ -115,7 +115,7 @@
                 'HOST'           =>          '127.0.0.1', // MUS host
                 'PORT'           =>          '30001', // MUS port
                 'INTERNAL'       =>          true, // The emulator is on your device?
-                'DIR'           =>          'C:\Users\ubbly\Desktop\DC\Other\Proyects\Blex Server\bin\Debug', // Emulator directory
+                'DIR'           =>          'C:\xampp\htdocs\Debug', // Emulator directory
                 'EXE' => 'Blex Server.exe'
             ],
 
