@@ -330,17 +330,24 @@
 		public function logout()
 		{
 			if ($this->users->getSession()) {
-				// Template
-				define('ADS', false);
-				$this->template->setEverything();
-				$this->template->setParam('title', $this->main->texts['titles']['logout']);
-				$this->template->addTemplate('Template' . DS . 'Header');
-				$this->template->addTemplate();
-				$this->template->addTemplate('Template' . DS . 'Footer');
-				$this->redirections->js($this->url, 3000);
-				$this->sessions->delete('session', '*');
-				$this->sessions->delete('cookie', 'username');
-				$this->sessions->delete('cookie', 'password');
+				if ($this->sessions->get('cookie', 'username') || $this->sessions->get('cookie', 'password')) {
+					$this->sessions->delete('session', '*');
+					$this->sessions->delete('cookie', 'username');
+					$this->sessions->delete('cookie', 'password');
+					header("Location: {$this->url}/");
+				} else {
+					// Template
+					define('ADS', false);
+					$this->template->setEverything();
+					$this->template->setParam('title', $this->main->texts['titles']['logout']);
+					$this->template->addTemplate('Template' . DS . 'Header');
+					$this->template->addTemplate();
+					$this->template->addTemplate('Template' . DS . 'Footer');
+					$this->sessions->delete('session', '*');
+					$this->sessions->delete('cookie', 'username');
+					$this->sessions->delete('cookie', 'password');
+					$this->redirections->js($this->url, 3000);
+				}
 			} else {
 				$this->sessions->delete('session', '*');
 				$this->sessions->delete('cookie', 'username');
