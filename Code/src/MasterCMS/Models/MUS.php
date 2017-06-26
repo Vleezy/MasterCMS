@@ -66,7 +66,7 @@
             $socket = @socket_create(AF_INET, SOCK_STREAM, getprotobyname('tcp'));
             @socket_connect($socket, $this->host, $this->port);
             $musData = $command . chr(1) . $data;
-            $send .= @socket_send($socket, $musData, strlen($musData), MSG_DONTROUTE);
+            $send = @socket_send($socket, $musData, strlen($musData), MSG_DONTROUTE);
             @socket_close($socket);
 
             if (!is_resource($socket)) {
@@ -83,7 +83,7 @@
             $socket = @socket_create(AF_INET, SOCK_STREAM, getprotobyname('tcp'));
             @socket_connect($socket, $this->host, $this->port);
             $musData = $command . ' ' . $data;
-            $send .= @socket_send($socket, $musData, strlen($musData), MSG_DONTROUTE);
+            $send = @socket_send($socket, $musData, strlen($musData), MSG_DONTROUTE);
             @socket_close($socket);
 
             if (!is_resource($socket)) {
