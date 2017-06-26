@@ -111,12 +111,13 @@
 
             // MUS Connection
             'MUS' => [
-                'STATUS'         =>          false, // True if you wan't to use MUS (Need sockets)
+                'STATUS'         =>          true, // True if you wan't to use MUS (Need sockets)
                 'HOST'           =>          '127.0.0.1', // MUS host
                 'PORT'           =>          '30001', // MUS port
+                // Beta Testing
                 'INTERNAL'       =>          true, // The emulator is on your device?
-                'DIR'           =>          'C:\xampp\htdocs\Debug', // Emulator directory
-                'EXE' => 'Blex Server.exe'
+                'DIR'           =>          'C:\xampp\htdocs\emulator', // Emulator directory
+                'EXE' => 'Emulator.exe'
             ],
 
             // Client Connection

@@ -123,3 +123,33 @@
         transform: rotate(360deg);
     }
 }
+
+#consoleResponse {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3);gba(0, 0, 0, 0.14);
+    border-radius: 3px;
+    color: rgba(0,0,0, 0.87);
+    background: #fff;
+    padding: 10px 15px;
+    height: 200px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#consoleResponse .response {
+    padding: 5px 15px;
+    border-radius: 2px;
+    background-color: #962daf;
+    color: #FFF;
+    margin-bottom: 4px;
+}
+
+#consoleResponse .error {
+    padding: 5px 15px;
+    border-radius: 2px;
+    background-color: #f44336;
+    color: #FFF;
+    margin-bottom: 4px;
+}

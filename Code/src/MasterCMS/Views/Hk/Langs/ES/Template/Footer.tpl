@@ -25,6 +25,8 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="{@hk_cdn}/tinymce/js/tinymce/tinymce.min.js"></script>
+	<script type="text/javascript" src="{@hk_cdn}/js/library/bloodhound.min.js"></script>
+	<script type="text/javascript" src="{@hk_cdn}/js/library/typeahead.bundle.min.js"></script>
     <script src="{@hk_cdn}/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="{@hk_cdn}/js/material.min.js" type="text/javascript"></script>
 	<script src="{@hk_cdn}/js/chartist.min.js"></script>

@@ -34,24 +34,36 @@
         private $host;
         private $port;
         private $status;
+        private $response;
 
         public function __construct()
         {
             $this->con = new Connection();
             $this->config = new Config();
             $this->sessions = new Sessions();
-            $this->host = $this->config->select['CLIENT']['HOST'];
-            $this->port = $this->config->select['CLIENT']['PORT'];
+            $this->host = $this->config->select['MUS']['HOST'];
+            $this->port = $this->config->select['MUS']['PORT'];
             $this->status = $this->config->select['MUS']['STATUS'];
         }
 
         public function send($command, $data = '')
         {
             if ($this->status) {
-                $musData = $command . chr(1) . $data;
                 $socket = @socket_create(AF_INET, SOCK_STREAM, getprotobyname('tcp'));
                 @socket_connect($socket, $this->host, $this->port);
-                @socket_send($socket, $musData, strlen($musData), MSG_DONTROUTE);
+                $musData = $command . ' ' . $data;
+                $send = @socket_send($socket, $musData, strlen($musData), MSG_DONTROUTE);
+                $musData = $command . chr(1) . $data;
+                $send .= @socket_send($socket, $musData, strlen($musData), MSG_DONTROUTE);
+                if (!is_resource($socket)) {
+                    return false;
+                } elseif (!$send) {
+                    return false;
+                } else {
+                    @socket_recv($socket, $buf, 2048, MSG_WAITALL);
+                    $this->response .= $buf;
+                    return true;
+                }
                 @socket_close($socket);
             } else {
                 return false;
@@ -63,10 +75,12 @@
             if ($this->status) {
                 $socket = @socket_create(AF_INET, SOCK_STREAM, getprotobyname('tcp'));
                 $connect = @socket_connect($socket, $this->host, $this->port);
-                if ($connect) {
-                    return true;
-                } else {
+                if (!is_resource($socket)) {
                     return false;
+                } elseif (!$connect) {
+                    return false;
+                } else {
+                    return true;
                 }
                 @socket_close($socket);
             } else {
@@ -74,14 +88,10 @@
             }
         }
 
-        public function execInBackground($cmd) { 
-            if (substr(php_uname(), 0, 7) == "Windows"){ 
-                pclose(popen("start /B ". $cmd, "r"));  
-            } 
-            else { 
-                exec($cmd . " > /dev/null &");   
-            } 
-        } 
+        public function getResponse()
+        {
+            return $this->response;
+        }
 
         public function __destruct()
         {

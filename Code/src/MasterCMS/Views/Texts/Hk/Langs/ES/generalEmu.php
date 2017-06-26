@@ -36,7 +36,12 @@
 				'database' => 'Se ha producido un error en la base de datos',
                     'not_exist_emu' => 'La ruta del emulador es invalida',
                     'emu_must_be_internal' => 'El emulador debe estar alojado en este servidor para ser corrido desde el housekeeping',
-                    'success_on' => 'Se encendio el emulador exitosamente'
+                    'success_on' => 'Se encendio el emulador exitosamente',
+                    'unavaliable' => 'Esta caracteristica aun no esta disponible',
+                    'already_on' => 'El emulador ya esta encendido',
+                    'need_on' => 'Esta accion requiere que el emulador este activo',
+                    'cant_send_com' => 'No se pudo enviar el comando',
+                    'command_sended' => 'Se envio el comando <b>{@command}</b> a el emulador'
 			]
 		);
 	}

@@ -922,6 +922,7 @@
 																$set = $this->users->set('rank', $rank, $username);
 																$set = $this->users->set('work', $work, $username);
 
+
 																if ($pin) {
 																	$set .= $this->users->set('pin', $this->protection->encriptPassword($pin), $username);
 																} else {
@@ -939,6 +940,8 @@
 																} else {
 																	$set .= $this->users->set('staff_occult', 0, $username);
 																}
+
+																$this->mus->send('update_ranks');
 																$set .= $this->hk->submitLog($this->users->get('id'), "Gived the rank <b>{$selectRank['name']}</b> to <b>{$username}</b>", time());
 																if ($set) {
 																	echo $this->addUserRank->texts['texts']['success'];
@@ -994,6 +997,7 @@
 											$set = $this->users->set('rank', 1, $selectUser['username']);
 											$set .= $this->users->set('pin', '', $selectUser['username']);
 											$set .= $this->users->set('client_pin', '', $selectUser['username']);
+											$this->mus->send('update_ranks');
 											if ($set) {
 												echo $this->deleteUserRank->texts['texts']['success'];
 											} else {
@@ -1469,6 +1473,7 @@
 									$delete = $this->hk->submitLog($this->users->get('id'), "Deleted the ban value: <b>{$select['value']}</b>", time());
 									$delete .= $this->hk->deleteBan($id);
 									if ($delete) {
+										$this->mus->send('update_bans');
 										echo $this->deleteBan->texts['texts']['success'];
 									} else {
 										echo $this->deleteBan->texts['texts']['database'];
@@ -1513,6 +1518,7 @@
 
 								if ($ban) {
 									echo $this->submitBan->texts['texts']['success'];
+									$this->mus->send('update_bans');
 								} else {
 									echo $this->submitBan->texts['texts']['database'];
 								}
@@ -1530,6 +1536,7 @@
 									$ban = $this->hk->submitBan($typeBan, $username, $reason, $real_date, $this->users->get('username'), time());
 									if ($ban) {
 										echo $this->submitBan->texts['texts']['success'];
+										$this->mus->send('update_bans');
 										$this->hk->submitLog($this->users->get('id'), "Banned with the value: <b>{$username}</b>", time());
 									} else {
 										echo $this->submitBan->texts['texts']['database'];
@@ -1986,6 +1993,12 @@
 										$this->users->set('activity_points', $duckets, $selectUser['username']);
 										$this->users->set('vip_points', $diamonds, $selectUser['username']);
 										$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
+										$this->mus->send('update_ranks');
+										$this->mus->send('reload_motto', $selectUser['id']);
+										$this->mus->send('reload_user_vip', $selectUser['id']);
+										$this->mus->send('reload_gotw', $selectUser['id']);
+										$this->mus->send('reload_credits', $selectUser['id']);
+										$this->mus->send('reload_diamonds', $selectUser['id']);
 										echo $this->generalUsers->texts['texts']['success'];
 									}
 								}
@@ -2019,6 +2032,12 @@
 																			$this->users->set('activity_points', $duckets, $selectUser['username']);
 																			$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																			$this->users->set('username', $username, $selectUser['username']);
+																			$this->mus->send('update_ranks');
+																			$this->mus->send('reload_motto', $selectUser['id']);
+																			$this->mus->send('reload_user_vip', $selectUser['id']);
+																			$this->mus->send('reload_gotw', $selectUser['id']);
+																			$this->mus->send('reload_credits', $selectUser['id']);
+																			$this->mus->send('reload_diamonds', $selectUser['id']);
 																			$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																			echo $this->generalUsers->texts['texts']['success'];
 																		} else {
@@ -2032,6 +2051,12 @@
 																		$this->users->set('activity_points', $duckets, $selectUser['username']);
 																		$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																		$this->users->set('username', $username, $selectUser['username']);
+																		$this->mus->send('update_ranks');
+																		$this->mus->send('reload_motto', $selectUser['id']);
+																		$this->mus->send('reload_user_vip', $selectUser['id']);
+																		$this->mus->send('reload_gotw', $selectUser['id']);
+																		$this->mus->send('reload_credits', $selectUser['id']);
+																		$this->mus->send('reload_diamonds', $selectUser['id']);
 																		$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																		echo $this->generalUsers->texts['texts']['success'];
 																	}
@@ -2048,6 +2073,12 @@
 																		$this->users->set('activity_points', $duckets, $selectUser['username']);
 																		$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																		$this->users->set('username', $username, $selectUser['username']);
+																		$this->mus->send('update_ranks');
+																		$this->mus->send('reload_motto', $selectUser['id']);
+																		$this->mus->send('reload_user_vip', $selectUser['id']);
+																		$this->mus->send('reload_gotw', $selectUser['id']);
+																		$this->mus->send('reload_credits', $selectUser['id']);
+																		$this->mus->send('reload_diamonds', $selectUser['id']);
 																		$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																		echo $this->generalUsers->texts['texts']['success'];
 																	} else {
@@ -2061,6 +2092,12 @@
 																	$this->users->set('activity_points', $duckets, $selectUser['username']);
 																	$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																	$this->users->set('username', $username, $selectUser['username']);
+																	$this->mus->send('update_ranks');
+																	$this->mus->send('reload_motto', $selectUser['id']);
+																	$this->mus->send('reload_user_vip', $selectUser['id']);
+																	$this->mus->send('reload_gotw', $selectUser['id']);
+																	$this->mus->send('reload_credits', $selectUser['id']);
+																	$this->mus->send('reload_diamonds', $selectUser['id']);
 																	$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																	echo $this->generalUsers->texts['texts']['success'];
 																}
@@ -2077,6 +2114,12 @@
 																		$this->users->set('activity_points', $duckets, $selectUser['username']);
 																		$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																		$this->users->set('username', $username, $selectUser['username']);
+																		$this->mus->send('update_ranks');
+																		$this->mus->send('reload_motto', $selectUser['id']);
+																		$this->mus->send('reload_user_vip', $selectUser['id']);
+																		$this->mus->send('reload_gotw', $selectUser['id']);
+																		$this->mus->send('reload_credits', $selectUser['id']);
+																		$this->mus->send('reload_diamonds', $selectUser['id']);
 																		$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																		echo $this->generalUsers->texts['texts']['success'];
 																	} else {
@@ -2090,6 +2133,12 @@
 																	$this->users->set('activity_points', $duckets, $selectUser['username']);
 																	$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																	$this->users->set('username', $username, $selectUser['username']);
+																	$this->mus->send('update_ranks');
+																	$this->mus->send('reload_motto', $selectUser['id']);
+																	$this->mus->send('reload_user_vip', $selectUser['id']);
+																	$this->mus->send('reload_gotw', $selectUser['id']);
+																	$this->mus->send('reload_credits', $selectUser['id']);
+																	$this->mus->send('reload_diamonds', $selectUser['id']);
 																	$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																	echo $this->generalUsers->texts['texts']['success'];
 																}
@@ -2105,6 +2154,12 @@
 																	$this->users->set('activity_points', $duckets, $selectUser['username']);
 																	$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																	$this->users->set('username', $username, $selectUser['username']);
+																	$this->mus->send('update_ranks');
+																	$this->mus->send('reload_motto', $selectUser['id']);
+																	$this->mus->send('reload_user_vip', $selectUser['id']);
+																	$this->mus->send('reload_gotw', $selectUser['id']);
+																	$this->mus->send('reload_credits', $selectUser['id']);
+																	$this->mus->send('reload_diamonds', $selectUser['id']);
 																	$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																	echo $this->generalUsers->texts['texts']['success'];
 																} else {
@@ -2117,6 +2172,12 @@
 																$this->users->set('activity_points', $duckets, $selectUser['username']);
 																$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																$this->users->set('username', $username, $selectUser['username']);
+																$this->mus->send('update_ranks');
+																$this->mus->send('reload_motto', $selectUser['id']);
+																$this->mus->send('reload_user_vip', $selectUser['id']);
+																$this->mus->send('reload_gotw', $selectUser['id']);
+																$this->mus->send('reload_credits', $selectUser['id']);
+																$this->mus->send('reload_diamonds', $selectUser['id']);
 																$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																echo $this->generalUsers->texts['texts']['success'];
 															}
@@ -2133,6 +2194,12 @@
 																	$this->users->set('activity_points', $duckets, $selectUser['username']);
 																	$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																	$this->users->set('username', $username, $selectUser['username']);
+																	$this->mus->send('update_ranks');
+																	$this->mus->send('reload_motto', $selectUser['id']);
+																	$this->mus->send('reload_user_vip', $selectUser['id']);
+																	$this->mus->send('reload_gotw', $selectUser['id']);
+																	$this->mus->send('reload_credits', $selectUser['id']);
+																	$this->mus->send('reload_diamonds', $selectUser['id']);
 																	$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																	echo $this->generalUsers->texts['texts']['success'];
 																} else {
@@ -2146,6 +2213,12 @@
 																$this->users->set('activity_points', $duckets, $selectUser['username']);
 																$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																$this->users->set('username', $username, $selectUser['username']);
+																$this->mus->send('update_ranks');
+																$this->mus->send('reload_motto', $selectUser['id']);
+																$this->mus->send('reload_user_vip', $selectUser['id']);
+																$this->mus->send('reload_gotw', $selectUser['id']);
+																$this->mus->send('reload_credits', $selectUser['id']);
+																$this->mus->send('reload_diamonds', $selectUser['id']);
 																$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																echo $this->generalUsers->texts['texts']['success'];
 															}
@@ -2173,6 +2246,12 @@
 															$this->users->set('activity_points', $duckets, $selectUser['username']);
 															$this->users->set('vip_points', $diamonds, $selectUser['username']);
 															$this->users->set('username', $username, $selectUser['username']);
+															$this->mus->send('update_ranks');
+															$this->mus->send('reload_motto', $selectUser['id']);
+															$this->mus->send('reload_user_vip', $selectUser['id']);
+															$this->mus->send('reload_gotw', $selectUser['id']);
+															$this->mus->send('reload_credits', $selectUser['id']);
+															$this->mus->send('reload_diamonds', $selectUser['id']);
 															$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 															echo $this->generalUsers->texts['texts']['success'];
 														}
@@ -2368,17 +2447,52 @@
 
 				if ($type == 'emulator') {
 					if (in_array($this->users->get('rank'), $this->hotel->getMaster('max')) && in_array($this->users->get('username'), $this->hotel->getSuperUsers())) {
-						$dir = $this->config->select['MUS']['DIR'];
+						$dir = $this->config->select['MUS']['DIR'] . DS;
 						$exe = $this->config->select['MUS']['EXE'];
 						if ($extra == 'turnOn') {
 							if (!$this->config->select['MUS']['INTERNAL']) {
 								echo $this->generalEmu->texts['texts']['emu_must_be_internal'];
 							} elseif (!file_exists($dir . DS . $exe)) {
 								echo $this->generalEmu->texts['texts']['not_exist_emu'];
+							} elseif ($this->mus->check()) {
+								echo $this->generalEmu->texts['texts']['already_on'];
 							} else {
-								$cmd = $dir . DS . $exe;
-								echo $this->generalEmu->texts['texts']['success_on'];
+								echo $this->generalEmu->texts['texts']['unavaliable'];
 							}
+						} elseif ($extra == 'sendCommand') {
+							$jsondata = [];
+							$command = $_POST['command'];
+							if (!$command) {
+								$jsondata['error'] = $this->generalEmu->texts['texts']['empty'];
+							} elseif (!$this->mus->check()) {
+								$jsondata['error'] = $this->generalEmu->texts['texts']['need_on'];
+							} else {
+								$cmd = [];
+								$cmd = explode(' ', $command);
+								$cmd['command'] = reset($cmd);
+
+								$cmdata = $command;
+								$cmdata = explode(' ', $command);
+								array_shift($cmdata);
+								$cmd['data'] = implode(' ', $cmdata);
+								if ($cmd['data']) {
+									$send = $this->mus->send($cmd['command'], $cmd['data']);
+								} else {
+									$send = $this->mus->send($cmd['command'], '');
+								}
+								if ($send) {
+									$message = $this->generalEmu->texts['texts']['command_sended'];
+									$message = str_replace('{@command}', $cmd['command'], $message);
+									$message = str_replace('{@data}', $cmd['data'], $message);
+									$jsondata['response'] = $message;
+									$command = $this->protection->filter($_POST['command']);
+									$this->hk->submitLog($this->users->get('id'), "Submited the command <b>{$cmd['command']}</b> with the arguments <b>{$cmd['data']}</b> to the emulator", time());
+								} else {
+									$jsondata['error'] = $this->generalEmu->texts['texts']['cant_send_com'];
+								}
+							}
+							header('Content-type: application/json; charset=utf-8');
+							echo json_encode($jsondata, JSON_FORCE_OBJECT);
 						}
 					} else {
 						echo $this->generalEmu->texts['texts']['no_perms'];

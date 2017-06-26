@@ -331,6 +331,7 @@
 		{
 			if ($this->users->getSession()) {
 				if ($this->sessions->get('cookie', 'username') || $this->sessions->get('cookie', 'password')) {
+					$this->mus->send('disconnect', $this->users->get('id'));
 					$this->sessions->delete('session', '*');
 					$this->sessions->delete('cookie', 'username');
 					$this->sessions->delete('cookie', 'password');
@@ -338,6 +339,7 @@
 				} else {
 					// Template
 					define('ADS', false);
+					$this->mus->send('disconnect', $this->users->get('id'));
 					$this->template->setEverything();
 					$this->template->setParam('title', $this->main->texts['titles']['logout']);
 					$this->template->addTemplate('Template' . DS . 'Header');

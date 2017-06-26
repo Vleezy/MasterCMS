@@ -37,6 +37,7 @@
 		private $facebook;
 		private $protection;
 		private $hotel;
+		private $mus;
 
 		public function __construct()
 		{
@@ -47,6 +48,7 @@
 			$this->protection = new Protection;
 			$this->request = new Request;
 			$this->hotel = new Hotel;
+			$this->mus = new MUS;
 			$this->url = $this->template->vars['url'];
 
 			if ($this->request->getMethod() == 'verify_client' && $this->request->getController() == 'web') {
@@ -147,6 +149,7 @@
 				// Remove empty badges
 				if ($this->hasBadge('')) {
 					$this->removeBadge('');
+					$this->mus->send('reload_badges', $this->get('id'));
 				}
 
 				// Remove
@@ -155,6 +158,7 @@
 					if ($this->hasBadge($select['badge'])) {
 						if ($this->get('rank') != $select['id']) {
 							$this->removeBadge($select['badge']);
+							$this->mus->send('reload_badges', $this->get('id'));
 						}
 					}
 				}
@@ -165,6 +169,7 @@
 					$select = mysqli_fetch_array($query);
 					if (!$this->hasBadge($select['badge'])) {
 						$this->addBadge($select['badge']);
+						$this->mus->send('reload_badges', $this->get('id'));
 					}
 				}
 			}

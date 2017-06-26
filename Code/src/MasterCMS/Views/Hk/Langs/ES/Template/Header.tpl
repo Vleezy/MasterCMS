@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{@hk_cdn}/css/font-awesome.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='//fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{@hk_cdn}/css/typeahead.css">
     <script type="text/javascript" src="{@hk_cdn}/js/library/jquery.js"></script>
     <script type="text/javascript" src="{@hk_cdn}/js/library/jquery-ui.js"></script>
 </head>
@@ -184,7 +185,7 @@
 			                        <p>Administraci&oacute;n del Juego</p>
 								</a>
 							</li>
-							<?php if ($this->hotel->getMasterType() == 'max' && in_array($this->users->get('username'), $this->hotel->getSuperUsers())) { ?>
+							<?php if ($this->hotel->getMasterType() == 'max' && in_array($this->users->get('username'), $this->hotel->getSuperUsers()) && $this->config->select['MUS']['STATUS']) { ?>
 							<li<?php if ($this->request->getController() == 'hk' && $this->request->getMethod() == 'game' && $this->request->getArgument()[0] == 'emu') { echo ' class="active"'; } ?>>
 			                    <a href="{@url}/hk/game/emu">
 			                        <i class="material-icons">settings_ethernet</i>

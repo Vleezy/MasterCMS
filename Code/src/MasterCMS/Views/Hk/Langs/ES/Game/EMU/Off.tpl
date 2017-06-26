@@ -33,6 +33,20 @@
                     </div>
                 </div>
 			</div>
+            <div class="col-md-12 col-lg-6">
+                <div class="card">
+                    <div class="card-header" data-background-color="red">
+                        <h4 class="title">Advertencias / Consejos</h4>
+                        <p class="category">A continuaci&oacute;n le dejamos una lista de advertencias/consejos que deberas tomar en cuenta antes de modificar esta secci&oacute;n:</p>
+                    </div>
+                    <div class="card-content">
+                        <ul>
+                            <li>Si no sabe lo que hace, no mueva nada de lo que hay aqui dentro.</li>
+                            <li>Recuerda que el sistema de encender emulador esta en face beta, si no te enciende el emuladdor intentelo desde su servidor interno.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
 	</div>
 </div>
