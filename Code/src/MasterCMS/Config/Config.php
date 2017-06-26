@@ -111,7 +111,7 @@
 
             // MUS Connection
             'MUS' => [
-                'STATUS'         =>          false, // True if you wan't to use MUS (Need sockets)
+                'STATUS'         =>          true, // True if you wan't to use MUS (Need sockets)
                 'HOST'           =>          '127.0.0.1', // MUS host
                 'PORT'           =>          '30001', // MUS port
                 // Beta Testing

@@ -49,24 +49,49 @@
         public function send($command, $data = '')
         {
             if ($this->status) {
-                $socket = @socket_create(AF_INET, SOCK_STREAM, getprotobyname('tcp'));
-                @socket_connect($socket, $this->host, $this->port);
-                $musData = $command . ' ' . $data;
-                $send = @socket_send($socket, $musData, strlen($musData), MSG_DONTROUTE);
-                $musData = $command . chr(1) . $data;
-                $send .= @socket_send($socket, $musData, strlen($musData), MSG_DONTROUTE);
-                if (!is_resource($socket)) {
-                    return false;
-                } elseif (!$send) {
-                    return false;
-                } else {
-                    @socket_recv($socket, $buf, 2048, MSG_WAITALL);
-                    $this->response .= $buf;
+                $send = $this->chr($command, $data);
+                $send .= $this->nochr($command, $data);
+                if ($send) {
                     return true;
+                } else {
+                    return false;
                 }
-                @socket_close($socket);
             } else {
                 return false;
+            }
+        }
+
+        public function chr($command, $data = '')
+        {
+            $socket = @socket_create(AF_INET, SOCK_STREAM, getprotobyname('tcp'));
+            @socket_connect($socket, $this->host, $this->port);
+            $musData = $command . chr(1) . $data;
+            $send .= @socket_send($socket, $musData, strlen($musData), MSG_DONTROUTE);
+            @socket_close($socket);
+
+            if (!is_resource($socket)) {
+                return false;
+            } elseif (!$send) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        public function nochr($command, $data = '')
+        {
+            $socket = @socket_create(AF_INET, SOCK_STREAM, getprotobyname('tcp'));
+            @socket_connect($socket, $this->host, $this->port);
+            $musData = $command . ' ' . $data;
+            $send .= @socket_send($socket, $musData, strlen($musData), MSG_DONTROUTE);
+            @socket_close($socket);
+
+            if (!is_resource($socket)) {
+                return false;
+            } elseif (!$send) {
+                return false;
+            } else {
+                return true;
             }
         }
 

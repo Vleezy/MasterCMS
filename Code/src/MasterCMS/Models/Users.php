@@ -149,7 +149,6 @@
 				// Remove empty badges
 				if ($this->hasBadge('')) {
 					$this->removeBadge('');
-					$this->mus->send('reload_badges', $this->get('id'));
 				}
 
 				// Remove
@@ -158,7 +157,6 @@
 					if ($this->hasBadge($select['badge'])) {
 						if ($this->get('rank') != $select['id']) {
 							$this->removeBadge($select['badge']);
-							$this->mus->send('reload_badges', $this->get('id'));
 						}
 					}
 				}
@@ -169,7 +167,6 @@
 					$select = mysqli_fetch_array($query);
 					if (!$this->hasBadge($select['badge'])) {
 						$this->addBadge($select['badge']);
-						$this->mus->send('reload_badges', $this->get('id'));
 					}
 				}
 			}
