@@ -1989,11 +1989,11 @@
 										$this->users->set('vip_points', $diamonds, $selectUser['username']);
 										$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 										$this->mus->send('update_ranks');
-										$this->mus->send('reload_motto', $selectUser['id']);
-										$this->mus->send('reload_user_vip', $selectUser['id']);
-										$this->mus->send('reload_gotw', $selectUser['id']);
-										$this->mus->send('reload_credits', $selectUser['id']);
-										$this->mus->send('reload_diamonds', $selectUser['id']);
+										$this->mus->send('reload_motto', [$selectUser['id']]);
+										$this->mus->send('reload_user_vip', [$selectUser['id']]);
+										$this->mus->send('reload_gotw', [$selectUser['id']]);
+										$this->mus->send('reload_credits', [$selectUser['id']]);
+										$this->mus->send('reload_diamonds', [$selectUser['id']]);
 										echo $this->generalUsers->texts['texts']['success'];
 									}
 								}
@@ -2028,11 +2028,11 @@
 																			$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																			$this->users->set('username', $username, $selectUser['username']);
 																			$this->mus->send('update_ranks');
-																			$this->mus->send('reload_motto', $selectUser['id']);
-																			$this->mus->send('reload_user_vip', $selectUser['id']);
-																			$this->mus->send('reload_gotw', $selectUser['id']);
-																			$this->mus->send('reload_credits', $selectUser['id']);
-																			$this->mus->send('reload_diamonds', $selectUser['id']);
+																			$this->mus->send('reload_motto', [$selectUser['id']]);
+																			$this->mus->send('reload_user_vip', [$selectUser['id']]);
+																			$this->mus->send('reload_gotw', [$selectUser['id']]);
+																			$this->mus->send('reload_credits', [$selectUser['id']]);
+																			$this->mus->send('reload_diamonds', [$selectUser['id']]);
 																			$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																			echo $this->generalUsers->texts['texts']['success'];
 																		} else {
@@ -2047,11 +2047,11 @@
 																		$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																		$this->users->set('username', $username, $selectUser['username']);
 																		$this->mus->send('update_ranks');
-																		$this->mus->send('reload_motto', $selectUser['id']);
-																		$this->mus->send('reload_user_vip', $selectUser['id']);
-																		$this->mus->send('reload_gotw', $selectUser['id']);
-																		$this->mus->send('reload_credits', $selectUser['id']);
-																		$this->mus->send('reload_diamonds', $selectUser['id']);
+																		$this->mus->send('reload_motto', [$selectUser['id']]);
+																		$this->mus->send('reload_user_vip', [$selectUser['id']]);
+																		$this->mus->send('reload_gotw', [$selectUser['id']]);
+																		$this->mus->send('reload_credits', [$selectUser['id']]);
+																		$this->mus->send('reload_diamonds', [$selectUser['id']]);
 																		$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																		echo $this->generalUsers->texts['texts']['success'];
 																	}
@@ -2069,11 +2069,11 @@
 																		$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																		$this->users->set('username', $username, $selectUser['username']);
 																		$this->mus->send('update_ranks');
-																		$this->mus->send('reload_motto', $selectUser['id']);
-																		$this->mus->send('reload_user_vip', $selectUser['id']);
-																		$this->mus->send('reload_gotw', $selectUser['id']);
-																		$this->mus->send('reload_credits', $selectUser['id']);
-																		$this->mus->send('reload_diamonds', $selectUser['id']);
+																		$this->mus->send('reload_motto', [$selectUser['id']]);
+																		$this->mus->send('reload_user_vip', [$selectUser['id']]);
+																		$this->mus->send('reload_gotw', [$selectUser['id']]);
+																		$this->mus->send('reload_credits', [$selectUser['id']]);
+																		$this->mus->send('reload_diamonds', [$selectUser['id']]);
 																		$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																		echo $this->generalUsers->texts['texts']['success'];
 																	} else {
@@ -2088,11 +2088,11 @@
 																	$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																	$this->users->set('username', $username, $selectUser['username']);
 																	$this->mus->send('update_ranks');
-																	$this->mus->send('reload_motto', $selectUser['id']);
-																	$this->mus->send('reload_user_vip', $selectUser['id']);
-																	$this->mus->send('reload_gotw', $selectUser['id']);
-																	$this->mus->send('reload_credits', $selectUser['id']);
-																	$this->mus->send('reload_diamonds', $selectUser['id']);
+																	$this->mus->send('reload_motto', [$selectUser['id']]);
+																	$this->mus->send('reload_user_vip', [$selectUser['id']]);
+																	$this->mus->send('reload_gotw', [$selectUser['id']]);
+																	$this->mus->send('reload_credits', [$selectUser['id']]);
+																	$this->mus->send('reload_diamonds', [$selectUser['id']]);
 																	$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																	echo $this->generalUsers->texts['texts']['success'];
 																}
@@ -2110,11 +2110,11 @@
 																		$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																		$this->users->set('username', $username, $selectUser['username']);
 																		$this->mus->send('update_ranks');
-																		$this->mus->send('reload_motto', $selectUser['id']);
-																		$this->mus->send('reload_user_vip', $selectUser['id']);
-																		$this->mus->send('reload_gotw', $selectUser['id']);
-																		$this->mus->send('reload_credits', $selectUser['id']);
-																		$this->mus->send('reload_diamonds', $selectUser['id']);
+																		$this->mus->send('reload_motto', [$selectUser['id']]);
+																		$this->mus->send('reload_user_vip', [$selectUser['id']]);
+																		$this->mus->send('reload_gotw', [$selectUser['id']]);
+																		$this->mus->send('reload_credits', [$selectUser['id']]);
+																		$this->mus->send('reload_diamonds', [$selectUser['id']]);
 																		$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																		echo $this->generalUsers->texts['texts']['success'];
 																	} else {
@@ -2129,11 +2129,11 @@
 																	$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																	$this->users->set('username', $username, $selectUser['username']);
 																	$this->mus->send('update_ranks');
-																	$this->mus->send('reload_motto', $selectUser['id']);
-																	$this->mus->send('reload_user_vip', $selectUser['id']);
-																	$this->mus->send('reload_gotw', $selectUser['id']);
-																	$this->mus->send('reload_credits', $selectUser['id']);
-																	$this->mus->send('reload_diamonds', $selectUser['id']);
+																	$this->mus->send('reload_motto', [$selectUser['id']]);
+																	$this->mus->send('reload_user_vip', [$selectUser['id']]);
+																	$this->mus->send('reload_gotw', [$selectUser['id']]);
+																	$this->mus->send('reload_credits', [$selectUser['id']]);
+																	$this->mus->send('reload_diamonds', [$selectUser['id']]);
 																	$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																	echo $this->generalUsers->texts['texts']['success'];
 																}
@@ -2150,11 +2150,11 @@
 																	$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																	$this->users->set('username', $username, $selectUser['username']);
 																	$this->mus->send('update_ranks');
-																	$this->mus->send('reload_motto', $selectUser['id']);
-																	$this->mus->send('reload_user_vip', $selectUser['id']);
-																	$this->mus->send('reload_gotw', $selectUser['id']);
-																	$this->mus->send('reload_credits', $selectUser['id']);
-																	$this->mus->send('reload_diamonds', $selectUser['id']);
+																	$this->mus->send('reload_motto', [$selectUser['id']]);
+																	$this->mus->send('reload_user_vip', [$selectUser['id']]);
+																	$this->mus->send('reload_gotw', [$selectUser['id']]);
+																	$this->mus->send('reload_credits', [$selectUser['id']]);
+																	$this->mus->send('reload_diamonds', [$selectUser['id']]);
 																	$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																	echo $this->generalUsers->texts['texts']['success'];
 																} else {
@@ -2168,11 +2168,11 @@
 																$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																$this->users->set('username', $username, $selectUser['username']);
 																$this->mus->send('update_ranks');
-																$this->mus->send('reload_motto', $selectUser['id']);
-																$this->mus->send('reload_user_vip', $selectUser['id']);
-																$this->mus->send('reload_gotw', $selectUser['id']);
-																$this->mus->send('reload_credits', $selectUser['id']);
-																$this->mus->send('reload_diamonds', $selectUser['id']);
+																$this->mus->send('reload_motto', [$selectUser['id']]);
+																$this->mus->send('reload_user_vip', [$selectUser['id']]);
+																$this->mus->send('reload_gotw', [$selectUser['id']]);
+																$this->mus->send('reload_credits', [$selectUser['id']]);
+																$this->mus->send('reload_diamonds', [$selectUser['id']]);
 																$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																echo $this->generalUsers->texts['texts']['success'];
 															}
@@ -2190,11 +2190,11 @@
 																	$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																	$this->users->set('username', $username, $selectUser['username']);
 																	$this->mus->send('update_ranks');
-																	$this->mus->send('reload_motto', $selectUser['id']);
-																	$this->mus->send('reload_user_vip', $selectUser['id']);
-																	$this->mus->send('reload_gotw', $selectUser['id']);
-																	$this->mus->send('reload_credits', $selectUser['id']);
-																	$this->mus->send('reload_diamonds', $selectUser['id']);
+																	$this->mus->send('reload_motto', [$selectUser['id']]);
+																	$this->mus->send('reload_user_vip', [$selectUser['id']]);
+																	$this->mus->send('reload_gotw', [$selectUser['id']]);
+																	$this->mus->send('reload_credits', [$selectUser['id']]);
+																	$this->mus->send('reload_diamonds', [$selectUser['id']]);
 																	$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																	echo $this->generalUsers->texts['texts']['success'];
 																} else {
@@ -2209,11 +2209,11 @@
 																$this->users->set('vip_points', $diamonds, $selectUser['username']);
 																$this->users->set('username', $username, $selectUser['username']);
 																$this->mus->send('update_ranks');
-																$this->mus->send('reload_motto', $selectUser['id']);
-																$this->mus->send('reload_user_vip', $selectUser['id']);
-																$this->mus->send('reload_gotw', $selectUser['id']);
-																$this->mus->send('reload_credits', $selectUser['id']);
-																$this->mus->send('reload_diamonds', $selectUser['id']);
+																$this->mus->send('reload_motto', [$selectUser['id']]);
+																$this->mus->send('reload_user_vip', [$selectUser['id']]);
+																$this->mus->send('reload_gotw', [$selectUser['id']]);
+																$this->mus->send('reload_credits', [$selectUser['id']]);
+																$this->mus->send('reload_diamonds', [$selectUser['id']]);
 																$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 																echo $this->generalUsers->texts['texts']['success'];
 															}
@@ -2242,11 +2242,11 @@
 															$this->users->set('vip_points', $diamonds, $selectUser['username']);
 															$this->users->set('username', $username, $selectUser['username']);
 															$this->mus->send('update_ranks');
-															$this->mus->send('reload_motto', $selectUser['id']);
-															$this->mus->send('reload_user_vip', $selectUser['id']);
-															$this->mus->send('reload_gotw', $selectUser['id']);
-															$this->mus->send('reload_credits', $selectUser['id']);
-															$this->mus->send('reload_diamonds', $selectUser['id']);
+															$this->mus->send('reload_motto', [$selectUser['id']]);
+															$this->mus->send('reload_user_vip', [$selectUser['id']]);
+															$this->mus->send('reload_gotw', [$selectUser['id']]);
+															$this->mus->send('reload_credits', [$selectUser['id']]);
+															$this->mus->send('reload_diamonds', [$selectUser['id']]);
 															$this->hk->submitLog($this->users->get('id'), "Edited the user number: <b>{$selectUser['id']}</b>", time());
 															echo $this->generalUsers->texts['texts']['success'];
 														}
@@ -2469,11 +2469,11 @@
 								$cmdata = $command;
 								$cmdata = explode(' ', $command);
 								array_shift($cmdata);
-								$cmd['data'] = implode(' ', $cmdata);
+								$cmd['data'] = $cmdata;
 								if ($cmd['data']) {
 									$send = $this->mus->send($cmd['command'], $cmd['data']);
 								} else {
-									$send = $this->mus->send($cmd['command'], '');
+									$send = $this->mus->send($cmd['command']);
 								}
 								if ($send) {
 									$message = $this->generalEmu->texts['texts']['command_sended'];

@@ -46,12 +46,19 @@
             $this->status = $this->config->select['MUS']['STATUS'];
         }
 
-        public function send($command, $data = '')
+        public function send($command, array $data[])
         {
             if ($this->status) {
                 $socket = @socket_create(AF_INET, SOCK_STREAM, getprotobyname('tcp'));
                 @socket_connect($socket, $this->host, $this->port);
-                $musData = $command . chr(1) . $data;
+                $musData = $command;
+                if (!empty($data)) {
+                    foreach ($data as $key => $value) {
+                        $musData .= chr(1) . $value;
+                    }
+                } else {
+                    $musData .= chr(1) . '';
+                }
                 $send = @socket_send($socket, $musData, strlen($musData), MSG_DONTROUTE);
                 @socket_close($socket);
 
