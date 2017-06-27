@@ -49,29 +49,19 @@
         public function send($command, $data = '')
         {
             if ($this->status) {
-                $send = $this->chr($command, $data);
-                if ($send) {
-                    return true;
-                } else {
+                $socket = @socket_create(AF_INET, SOCK_STREAM, getprotobyname('tcp'));
+                @socket_connect($socket, $this->host, $this->port);
+                $musData = $command . chr(1) . $data;
+                $send = @socket_send($socket, $musData, strlen($musData), MSG_DONTROUTE);
+                @socket_close($socket);
+
+                if (!$send) {
                     return false;
+                } else {
+                    return true;
                 }
             } else {
                 return false;
-            }
-        }
-
-        public function chr($command, $data = '')
-        {
-            $socket = @socket_create(AF_INET, SOCK_STREAM, getprotobyname('tcp'));
-            @socket_connect($socket, $this->host, $this->port);
-            $musData = $command . chr(1) . $data;
-            $send = @socket_send($socket, $musData, strlen($musData), MSG_DONTROUTE);
-            @socket_close($socket);
-
-            if (!$send) {
-                return false;
-            } else {
-                return true;
             }
         }
 
