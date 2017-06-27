@@ -46,7 +46,7 @@
             $this->status = $this->config->select['MUS']['STATUS'];
         }
 
-        public function send($command, array $data)
+        public function send($command, array $data = [])
         {
             if ($this->status) {
                 $socket = @socket_create(AF_INET, SOCK_STREAM, getprotobyname('tcp'));
