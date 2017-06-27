@@ -68,9 +68,7 @@
             $send = @socket_send($socket, $musData, strlen($musData), MSG_DONTROUTE);
             @socket_close($socket);
 
-            if (!is_resource($socket)) {
-                return false;
-            } elseif (!$send) {
+            if (!$send) {
                 return false;
             } else {
                 return true;
@@ -82,9 +80,7 @@
             if ($this->status) {
                 $socket = @socket_create(AF_INET, SOCK_STREAM, getprotobyname('tcp'));
                 $connect = @socket_connect($socket, $this->host, $this->port);
-                if (!is_resource($socket)) {
-                    return false;
-                } elseif (!$connect) {
+                if (!$connect) {
                     return false;
                 } else {
                     return true;
