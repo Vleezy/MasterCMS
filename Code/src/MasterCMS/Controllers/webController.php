@@ -332,9 +332,11 @@
 			if ($this->users->getSession()) {
 				if ($this->sessions->get('cookie', 'username') || $this->sessions->get('cookie', 'password')) {
 					$this->mus->send('disconnect', $this->users->get('id'));
-					$this->sessions->delete('session', '*');
+					session_destroy();
 					$this->sessions->delete('cookie', 'username');
 					$this->sessions->delete('cookie', 'password');
+					$this->sessions->delete('cookie', 'facebook_id');
+					$this->sessions->delete('cookie', 'facebook_access_token');
 					header("Location: {$this->url}/");
 				} else {
 					// Template
@@ -345,15 +347,19 @@
 					$this->template->addTemplate('Template' . DS . 'Header');
 					$this->template->addTemplate();
 					$this->template->addTemplate('Template' . DS . 'Footer');
-					$this->sessions->delete('session', '*');
+					session_destroy();
 					$this->sessions->delete('cookie', 'username');
 					$this->sessions->delete('cookie', 'password');
-					$this->redirections->js($this->url, 3000);
+					$this->sessions->delete('cookie', 'facebook_id');
+					$this->sessions->delete('cookie', 'facebook_access_token');
+					$this->redirections->js("{$this->url}/", 3000);
 				}
 			} else {
-				$this->sessions->delete('session', '*');
+				session_destroy();
 				$this->sessions->delete('cookie', 'username');
 				$this->sessions->delete('cookie', 'password');
+				$this->sessions->delete('cookie', 'facebook_id');
+				$this->sessions->delete('cookie', 'facebook_access_token');
 				header("Location: {$this->url}/");
 				exit();
 			}

@@ -52,70 +52,72 @@
 			$this->url = $this->template->vars['url'];
 
 			if ($this->request->getMethod() == 'verify_client' && $this->request->getController() == 'web') {
-				$this->facebook = new Facebook;
-				$getUser = $this->con->query("SELECT * FROM users WHERE facebook_id = '{$this->facebook->getUser('id')}' AND facebook_account = '1'");
-				$selectUser = $this->con->fetch_assoc($getUser);
-				if (!$this->hotel->getConfig('maintenance')) {
-					if ($this->facebook->getSession()) {
-						if (!$this->con->num_rows($getUser)) {
-							$motto = $this->config->select['USER_REGISTER']['MOTTO'];
-						    $credits = $this->config->select['USER_REGISTER']['CREDITS'];
-						    $duckets = $this->config->select['USER_REGISTER']['DUCKETS'];
-						    $diamonds = $this->config->select['USER_REGISTER']['DIAMONDS'];
-						    $gotw = $this->config->select['USER_REGISTER']['GOTW'];
-						    $ip_reg = $this->getIP();
-						    $home_room = $this->config->select['USER_REGISTER']['HOME_ROOM'];
-							if ($this->facebook->getUser('gender') == 'male') {
-								$gender = 'M';
-								$look = 'hd-180-2.hr-3163-42.he-3070-62.ch-3030-1330.cp-3315-1427.lg-3058-110.sh-3016-100.wa-2001-70';
-							} else {
-								$gender = 'F';
-								$look = 'hd-3096-1.hr-3012-31.ch-665-92.cc-3066-1324.lg-3006-63.sh-3016-1408';
-							}
-							$add = $this->add(substr($this->facebook->getUser('first_name'), 0, 10) . substr($this->facebook->getUser('id'), 2, 5) . rand(0, 9) . rand(0, 9), $this->protection->encriptPassword($this->generateToken()), $this->facebook->getUser('email') . '.facebook', $gender, $motto, $look, $credits, $duckets, $diamonds, $ip_reg, $home_room, 1, $this->facebook->getUser('id'), 0);
-							if (!$add) {
-								$this->sessions->delete('session', 'username');
-								$this->sessions->delete('session', 'password');
-								$this->sessions->delete('cookie', 'username');
-								$this->sessions->delete('cookie', 'password');
-								$this->sessions->delete('session', 'facebook_id');
-							} else {
-								$this->sessions->delete('session', 'username');
-								$this->sessions->delete('session', 'password');
-								$this->sessions->delete('cookie', 'username');
-								$this->sessions->delete('cookie', 'password');
-								$this->sessions->delete('session', 'facebook_id');
-								foreach ($this->facebook->getData() as $key => $value) {
-									$this->sessions->set('session', 'facebook_user_' . $key, $value);
-								}
-								$this->sessions->set('session', 'facebook_id', $this->facebook->getUser('id'));
-							}
-						} else {
-							$ip_last = $this->getIP();
-							$this->sessions->delete('session', 'username');
-							$this->sessions->delete('session', 'password');
-							$this->sessions->delete('cookie', 'username');
-							$this->sessions->delete('cookie', 'password');
-							$this->sessions->delete('session', 'facebook_id');
-							foreach ($this->facebook->getData() as $key => $value) {
-								$this->sessions->set('session', 'facebook_user_' . $key, $value);
-							}
-							$this->sessions->set('session', 'facebook_id', $this->facebook->getUser('id'));
-							$this->set('ip_last', $ip_last);
-							$this->set('last_used', time());
-						}
-					}
-				} else if ($this->hotel->getConfig('maintenance')) {
-					if (in_array($selectUser['rank'], $this->hotel->getMaster('all'))) {
+				if (!$this->users->getSession()) {
+					$this->facebook = new Facebook;
+					$getUser = $this->con->query("SELECT * FROM users WHERE facebook_id = '{$this->facebook->getUser('id')}' AND facebook_account = '1'");
+					$selectUser = $this->con->fetch_assoc($getUser);
+					if (!$this->hotel->getConfig('maintenance')) {
 						if ($this->facebook->getSession()) {
-							if ($this->con->num_rows($getUser) > 0) {
+							if (!$this->con->num_rows($getUser)) {
+								$motto = $this->config->select['USER_REGISTER']['MOTTO'];
+							    $credits = $this->config->select['USER_REGISTER']['CREDITS'];
+							    $duckets = $this->config->select['USER_REGISTER']['DUCKETS'];
+							    $diamonds = $this->config->select['USER_REGISTER']['DIAMONDS'];
+							    $gotw = $this->config->select['USER_REGISTER']['GOTW'];
+							    $ip_reg = $this->getIP();
+							    $home_room = $this->config->select['USER_REGISTER']['HOME_ROOM'];
+								if ($this->facebook->getUser('gender') == 'male') {
+									$gender = 'M';
+									$look = 'hd-180-2.hr-3163-42.he-3070-62.ch-3030-1330.cp-3315-1427.lg-3058-110.sh-3016-100.wa-2001-70';
+								} else {
+									$gender = 'F';
+									$look = 'hd-3096-1.hr-3012-31.ch-665-92.cc-3066-1324.lg-3006-63.sh-3016-1408';
+								}
+								$add = $this->add(substr($this->facebook->getUser('first_name'), 0, 10) . substr($this->facebook->getUser('id'), 2, 5) . rand(0, 9) . rand(0, 9), $this->protection->encriptPassword($this->generateToken()), $this->facebook->getUser('email') . '.facebook', $gender, $motto, $look, $credits, $duckets, $diamonds, $ip_reg, $home_room, 1, $this->facebook->getUser('id'), 0);
+								if (!$add) {
+									$this->sessions->delete('session', 'username');
+									$this->sessions->delete('session', 'password');
+									$this->sessions->delete('cookie', 'username');
+									$this->sessions->delete('cookie', 'password');
+									$this->sessions->delete('session', 'facebook_id');
+								} else {
+									$this->sessions->delete('session', 'username');
+									$this->sessions->delete('session', 'password');
+									$this->sessions->delete('cookie', 'username');
+									$this->sessions->delete('cookie', 'password');
+									$this->sessions->delete('session', 'facebook_id');
+									foreach ($this->facebook->getData() as $key => $value) {
+										$this->sessions->set('session', 'facebook_user_' . $key, $value);
+									}
+									$this->sessions->set('session', 'facebook_id', $this->facebook->getUser('id'));
+								}
+							} else {
 								$ip_last = $this->getIP();
+								$this->sessions->delete('session', 'username');
+								$this->sessions->delete('session', 'password');
+								$this->sessions->delete('cookie', 'username');
+								$this->sessions->delete('cookie', 'password');
+								$this->sessions->delete('session', 'facebook_id');
 								foreach ($this->facebook->getData() as $key => $value) {
 									$this->sessions->set('session', 'facebook_user_' . $key, $value);
 								}
 								$this->sessions->set('session', 'facebook_id', $this->facebook->getUser('id'));
 								$this->set('ip_last', $ip_last);
 								$this->set('last_used', time());
+							}
+						}
+					} else if ($this->hotel->getConfig('maintenance')) {
+						if (in_array($selectUser['rank'], $this->hotel->getMaster('all'))) {
+							if ($this->facebook->getSession()) {
+								if ($this->con->num_rows($getUser) > 0) {
+									$ip_last = $this->getIP();
+									foreach ($this->facebook->getData() as $key => $value) {
+										$this->sessions->set('session', 'facebook_user_' . $key, $value);
+									}
+									$this->sessions->set('session', 'facebook_id', $this->facebook->getUser('id'));
+									$this->set('ip_last', $ip_last);
+									$this->set('last_used', time());
+								}
 							}
 						}
 					}
@@ -335,11 +337,11 @@
 						$query = $this->con->query("SELECT {$value} FROM users WHERE facebook_id = '{$facebook_id}' AND facebook_account = '1'");
 						$result = $this->con->fetch_assoc($query);
 						if ($value == 'mail') {
-							$result[$value] = str_replace('.facebook', '', $result[$value]);
+							$result[$value] = strstr($result[$value], -9, 9);
 						}
 						$result = $result[$value];
 					} else {
-						$result = 'Huésped';
+						$result = 'Guess';
 					}
 				} else {
 					$query = $this->con->query("SELECT {$value} FROM users WHERE username = '{$username}'");

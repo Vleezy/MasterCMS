@@ -75,11 +75,6 @@
 				$this->text = new $class;
             }
 
-			if (!$this->sessions->get('session', 'verify_client')) {
-				header("Location: {$this->url}/web/verify_client");
-				exit();
-			}
-
 			if (!$this->users->getSession()) {
 				header("Location: {$this->url}/");
 				exit;
