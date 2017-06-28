@@ -56,7 +56,6 @@
 			$this->sessions = new Sessions;
 			$this->con = new Connection;
 			$this->redirections = new Redirections;
-			$this->facebook = new Facebook;
 			$this->hotel = new Hotel;
 			$this->mails = new Mails;
 			$this->template->setEverything();
