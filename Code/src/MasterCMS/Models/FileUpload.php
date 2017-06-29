@@ -248,7 +248,7 @@
 								if ($badgeDesc) {
 									$flash = fopen($flashTexts, 'a');
 									if ($flash) {
-										fwrite($flash, "badge_desc_{$name}={$badgeDesc}\n");
+										fwrite($flash, "\nbadge_desc_{$name}={$badgeDesc}\n");
 									}
 								}
 							}
