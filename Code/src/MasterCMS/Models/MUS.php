@@ -53,8 +53,18 @@
                 @socket_connect($socket, $this->host, $this->port);
                 $musData = $command;
                 if (!empty($data)) {
-                    foreach ($data as $key => $value) {
-                        $musData .= chr(1) . $value;
+                    if (count($data) == 1) {
+                        foreach ($data as $key => $value) {
+                            $musData .= chr(1) . $value;
+                        }
+                    } else {
+                        foreach ($data as $key => $value) {
+                            if ($key == 0 || $key == 1) {
+                                $musData .= chr(1) . $value;
+                            } else {
+                                $musData .= ' ' . $value;
+                            }
+                        }
                     }
                 } else {
                     $musData .= chr(1) . '';
