@@ -6,6 +6,7 @@
 		{
 			// Constants
 			session_start();
+			session_name('MasterCMS');
 			define('ROOT', __DIR__ . DS);
 
 			// Autoload
