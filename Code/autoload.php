@@ -5,8 +5,8 @@
 		public static function run()
 		{
 			// Constants
-			session_start();
 			session_name('MasterCMS');
+			session_start();
 			define('ROOT', __DIR__ . DS);
 
 			// Autoload
