@@ -63,9 +63,6 @@ function updateUsers() {
     })
     .fail(function() {
         console.log("Users > Failed");
-    })
-    .always(function() {
-        console.log("Users > Loaded");
     });
     
 }
@@ -181,9 +178,6 @@ function updateRanks() {
     })
     .fail(function() {
         console.log("Ranks > Failed");
-    })
-    .always(function() {
-        console.log("Ranks > Loaded");
     });
     
 }

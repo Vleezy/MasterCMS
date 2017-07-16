@@ -61,9 +61,6 @@ function updateMessages() {
     })
     .fail(function() {
         console.log("Messages > Failed");
-    })
-    .always(function() {
-        console.log("Messages > Loaded");
     });
     
 }

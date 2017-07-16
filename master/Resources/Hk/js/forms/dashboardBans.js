@@ -63,9 +63,6 @@ function updateBans() {
     })
     .fail(function() {
         console.log("Bans > Failed");
-    })
-    .always(function() {
-        console.log("Bans > Loaded");
     });
     
 }

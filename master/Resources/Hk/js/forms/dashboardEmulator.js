@@ -99,9 +99,6 @@ function updateResponse() {
     })
     .fail(function() {
         console.log("Response > Failed");
-    })
-    .always(function() {
-        console.log("Response > Loaded");
     });
     
 }

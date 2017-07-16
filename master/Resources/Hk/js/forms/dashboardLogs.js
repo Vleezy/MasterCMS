@@ -54,9 +54,6 @@ function updateLogs() {
     })
     .fail(function() {
         console.log("Logs > Failed");
-    })
-    .always(function() {
-        console.log("Logs > Loaded");
     });
     
 }
@@ -117,9 +114,6 @@ function updateClientLogs() {
     })
     .fail(function() {
         console.log("Logs > Failed");
-    })
-    .always(function() {
-        console.log("Logs > Loaded");
     });
     
 }

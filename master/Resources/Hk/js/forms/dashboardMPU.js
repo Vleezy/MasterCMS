@@ -164,9 +164,6 @@ function updateMPUS() {
     })
     .fail(function() {
         console.log("MPUS > Failed");
-    })
-    .always(function() {
-        console.log("MPUS > Loaded");
     });
     
 }

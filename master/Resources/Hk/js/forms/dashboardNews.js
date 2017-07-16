@@ -107,9 +107,6 @@ function updateNews() {
     })
     .fail(function() {
         console.log("News > Failed");
-    })
-    .always(function() {
-        console.log("News > Loaded");
     });
     
 }
