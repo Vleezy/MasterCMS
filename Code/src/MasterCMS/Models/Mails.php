@@ -40,7 +40,6 @@
 
         public function __construct()
         {
-            $this->mail = new PHPMailer;
             $this->config = new Config;
             $this->hotel = new Hotel;
             $this->users = new Users;
@@ -99,6 +98,7 @@
         {
             global $smtp;
             require (ROOT . 'src' . DS . 'MasterCMS' . DS . 'Config' . DS . 'SMTP.php');
+            $this->mail = new PHPMailer;
             if (empty($smtp['SMTP']['MAILS'][$mail_name]['USER'])) {
                 echo $mail_name . ' no ha sido encontrado <br>';
                 return false;

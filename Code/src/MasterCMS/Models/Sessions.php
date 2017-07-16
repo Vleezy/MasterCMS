@@ -33,15 +33,14 @@
 		public function __construct()
 		{
 			$this->con = new Connection;
-			$this->protection = new Protection;
 		}
 		
 		public function set($type = 'session', $session, $value, $time = 3600 * 24 * 365, $directory = '/')
 		{
 			if ($type == 'session') {
-				$_SESSION[$session] = $this->protection->filter($value);
+				$_SESSION[$session] = $value;
 			} elseif ($type == 'cookie') {
-				setcookie($session, $this->protection->filter($value), time() + $time, $directory);
+				setcookie($session, $value, time() + $time, $directory);
 			}
 		}
 
@@ -49,13 +48,13 @@
 		{
 			if ($type == 'session') {
 				if ($_SESSION[$session]) {
-					return $this->protection->filter($_SESSION[$session]);
+					return $_SESSION[$session];
 				} else {
 					return false;
 				}
 			} else {
 				if ($_COOKIE[$session]) {
-					return $this->protection->filter($_COOKIE[$session]);
+					return $_COOKIE[$session];
 				} else {
 					return false;
 				}
@@ -78,9 +77,15 @@
 				}
 			} else {
 				if ($session == '*') {
-					foreach ($_COOKIE as $key => $value) {
-						setcookie($key, '', time() - 1000, $directory);
-					}
+					if (isset($_SERVER['HTTP_COOKIE'])) {
+		                $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
+		                foreach($cookies as $cookie) {
+		                    $parts = explode('=', $cookie);
+		                    $name = trim($parts[0]);
+		                    setcookie($name, '', time()-1000);
+		                    setcookie($name, '', time()-1000, '/');
+		                }
+		            }
 				} else {
 					if ($_COOKIE[$session]) {
 						setcookie($session, '', time() - 1000, $directory);
@@ -89,11 +94,6 @@
 					}
 				}
 			}
-		}
-
-		public function __destruct()
-		{
-			$this->con->close();
 		}
 	}
 
