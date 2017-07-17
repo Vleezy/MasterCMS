@@ -43,49 +43,18 @@
 
 		public function filter($str)
 	    {
-	        $str = $this->con->real_escape_string(htmlspecialchars(trim($str)));;
-	        $text = $str;
-	        $text = str_replace("INSERT","IN-SER-T",$text);
-	        $text = str_replace("DELETE","DE-LE-TE",$text);
-	        $text = str_replace("TRUNCATE","TRUN-CA-TE",$text);
-	        $text = str_replace("SELECT","SE-LEC-T",$text);
-	        $text = str_replace("ALTER","AL-TER",$text);
-	        $text = str_replace("UPDATE","UP-DA-TE",$text);
-	        $text = str_replace("inert","IN-SER-T",$text);
-	        $text = str_replace("delete","DE-LE-TE",$text);
-	        $text = str_replace("truncate","TRUN-CA-TE",$text);
-	        $text = str_replace("select","SE-LEC-T",$text);
-	        $text = str_replace("alter","AL-TER",$text);
-	        $text = str_replace("update","UP-DA-TE",$text);
-	        $text = str_replace("script","",$text);
-	        $text = str_replace("SCRIPT","",$text);
-	        $text = str_replace('"','&#34;',$text);
-	        $text = str_replace("'","&#39;",$text);
-	        $text = str_replace("<","&#60;",$text);
-	        $text = str_replace(">","&#62;",$text);
-	        $text = str_replace("(","",$text);
-	        $str = str_replace(")","",$text);
+	        $str = $this->con->real_escape_string($str);
+	        $str = mysqli_real_escape_string($value);
+			$str = htmlspecialchars($value);
+			$str = filter_var($value, FILTER_SANITIZE_STRING);
 	        return $str;
 	    }
 
 	    public function htmlFilter($str)
 	    {
 	        $str = $this->con->real_escape_string($str);
-	        $text = $str;
-	        $text = str_replace("INSERT","IN-SER-T",$text);
-	        $text = str_replace("DELETE","DE-LE-TE",$text);
-	        $text = str_replace("TRUNCATE","TRUN-CA-TE",$text);
-	        $text = str_replace("SELECT","SE-LEC-T",$text);
-	        $text = str_replace("ALTER","AL-TER",$text);
-	        $text = str_replace("UPDATE","UP-DA-TE",$text);
-	        $text = str_replace("inert","IN-SER-T",$text);
-	        $text = str_replace("delete","DE-LE-TE",$text);
-	        $text = str_replace("truncate","TRUN-CA-TE",$text);
-	        $text = str_replace("select","SE-LEC-T",$text);
-	        $text = str_replace("alter","AL-TER",$text);
-	        $text = str_replace("update","UP-DA-TE",$text);
-	        $text = str_replace("script","",$text);
-	        $text = str_replace("SCRIPT","",$text);
+	        $str = mysqli_real_escape_string($value);
+			$str = filter_var($value, FILTER_SANITIZE_STRING);
 	        return $str;
 	    }
 
