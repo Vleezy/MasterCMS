@@ -44,17 +44,15 @@
 		public function filter($str)
 	    {
 	        $str = $this->con->real_escape_string($str);
-	        $str = mysqli_real_escape_string($value);
-			$str = htmlspecialchars($value);
-			$str = filter_var($value, FILTER_SANITIZE_STRING);
+			$str = htmlspecialchars($str);
+			$str = filter_var($str, FILTER_SANITIZE_STRING);
 	        return $str;
 	    }
 
 	    public function htmlFilter($str)
 	    {
 	        $str = $this->con->real_escape_string($str);
-	        $str = mysqli_real_escape_string($value);
-			$str = filter_var($value, FILTER_SANITIZE_STRING);
+			$str = filter_var($str, FILTER_SANITIZE_STRING);
 	        return $str;
 	    }
 
