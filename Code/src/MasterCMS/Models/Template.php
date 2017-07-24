@@ -80,7 +80,7 @@
         {
             if (!$directory) {
                 if (!$file) {
-                    echo $this->getHTML(ROOT . 'src' . DS . 'MasterCMS' . DS . 'Views' . DS . 'WebViews' . DS . $this->hotel->getConfig('template_name') . DS . 'Langs' . DS . $this->config->select['WEB']['LANG'] . DS . $this->request->getController() . DS . $this->request->getMethod());
+                    echo $this->getHTML(ROOT . 'src' . DS . 'MasterCMS' . DS . 'Views' . DS . 'WebViews' . DS . $this->hotel->getConfig('template_name') . DS . 'Langs' . DS . $this->config->select['WEB']['LANG'] . DS . ucfirst($this->request->getController()) . DS . ucfirst($this->request->getMethod()));
                 } elseif ($file == '404') {
                     echo $this->getHTML(ROOT . 'src' . DS . 'MasterCMS' . DS . 'Views' . DS . 'WebViews' . DS . $this->hotel->getConfig('template_name') . DS . 'Langs' . DS . $this->config->select['WEB']['LANG'] . DS . 'Errors' . DS . $file);
                 } elseif ($file == 'AdBlock') {
@@ -91,8 +91,8 @@
             } else {
                 if ($directory == 'Hk') {
                     if (!$file) {
-                        $rt = ROOT . 'src' . DS . 'MasterCMS' . DS . 'Views' . DS . $directory . DS . 'Langs' . DS . $this->config->select['WEB']['HK_LANG'] . $this->request->getController() . DS . $this->request->getMethod();
-                        $rt2 = ROOT . 'src' . DS . 'MasterCMS' . DS . 'Views' . DS . 'WebViews' . DS . $this->hotel->getConfig('template_name') . DS . 'Langs' . DS . $this->config->select['WEB']['HK_LANG'] . DS . 'WebTemplates' . DS . $directory . DS . $this->request->getController() . DS . $this->request->getMethod();
+                        $rt = ROOT . 'src' . DS . 'MasterCMS' . DS . 'Views' . DS . $directory . DS . 'Langs' . DS . $this->config->select['WEB']['HK_LANG'] . ucfirst($this->request->getController()) . DS . ucfirst($this->request->getMethod());
+                        $rt2 = ROOT . 'src' . DS . 'MasterCMS' . DS . 'Views' . DS . 'WebViews' . DS . $this->hotel->getConfig('template_name') . DS . 'Langs' . DS . $this->config->select['WEB']['HK_LANG'] . DS . 'WebTemplates' . DS . $directory . DS . ucfirst($this->request->getController()) . DS . ucfirst($this->request->getMethod());
                         if (is_readable($rt2 . '.tpl')) {
                             echo $this->getHTML($rt2);
                         } else {
@@ -110,7 +110,7 @@
                 } else {
                     if (!$file) {
                         $rt = ROOT . 'src' . DS . 'MasterCMS' . DS . 'Views' . DS . $directory . DS . $this->request->getController() . DS . $this->request->getMethod();
-                        $rt2 = ROOT . 'src' . DS . 'MasterCMS' . DS . 'Views' . DS . 'WebViews' . DS . $this->hotel->getConfig('template_name') . DS . 'Langs' . DS . $this->config->select['WEB']['LANG'] . DS . 'WebTemplates' . DS . $directory . DS . $this->request->getController() . DS . $this->request->getMethod();
+                        $rt2 = ROOT . 'src' . DS . 'MasterCMS' . DS . 'Views' . DS . 'WebViews' . DS . $this->hotel->getConfig('template_name') . DS . 'Langs' . DS . $this->config->select['WEB']['LANG'] . DS . 'WebTemplates' . DS . $directory . DS . ucfirst($this->request->getController()) . DS . ucfirst($this->request->getMethod());
                         if (is_readable($rt2 . '.tpl')) {
                             echo $this->getHTML($rt2);
                         } else {
