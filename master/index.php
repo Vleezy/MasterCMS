@@ -24,17 +24,21 @@
    
 	// Constants
 	error_reporting(0);
-	@ini_set('upload_max_filesize', '150M');
-	@ini_set('post_max_size', '150M');
+
 	define('DS', DIRECTORY_SEPARATOR);
+
 	define('DIRECTORY', realpath(dirname(__DIR__)) . DS);
+
 	define('MAIN_ROOT', __DIR__ . DS);
+
 	define('URL', $_SERVER['HTTP_HOST']);
+
 	if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
 		define('TYPE_HTTP', 'https://');
 	} else {
 		define('TYPE_HTTP', 'http://');
 	}
+
 	date_default_timezone_set('Europe/Madrid');
 	
 	// Autoloader Require
@@ -43,11 +47,11 @@
 		if (version_compare(PHP_VERSION, $need) < 0) {
         	throw new Exception('MasterCMS is not available for <strong>PHP ' . PHP_VERSION . '</strong><br>' . 'Please install PHP greater than <strong>PHP ' . $need . '</strong>');
         } else {
-        	$rute = DIRECTORY . 'Code' . DS . 'Autoload.php';
+        	$rute = DIRECTORY . 'Code' . DS . 'autoload.php';
 			if (is_readable($rute)) {
 				require_once $rute;
 			} else {
-				$rute = MAIN_ROOT . 'Code' . DS . 'Autoload.php';
+				$rute = MAIN_ROOT . 'Code' . DS . 'autoload.php';
 				if (is_readable($rute)) {
 					require_once $rute;
 				} else {
