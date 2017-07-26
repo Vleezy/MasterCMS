@@ -11,7 +11,7 @@
 ## Requirements
 * PHP 7.0.0
 * Apache Server
-* Xampp [Windows](https://www.apachefriends.org/xampp-files/7.1.4/xampp-win32-7.1.4-0-VC14-installer.exe) | [Linux](https://www.apachefriends.org/xampp-files/7.1.4/xampp-linux-x64-7.1.4-0-installer.run) or IIS (*Not tested on hostings*)
+* Xampp [Windows](https://www.apachefriends.org/xampp-files/7.1.4/xampp-win32-7.1.4-0-VC14-installer.exe) | [Linux](https://www.apachefriends.org/xampp-files/7.1.4/xampp-linux-x64-7.1.4-0-installer.run), IIS or Hosting
 
 ### Writed manual:
 1. Download the MasterCMS ZIP from the Repo.
