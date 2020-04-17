@@ -26,7 +26,7 @@
 
 	class Connection {
 
-		private static $data = array(
+		private $data = array(
 			'HOST'          =>         '127.0.0.1',
 	        'PORT'          =>         '3306',
 	        'USER'          =>         'root',
@@ -44,7 +44,7 @@
 		        } else if (!extension_loaded('curl')) {
 		        	throw new \Exception('MasterCMS need cURL extension');
 		        } else {
-		        	if (!self::$con) {
+		        	if (!$this->con) {
 		        		$this->run();
 		        	}
 		        }
@@ -56,20 +56,20 @@
 		public function run()
 		{
 			try {
-    			self::$con = new \mysqli();
-    			self::$con->connect(self::$data['HOST'], self::$data['USER'], self::$data['PASS'], self::$data['DB'], self::$data['PORT']);
+    			$this->con = new \mysqli();
+    			$this->con->connect($this->data['HOST'], $this->data['USER'], $this->data['PASS'], $this->data['DB'], $this->data['PORT']);
 		        $rute = ROOT;
 		        $ruteStyles = MAIN_ROOT;
-		        if (self::$con->connect_error) {
-					throw new \Exception("Error conecting to the MySQL Server: " . self::$con->connect_error);
-		        } else if (!self::$con->set_charset("utf8")) {
-		            throw new \Exception("Error loading MySQL Character: " . self::$con->error);
+		        if ($this->con->connect_error) {
+					throw new \Exception("Error conecting to the MySQL Server: " . $this->con->connect_error);
+		        } else if (!$this->con->set_charset("utf8")) {
+		            throw new \Exception("Error loading MySQL Character: " . $this->con->error);
 		        } else if (!is_writable($rute)) {
 	        		throw new \Exception("<b>{$rute}</b> most be writable");
 	        	} else if (!is_writable($ruteStyles)) {
 	        		throw new \Exception("<b>{$ruteStyles}</b> most be writable");
 	        	} else {
-	        		$query = self::$con->query("SELECT * FROM master_config");
+	        		$query = $this->con->query("SELECT * FROM master_config");
  		        		if (!$query) {
 	        			throw new \Exception("MasterCMS needs <b>master_config</b> table");
 	        		}
@@ -80,7 +80,7 @@
 		}
 
 		public function query($query) {
-        	$result = self::$con->query($query);
+        	$result = $this->con->query($query);
 	        return $result;
 	    }
 
@@ -89,7 +89,7 @@
     		if (is_object($row)) {
 	    		$row = $row->num_rows;
 	    	} else {
-	    		$row = self::$con->query($row);
+	    		$row = $this->con->query($row);
 	    		$row = $row->num_rows;
 	    	}
 
@@ -101,7 +101,7 @@
 	    	if (is_object($query)) {
 	    		$query = mysqli_fetch_assoc($query);
 	    	} else {
-	    		$query = self::$con->query($query);
+	    		$query = $this->con->query($query);
 	    		$query = mysqli_fetch_assoc($query);
 	    	}
 
@@ -113,7 +113,7 @@
 	    	if (is_object($query)) {
 	    		$query = mysqli_fetch_array($query);
 	    	} else {
-	    		$query = self::$con->query($query);
+	    		$query = $this->con->query($query);
 	    		$query = mysqli_fetch_array($query);
 	    	}
 	    	return $query;
@@ -121,18 +121,18 @@
 
 	    public function real_escape_string($str)
 	    {
-	    	$str = self::$con->real_escape_string($str);
+	    	$str = $this->con->real_escape_string($str);
 	    	return $str;
 	    }
 
 	    public function close()
 	    {
-	    	self::$con->close();
+	    	$this->con->close();
 	    }
 
 	    public function __destruct()
 	    {
-	    	if (self::$con) {
+	    	if ($this->con) {
 	    		$this->close();
 	    	}
 	    }
@@ -174,7 +174,7 @@
 		                $offset = $delimiterOffset + strlen($delimiter);
 		            } else {
 		                $sql = trim($sql . ' ' . trim(substr($row, 0, $delimiterOffset)));
-		                $data .= self::$con->query($sql);
+		                $data .= $this->con->query($sql);
 
 		                $row = substr($row, $delimiterOffset + strlen($delimiter));
 		                $offset = 0;
@@ -185,7 +185,7 @@
 		    }
 
 		    if (strlen($sql) > 0) {
-		        $data .= self::$con->query($row);
+		        $data .= $this->con->query($row);
 		    }
 
 		    fclose($file);
